@@ -1,0 +1,30 @@
+
+.addButton {
+  margin: 10px;
+  text-align: center;
+  background-color: #007DFF;
+  border-radius: 2px;
+  border: none;
+  font-size: 23px;
+  padding: 0px;
+  width:57px;
+  height: 28px;
+  color: white;
+  font-family: HelvecticanueMedium;
+}
+.addButton:hover {
+  background-color: #0059FF ;
+}
+
+.addButton:active {
+  background-color: #0B00FF;
+  opacity: 80%;
+}
+
+.addButton:disabled {
+  background-color:#E9ECEF;
+}
+
+span {
+  content: "\002B";
+}

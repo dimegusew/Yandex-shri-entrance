@@ -1,0 +1,101 @@
+.event-diagram{
+  min-width: 1035px;
+  height: 28px;
+  position: relative;
+  margin-top: 13px;
+  display: flex;
+  background-color: white;
+}
+
+.Event{
+  height: 28px;
+  background-color:  #D5DFE9;
+  position: absolute;
+  display: inline-block;
+}
+
+
+
+.Event span h3{
+  font-family: Helvecticanue-bold;
+ font-size: 15px;
+ color: #000000;
+ letter-spacing: 0;
+ line-height: 24px;
+ margin-top : 9px;
+ margin-bottom: 2px;
+}
+
+.Event span {
+  font-family: Helvecticanue;
+ font-size: 13px;
+line-height: 17px;
+}
+.date-room{
+  /* font-family: Helvecticanue;
+ font-size: 13px;
+line-height: 17px; */
+}
+.user{
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+.users-info{
+  display: flex;
+}
+.users-info span{
+  color:grey;
+}
+
+
+.user img{
+  width:24px;
+  height:24px;
+  border-radius: 100px;
+  margin-right: 8px;
+}
+
+
+
+.Event .tooltiptext {
+    visibility: visible;
+    width: 323px;
+    margin-right: 169px;
+    height: 102px;
+    padding: 5px 0;
+    top:20.2px;
+    position: absolute;
+    z-index: 4;
+    padding-left: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 16px 0 rgba(0,44,92,0.28);
+    border-radius: 8px;
+   left: 50%;
+   margin-left: -169px;
+}
+
+.Event:hover{
+    background-color: #98A9B9;
+}
+
+.Event:active{
+  background-color: rgba(0,0,0,0.12);
+  background-color: #98A9B9;
+}
+
+
+.Event:hover .tooltiptext {
+    visibility: visible;
+}
+
+.Event .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -9px;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}

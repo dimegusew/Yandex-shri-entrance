@@ -1,0 +1,43 @@
+.date-bar{
+  width: 245px;
+  height: 22px;
+  display: flex;
+  margin-left: 24px;
+}
+
+
+.date-bar p{
+  text-align: center;
+  cursor: pointer;
+  min-width: 123px;
+  height: 18px;
+  font-family: HelvecticanueMedium;
+  font-size: 15px;
+  margin-left: 13.5px;
+  margin-right: 13.5px;
+}
+
+.calendar-mounth{
+  margin:16px;
+  background-color: #E9ECEF;
+  width:572px;
+  height:200px;
+}
+
+.calendar{
+  font-size: 14px;
+  font-family: Helvecticanue;
+  visibility: visible;
+  width: 604px;
+  height:232px;
+  background-color: black;
+  color: black;
+  margin-top:47px;
+  background-color: white;
+box-shadow: 0 1px 8px 0 rgba(0,44,92,0.28);
+border-radius: 4px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 10;
+}
