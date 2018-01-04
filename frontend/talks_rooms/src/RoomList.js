@@ -25,6 +25,22 @@ class RoomList extends Component {
     return newRoom
   }
 
+  convertEventsDate(date){
+    return date.split("T")[0].replace(/-/g,"/")
+  }
+
+
+
+componentWillReceiveProps(nextProps){
+  console.log(nextProps.viewedDate)
+  let events=nextProps.events.slice(0);
+  let filteredEvents=events.filter((el)=>this.convertEventsDate(el.dateStart)==nextProps.viewedDate)
+  this.setState({
+    filteredEvents : filteredEvents
+  })
+}
+
+
 
 render() {
 
@@ -47,7 +63,7 @@ else {
           <Floor floorNumber={Object.keys(el)}
             key={el.i}
             rooms={el[Object.keys(el)]}
-            events={this.props.events}
+            events={this.state.filteredEvents}
            />
       )}
 

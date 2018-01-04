@@ -8,8 +8,25 @@ import gql from 'graphql-tag'
 
 
 class MainBody extends Component {
+  constructor(props){
+    let currDate=new Date();
+    super(props);
+    this.state={
+      viewedDate : `${currDate.getFullYear()}/${currDate.getMonth()+1<10
+                  ? ("0"+(currDate.getMonth()+1)):currDate.getMonth()+1}/${currDate.getDate()<10
+                  ? "0"+currDate.getDate():currDate.getDate() }`
+    }
+  }
+
+
+  choosingDate=(date)=>
+    this.setState({
+      viewedDate : date
+    })
+
 
   render() {
+
     if (this.props.data.loading) {
         return (<div>Loading</div>)
     }
@@ -22,8 +39,8 @@ class MainBody extends Component {
     else {
     return (
       <div>
-        <DateTimeBar/>
-        <RoomList events={this.props.data.events}/>
+        <DateTimeBar choosingDate={this.choosingDate}/>
+        <RoomList events={this.props.data.events} viewedDate={this.state.viewedDate}/>
     </div>
     );
   }
