@@ -5,6 +5,10 @@ import arrowL from './images/arrow2.svg'
 import ArrowButton from './ArrowButton';
 import DayPicker from 'react-day-picker';
 import './ModuleCalendar.css';
+import converterDate from './convertDate.js'
+
+
+
 
 class DateBar extends Component {
   constructor(props){
@@ -26,39 +30,29 @@ class DateBar extends Component {
         selectedDay: selected ? this.state.selectedDay : day,
       })
       let choosedDate=selected ? this.state.selectedDay : day;
-      this.props.choosingDate(this.convertDate(choosedDate).fullDate)
+      this.props.choosingDate(choosedDate)
     };
 
-   convertDate(date){
-    return {"day" : date.getDate(),
-            "mounth": date.getMonth()+1,
-            "year" : date.getFullYear(),
-            "fullDate" :
-            `${date.getFullYear()}/${date.getMonth()+1<10
-               ? ("0"+(date.getMonth()+1)):date.getMonth()+1}/${date.getDate()<10
-                  ? "0"+date.getDate():date.getDate() }`
-   }
- }
 
 
- handleClick=(ev)=>
+ handleButtonClick=(ev)=>
  {
    console.log(ev.target.className)
    let minusOrPlus= (ev.target.className=="minusButton") ? -1 : 1;
-   let choosingDate= this.convertDate(this.state.selectedDay).fullDate.split('/')
+   let choosingDate= converterDate(this.state.selectedDay).fullDate.split('/')
    let changedDate=new Date(new Date(parseInt(choosingDate[0],10),
                     parseInt(choosingDate[1],10)-1,
                     parseInt(choosingDate[2],10)+minusOrPlus));
    this.setState({
      selectedDay : changedDate
    })
-   this.props.choosingDate(this.convertDate(changedDate).fullDate)
+   this.props.choosingDate(changedDate)
  }
 
 
   render() {
-    let selectedDate=this.convertDate(this.state.selectedDay);
-    let currentDate=this.convertDate(new Date());
+    let selectedDate=converterDate(this.state.selectedDay);
+    let currentDate=converterDate(new Date());
 
     const WEEKDAYS_SHORT = {
   ru: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
@@ -118,7 +112,7 @@ class DateBar extends Component {
 
     return (
       <div className="date-bar">
-        <button className="minusButton" onClick={this.handleClick}>
+        <button className="minusButton" onClick={this.handleButtonClick}>
           <img src={arrowL}/>
         </button>
         <p onClick={this.eventHandler}
@@ -129,7 +123,7 @@ class DateBar extends Component {
           " ⋅ Сегодня" : ""}
         </p>
 
-        <button className="plusButton" onClick={this.handleClick}>
+        <button className="plusButton" onClick={this.handleButtonClick}>
           <img src={arrowR}/>
         </button>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import convertDate from './convertDate.js'
 
 class CurrentTime extends Component {
   constructor(props){
@@ -16,9 +17,11 @@ class CurrentTime extends Component {
 
   componentDidMount(){
     this.timerID = setInterval(
-      () => this.tick(),
-      1000
-  )}
+      () => {this.tick()
+      this.props.currentTime(new Date())},
+      60000
+  )
+}//back 1000
 
   componentWillUnmount() {
    clearInterval(this.timerID);
@@ -36,8 +39,10 @@ class CurrentTime extends Component {
     let time=date.getHours()+':'
     + (date.getMinutes()<10 ? ("0"+date.getMinutes()) : date.getMinutes());
     let myStyle={left: this.state.pointerPosition+"%"};
+    let dateTrue=convertDate(this.props.choosingDate).fullDate==convertDate(this.state.date).fullDate
+    let visible= dateTrue ? {"visibility": "visible"} :  {"visibility": "hidden"}
     return (
-      <div>
+      <div style={visible}>
       <div className="current-time" style={myStyle}><p>{time}</p>
       <div className="vert-line"></div></div>
     </div>

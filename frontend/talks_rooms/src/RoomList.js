@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './RoomList.css'
 import Floor from './Floor.js'
 import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
+import converterDate from "./convertDate.js"
 
 
 
@@ -32,7 +33,6 @@ class RoomList extends Component {
 
 
 componentWillReceiveProps(nextProps){
-  console.log(nextProps.viewedDate)
   let events=nextProps.events.slice(0);
   let filteredEvents=events.filter((el)=>this.convertEventsDate(el.dateStart)==nextProps.viewedDate)
   this.setState({

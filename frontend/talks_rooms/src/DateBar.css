@@ -1,6 +1,6 @@
 .date-bar{
   width: 245px;
-  height: 22px;
+  min-height: 22px;
   display: flex;
   margin-left: 24px;
 }
@@ -8,6 +8,7 @@
 
 .date-bar p{
   text-align: center;
+  margin-top: 13px;
   cursor: pointer;
   min-width: 123px;
   height: 18px;
@@ -50,10 +51,13 @@ button{
     background-color: #E9ECEF;
     border-radius: 30px;
     margin-top:11px;
+    margin-bottom:12px;
     border: 0;
 padding: 0;
 }
 
 button img{
   pointer-events: none;
+  margin-top: 4px;
+
 }

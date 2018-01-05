@@ -18,12 +18,12 @@
   padding-right: 8.5px;
   font-family: Helvecticanue-bold;
   letter-spacing: 0.4px;
-  margin-top: -20px;
+  margin-top: -21px;
 }
 
 .current-time{
   z-index: 4;
-  margin-top: 14px;
+  margin-top: 13px;
     width: 49px;
   height: 20px;
   background-color: #007DFF;
