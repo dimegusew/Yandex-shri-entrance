@@ -207,10 +207,13 @@
 
 .DayPickerInput {
   display: inline-block;
+  width : 228px;
+  padding-right: 27px;
 }
 
 .DayPickerInput-OverlayWrapper {
   position: relative;
+    width : 228px;
 }
 
 .DayPickerInput-Overlay {

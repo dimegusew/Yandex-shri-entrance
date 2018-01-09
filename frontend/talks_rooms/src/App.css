@@ -1,9 +1,7 @@
 @font-face{
 
 font-family: 'HelvecticanueMedium';
-src: url('./fonts/HelveticaNeue-Medium.ttf');
-src: url('./fonts/HelveticaNeue-Medium.eot') format('eot'),
-url('./fonts/HelveticaNeue-Medium.ttf') format('truetype');
+src: url('./fonts/HelveticaNeueCyr-Medium.woff');
 font-weight: normal;
 font-style: normal;
 }
@@ -12,7 +10,7 @@ font-style: normal;
 @font-face{
 
 font-family: 'Helvecticanue';
-src: url('./fonts/HelveticaNeue.ttf');
+src: url('./fonts/HelveticaNeueCyr-Roman.woff');
 font-weight: normal;
 font-style: normal;
 }
@@ -21,7 +19,7 @@ font-style: normal;
 @font-face{
 
 font-family: 'Helvecticanue-bold';
-src: url('./fonts/helvetica-neue-bold.ttf');
+src: url('./fonts/HelveticaNeueCyr-Bold.woff');
 font-weight: normal;
 font-style: normal;
 }
@@ -38,7 +36,8 @@ font-style: normal;
 
 
 .App{
-  width:1280px;
+  max-width:1280px;
+  min-width:1280px;
   font-family: HelvecticanueMedium;
   height: 100%;
 }
@@ -47,5 +46,4 @@ font-style: normal;
   display: flex;
   justify-content: center;
   min-width: 1280px;
-  height: 100%;
 }

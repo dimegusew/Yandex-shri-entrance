@@ -8,6 +8,14 @@ import converterDate from "./convertDate.js"
 
 
 class RoomList extends Component {
+  constructor(props){
+    super(props)
+    console.log(this.props.data.events)
+      this.state={
+        filteredEvents : []
+      }
+
+  }
 
   roomsHandler(data){
     let floorsIds= data.map((el)=>el.floor);
@@ -55,7 +63,6 @@ if (this.props.data.error) {
 
 else {
   let roomsGroupedByFloor=this.roomsHandler(this.props.data.rooms)
-
     return (
       <div className="event-background">
       <div className='room-list'>

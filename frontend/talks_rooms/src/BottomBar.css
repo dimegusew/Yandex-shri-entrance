@@ -1,0 +1,7 @@
+.bottom-bar{
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  margin-top: 3px;
+    box-shadow: 0px -1px 0px #E9ECEF;
+}

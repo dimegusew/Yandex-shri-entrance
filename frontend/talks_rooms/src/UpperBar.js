@@ -3,14 +3,21 @@ import CreateButton from './CreateButton';
 import LogoMain from './images/logo.svg';
 import './UpperBar.css';
 
-function UpperBar() {
-  return(
-  <div className="upper-side">
-    <div>
-      <img src={LogoMain}/>
-    </div>
-    <CreateButton text="Создать встречу" className="create-button"/>
-  </div>
-)}
+
+class UpperBar extends Component {
+  render() {
+    return (
+      <div className="upper-side">
+        <div>
+          <img src={LogoMain}/>
+        </div>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+
+
 
 export default UpperBar;

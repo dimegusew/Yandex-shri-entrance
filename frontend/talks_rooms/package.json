@@ -5,13 +5,19 @@
   "dependencies": {
     "apollo-client": "^1.9.3",
     "axios": "^0.17.1",
+    "cleave.js": "^1.0.9",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
+    "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
     "react-day-picker": "^7.0.6",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-input-mask": "^1.1.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "react-text-mask": "^5.1.0",
+    "react-time-input": "0.0.17"
   },
   "scripts": {
     "start": "react-scripts start",

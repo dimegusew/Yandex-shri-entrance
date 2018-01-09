@@ -25,7 +25,7 @@ class Tooltip extends Component {
     let numberOfUsers=event.users.length;
     return (
       <span className="tooltiptext">
-        <h3> {event.title}</h3>
+        <span><h3> {event.title}</h3></span>
         <div className='date-room'>
             {this.convertDateTime(event.dateStart).date}
           , {this.convertDateTime(event.dateStart).time}
