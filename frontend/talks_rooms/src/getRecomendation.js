@@ -1,9 +1,10 @@
 
 
 export default function getRecommendation(date,db,members) {
+
 	let numberOfmembers = members.length;
-	let AllRooms=db.rooms;
-	let AllEvents=db.events;
+	let AllRooms= db ? db.rooms : [];
+	let AllEvents= db ? db.events : [];
 	console.log(AllEvents)
 
 	let RoomsFilterdByCapacity=AllRooms.filter((room)=>room.capacity>=numberOfmembers)
@@ -80,7 +81,8 @@ console.log(nOverlapEvent)
 																	"end":date.end
 																	},
 													"room":{"title" :room.title,
-																	"floor": room.floor
+																	"floor": room.floor,
+																	"id" : room.id
 												}})})
 
 	return Recomendations

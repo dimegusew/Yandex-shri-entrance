@@ -68,9 +68,10 @@ else {
       <div className='room-list'>
         {roomsGroupedByFloor.map((el,i)=>
           <Floor floorNumber={Object.keys(el)}
-            key={el.i}
+            key={el.id}
             rooms={el[Object.keys(el)]}
             events={this.state.filteredEvents}
+            timeToNewEvent={this.props.timeToNewEvent}
            />
       )}
 

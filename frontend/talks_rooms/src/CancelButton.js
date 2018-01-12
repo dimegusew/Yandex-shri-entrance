@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import './CancelButton.css';
 
-function CancelButton({ text }) {
-  return (
-  <button className="cancelButton">{text}
 
-  </button>
-)}
+class CancelButton extends Component {
 
-export default CancelButton;
+
+  render() {
+    return (
+      <button className="cancelButton" onClick={this.props.cancelHandler}>
+        {this.props.text}
+      </button>
+    );
+  }
+}
+
+export default CancelButton

@@ -3,7 +3,6 @@
   min-width: 1035px;
   display: flex;
   max-height: 34px;
-  z-index: 5;
   /* background-color: #F6F7F9; */
 
 }
@@ -18,7 +17,7 @@
   padding-right: 8.5px;
   font-family: Helvecticanue-bold;
   letter-spacing: 0.4px;
-  margin-top: -20px;
+  margin-top: -21px;
 }
 
 .current-time{

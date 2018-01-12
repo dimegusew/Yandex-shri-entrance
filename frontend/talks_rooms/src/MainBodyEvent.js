@@ -42,13 +42,13 @@ class MainBodyEvent extends Component {
       addedUsers : [],
       EventTitle : "",
       viewedUsers : this.props.users,
-      timeStart : "",
-      timeEnd : "",
+      timeStart : this.props.timeToNewEvent.start,
+      timeEnd : this.props.timeToNewEvent.end,
       date : "",
       titleValid : false,
-      timeStartValid : false,
-      timeEndValid : false,
-      dateValid : false
+      timeStartValid : this.props.timeToNewEvent.start ? true : false,
+      timeEndValid : this.props.timeToNewEvent.end ? true : false,
+      dateValid : this.props.dateToNewEvent ? true : false
     }
   }
 
@@ -61,6 +61,7 @@ class MainBodyEvent extends Component {
         choosedUsersId : choosedUsers,
         addedUsers : addedUsers,                         //calback from users
       })
+      this.props.addedUsersHandler(addedUsers);
 
     }
 
@@ -80,6 +81,7 @@ class MainBodyEvent extends Component {
     }
 
   onInputHandler=(change)=>{
+    console.log(change.target.value)
     switch(change.target.id){
       case "title" :
         change.target.value ?
@@ -89,6 +91,8 @@ class MainBodyEvent extends Component {
          this.setState({
            titleValid : false,
          })
+
+         this.props.addedTitleHandler(change.target.value)
          break;
 
       case "users" :
@@ -104,7 +108,7 @@ class MainBodyEvent extends Component {
         let timeStart= change.target.value;
         (timeStart.split("").length == 5) ?
           this.setState({
-            timeStart : ("T"+timeStart+":00.981Z"),
+            timeStart : (timeStart),
             timeStartValid : true
           }) :
           this.setState({
@@ -116,8 +120,8 @@ class MainBodyEvent extends Component {
         let timeEnd= change.target.value;
         (timeEnd.split("").length == 5) ?
           this.setState({
-            timeEnd : ("T"+timeEnd+":00.981Z"),
-            timeEndValid : true
+            timeEnd : (timeEnd),
+            timeEndValid : true,
           }) :
           this.setState({
             timeEndValid : false
@@ -141,10 +145,9 @@ class MainBodyEvent extends Component {
   }
 
 
-
-
-
   render() {
+console.log(this.props.roomToNewEvent)
+
     return (
       <div className="event-edit-container">
         <div className="event-edit">
@@ -188,12 +191,14 @@ class MainBodyEvent extends Component {
         id={"date"}
         type={"date"}
         width={"228px"}
+        value={this.props.dateToNewEvent}
     />
     <InputField title={"Начало"} placeholder={"Время"}
         onChange={this.onInputHandler}
         id={"time-start"}
         type={"time"}
         width={"60px"}
+        value={this.state.timeStart}
     />
     <div className="dash">–</div>
     <InputField title={"Конец"} placeholder={"Время"}
@@ -201,6 +206,7 @@ class MainBodyEvent extends Component {
         id={"time-end"}
         type={"time"}
         width={"60px"}
+        value={this.state.timeEnd}
     />
   </div>
   {this.state.timeStartValid
@@ -208,9 +214,11 @@ class MainBodyEvent extends Component {
     && this.state.dateValid ?
 
     <RecomendedRooms
+      roomToNewEvent={this.props.roomToNewEvent}
+      roomHandler={this.props.roomHandler}
       db={{"rooms":this.props.rooms,"events":this.props.events}}
       members= {this.state.addedUsers}
-      time={{"start": this.state.date+this.state.timeStart, "end": this.state.date+ this.state.timeEnd}}
+      time={{"start": this.state.date+("T"+this.state.timeStart+":00.981Z"), "end": this.state.date+ ("T"+this.state.timeEnd+":00.981Z")}}
     />
  : ""}
 

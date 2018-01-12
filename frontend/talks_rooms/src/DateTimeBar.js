@@ -19,6 +19,8 @@ class DateTimeBar extends Component {
         choosingDate : date
       })}
 
+
+
   render() {
     return (
       <div className="date-time-bar">

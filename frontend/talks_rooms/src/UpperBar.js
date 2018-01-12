@@ -11,13 +11,13 @@ class UpperBar extends Component {
         <div>
           <img src={LogoMain}/>
         </div>
-        {this.props.children}
+          <CreateButton text="Создать встречу"
+            className="create-button"
+            onClick={this.props.onClick}
+          />
       </div>
     );
   }
 }
-
-
-
 
 export default UpperBar;

@@ -20,10 +20,20 @@ class MainBody extends Component {
 
 
   choosingDate=(date)=>
+  {
     this.setState({
       viewedDate : date
     })
+    let splitedDate=date.split("/")
+    let formatedDate=splitedDate[2]+"."+splitedDate[1]+"."+splitedDate[0]
+    this.props.viewedDate(formatedDate)
+}
 
+  componentWillReceiveProps(nextProps){
+    let splited=this.state.viewedDate.split("/")
+    let formated=splited[2]+"."+splited[1]+"."+splited[0]
+    nextProps.viewedDate(formated)
+  }
 
   render() {
 
@@ -39,8 +49,14 @@ class MainBody extends Component {
     else {
     return (
       <div>
-        <DateTimeBar choosingDate={this.choosingDate}/>
-        <RoomList events={this.props.data.events} viewedDate={this.state.viewedDate}/>
+        <DateTimeBar choosingDate={this.choosingDate}
+
+        />
+        <RoomList
+          events={this.props.data.events}
+          viewedDate={this.state.viewedDate}
+          timeToNewEvent={this.props.timeToNewEvent}
+        />
     </div>
     );
   }

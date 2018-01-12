@@ -14,7 +14,11 @@ class Floor extends Component {
       <div className="floor">
         <p>{this.props.floorNumber+' ЭТАЖ'}</p>
         <div>{this.props.rooms.map((el)=>
-        <RoomEventDiagram room={el} events={this.eventsHandler(this.props.events,el.id)}/>
+        <RoomEventDiagram
+          room={el}
+          events={this.eventsHandler(this.props.events,el.id)}
+          timeToNewEvent={this.props.timeToNewEvent}
+        />
       )} </div>
 
     </div>
