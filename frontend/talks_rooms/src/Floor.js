@@ -18,6 +18,7 @@ class Floor extends Component {
           room={el}
           events={this.eventsHandler(this.props.events,el.id)}
           timeToNewEvent={this.props.timeToNewEvent}
+          eventEditHandler={this.props.eventEditHandler}
         />
       )} </div>
 

@@ -21,6 +21,7 @@ width: 420px;
 height: 37px;
 margin-bottom: 8px;
 
+
 }
 
 .recomended-room:hover{
@@ -37,5 +38,10 @@ margin-bottom: 8px;
   letter-spacing: 0;
   line-height: 17px;
   padding-right: 16px;
+
+}
+.recomended-room div span:nth-child(2){
+    position: relative;
+    left: 200px;
 
 }

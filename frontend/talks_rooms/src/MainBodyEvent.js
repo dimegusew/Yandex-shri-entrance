@@ -7,6 +7,8 @@ import gql from 'graphql-tag'
 import close from './images/close.svg'
 import Cleave from 'cleave.js/react';
 import RecomendedRooms from './RecomendedRooms.js'
+import BottomBar from "./BottomBar";
+import converterFromServerTime from "./converterFromServerTime"
 
 
 class Users extends Component {
@@ -37,18 +39,25 @@ class Users extends Component {
 class MainBodyEvent extends Component {
   constructor(props){
     super(props)
+
+
+    //let date=converterFromServerTime(this.props.eventToEdit.dateStart).date
     this.state={
       choosedUsersId:[],
-      addedUsers : [],
-      EventTitle : "",
+      addedUsers : this.props.isEditedPage ? this.props.eventToEdit.users :  [],
+      EventTitle :  this.props.isEditedPage ? this.props.eventToEdit.title : "",
       viewedUsers : this.props.users,
-      timeStart : this.props.timeToNewEvent.start,
-      timeEnd : this.props.timeToNewEvent.end,
-      date : "",
+      timeStart :  this.props.isEditedPage ? converterFromServerTime(this.props.eventToEdit.dateStart).time
+                                            : this.props.timeToNewEvent.start,
+      timeEnd :  this.props.isEditedPage ? converterFromServerTime(this.props.eventToEdit.dateEnd).time
+                                            : this.props.timeToNewEvent.end,
+      date : this.props.isEditedPage ? converterFromServerTime(this.props.eventToEdit.dateStart).notconverted
+                                            : this.props.dateToNewEvent,
       titleValid : false,
-      timeStartValid : this.props.timeToNewEvent.start ? true : false,
-      timeEndValid : this.props.timeToNewEvent.end ? true : false,
-      dateValid : this.props.dateToNewEvent ? true : false
+      timeStartValid : this.props.timeToNewEvent.start || this.props.isEditedPage  ? true : false,
+      timeEndValid : this.props.timeToNewEvent.end || this.props.isEditedPage ? true : false,
+      dateValid : this.props.dateToNewEvent || this.props.isEditedPage ? true : false,
+      choosedRoom : ''
     }
   }
 
@@ -73,7 +82,6 @@ class MainBodyEvent extends Component {
       choosedUsersId.splice(index,1)
 
       let remainingUsers=addedUsers.filter((el)=>el.id!=user)
-      console.log(choosedUsersId)
       this.setState({
           addedUsers : remainingUsers,
       })
@@ -81,7 +89,6 @@ class MainBodyEvent extends Component {
     }
 
   onInputHandler=(change)=>{
-    console.log(change.target.value)
     switch(change.target.id){
       case "title" :
         change.target.value ?
@@ -91,12 +98,12 @@ class MainBodyEvent extends Component {
          this.setState({
            titleValid : false,
          })
-
+         var title=change.target.value
          this.props.addedTitleHandler(change.target.value)
          break;
 
       case "users" :
-        let viewedUsers;
+        var viewedUsers;
         viewedUsers=this.props.users.filter((el)=>
             el.login.indexOf(change.target.value)!=-1);
         this.setState({
@@ -105,32 +112,39 @@ class MainBodyEvent extends Component {
         break;
 
       case "time-start":
-        let timeStart= change.target.value;
-        (timeStart.split("").length == 5) ?
+        var timeStart= change.target.value;
+        //console.log(change.target.value)
+        // (timeStart.split("").length == 5) ?
           this.setState({
-            timeStart : (timeStart),
+            timeStart : timeStart,
             timeStartValid : true
-          }) :
-          this.setState({
-            timeStartValid : false
-          })
+          }) //:
+          // this.setState({
+          //   timeStartValid : false
+          // }
+      //  )
       break;
 
       case "time-end":
-        let timeEnd= change.target.value;
-        (timeEnd.split("").length == 5) ?
+        var timeEnd= change.target.value;
+        // (timeEnd.split("").length == 5) ?
           this.setState({
             timeEnd : (timeEnd),
             timeEndValid : true,
-          }) :
-          this.setState({
-            timeEndValid : false
-          })
+          }) //:
+          let timeEndToServ=timeEnd
+          // this.setState({
+          //   timeEndValid : false
+          // })
 
           //add error when timeEnd<timeStart
       break;
     }
+
   }
+
+
+
 
 
   dateHandler=(date)=>{
@@ -144,20 +158,46 @@ class MainBodyEvent extends Component {
     }
   }
 
+  roomHandler=(room)=>{
+    this.setState({
+      choosedRoom:room
+    })
+    this.props.roomHandler(room)
+  }
+  componentWillUnmount(){
+    this.setState({
+      choosedUsersId:[],
+      addedUsers : [],
+      EventTitle :  "",
+      viewedUsers : [],
+      timeStart :  "",
+      timeEnd :  "",
+      date : "",
+      titleValid : false,
+      timeStartValid :  false,
+      timeEndValid  : false,
+      dateValid :   false,
+      choosedRoom : ''
+    })
+
+  }
+
 
   render() {
-console.log(this.props.roomToNewEvent)
+
 
     return (
+      <div>
       <div className="event-edit-container">
         <div className="event-edit">
             <div className="left-side">
-              <h3>{"Новая встреча"}</h3>
+              <h3>{this.props.isEditedPage ? "Редактирование встречи": "Новая встреча"}</h3>
               <InputField title={"Тема"} placeholder={"О чем будете говорить?"}
                   onChange={this.onInputHandler}
                   id={"title"}
                   type={"text"}
                   width={"409px"}
+                  value={this.state.EventTitle}
               />
               <InputField title={"Участники"} placeholder={"Например"}
                 onChange={this.onInputHandler}
@@ -214,16 +254,35 @@ console.log(this.props.roomToNewEvent)
     && this.state.dateValid ?
 
     <RecomendedRooms
-      roomToNewEvent={this.props.roomToNewEvent}
-      roomHandler={this.props.roomHandler}
+      roomToNewEvent={ this.props.roomToNewEvent}
+      roomToEdit={ this.props.eventToEdit.room}
+    //  roomHandler={this.props.roomHandler}
+      roomHandler={this.roomHandler}
       db={{"rooms":this.props.rooms,"events":this.props.events}}
       members= {this.state.addedUsers}
-      time={{"start": this.state.date+("T"+this.state.timeStart+":00.981Z"), "end": this.state.date+ ("T"+this.state.timeEnd+":00.981Z")}}
+      time={{"start": this.state.date+("T"+this.state.timeStart+":00.981Z"),
+       "end": this.state.date+ ("T"+this.state.timeEnd+":00.981Z")}}
     />
  : ""}
 
 </div>
 </div>
+
+</div>
+<BottomBar
+  isEditedPage={this.props.isEditedPage}
+  eventToEdit={this.props.eventToEdit}
+  allRooms={this.props.allRooms}
+  cancelHandler={this.props.cancelHandler}
+  createHandler={this.props.createHandler}
+  eventEditedHandler={this.props.eventEditedHandler}
+  dataToServer={{
+        "dateStart": this.state.date+("T"+this.state.timeStart+":00.981Z"),
+        "dateEnd": this.state.date+ ("T"+this.state.timeEnd+":00.981Z"),
+         "room":this.state.choosedRoom,
+         "users" : this.state.addedUsers,
+        "title" :  this.state.EventTitle }}
+/>
 </div>
     );
   }

@@ -37,7 +37,6 @@ class DateBar extends Component {
 
  handleButtonClick=(ev)=>
  {
-   console.log(ev.target.className)
    let minusOrPlus= (ev.target.className=="minusButton") ? -1 : 1;
    let choosingDate= converterDate(this.state.selectedDay).fullDate.split('/')
    let changedDate=new Date(new Date(parseInt(choosingDate[0],10),

@@ -46,7 +46,6 @@ class App extends Component {
       isEventEditPage : false,
       timeToNewEvent : {"start":"", "end" : ""}
     })
-    console.log(event)
   }
 
   dateHandler=(date)=>{
@@ -57,7 +56,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.roomToNewEvent + "rooooooooooooooooooooooom")
     return (
       <ApolloProvider client={client}>
         <AppContainer>

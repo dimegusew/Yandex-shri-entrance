@@ -56,6 +56,7 @@ class MainBody extends Component {
           events={this.props.data.events}
           viewedDate={this.state.viewedDate}
           timeToNewEvent={this.props.timeToNewEvent}
+          eventEditHandler={this.props.eventEditHandler}
         />
     </div>
     );
@@ -78,7 +79,8 @@ const MainBodywithEvents =graphql(gql
     users{
       login,
       homeFloor,
-      avatarUrl
+      avatarUrl,
+      id
     }
     }
   }

@@ -18,7 +18,6 @@ class InputField extends Component {
 
     super(props)
     let xx= this.props.id==="date" ? this.props.value : xx
-    console.log(this.props)
     this.state={
       isClicked : false,
       selectedDay: this.props.value,
@@ -32,7 +31,6 @@ class InputField extends Component {
     })
   }
   onBlur=()=>{
-    console.log("d")
     this.setState({
       isClicked:false
     })
@@ -54,7 +52,6 @@ class InputField extends Component {
 
 
   render() {
-    console.log(this.props.value)
     const { selectedDay, isDisabled } = this.state;
     let style= this.state.isClicked ? {"display":"block"} : {"display":"none"}
     let width= {"width" : this.props.width};

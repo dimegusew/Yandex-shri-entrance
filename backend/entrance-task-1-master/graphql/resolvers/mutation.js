@@ -46,10 +46,15 @@ module.exports = {
             });
   },
 
-  updateEvent (root, { id, input }, context) {
+  updateEvent (root, { id, input,roomId,usersIds }, context) {
     return models.Event.findById(id)
             .then(event => {
-              return event.update(input);
+              event.setRoom(roomId);
+              ;
+
+              return event.setUsers(usersIds)
+              .then(()=>event.update(input))
+
             });
   },
 

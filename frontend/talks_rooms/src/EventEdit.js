@@ -1,180 +1,175 @@
-import React, { Component } from 'react';
-import UpperBar from "./UpperBar.js"
-import AppContainer from "./AppContainer.js"
-import MainBodyEvent from "./MainBodyEvent.js"
-import BottomBar from './BottomBar';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag'
-import { compose } from 'react-apollo';
-
-class ServerPush extends Component {
-
-
-  render() {
-    return (
-      ""
-    );
-  }
-}
-
-
-
-
-
+import React, { Component } from "react";
+import UpperBar from "./UpperBar.js";
+import AppContainer from "./AppContainer.js";
+import MainBodyEvent from "./MainBodyEvent.js";
+import BottomBar from "./BottomBar";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+import { compose } from "react-apollo";
 
 class EventEdit extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      membersInEvent : [],
-      title : "",
-      events : []
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      membersInEvent: [],
+      title: "",
+      events: [],
+      isCreateButtonPushed : false,
+      dataToServer : [],
+    };
   }
 
-  createHandler=()=>{
-    let splitDate=this.props.dateToNewEvent.split(".")
-    let convertedDate=splitDate[2]+"-"+splitDate[1]+"-"+splitDate[0]
+  createHandler = (data) => {
+    console.log("create handler")
+    this.props.createHandler(data);
 
-    console.log({"dateStart" : convertedDate+"T"+this.props.timeToNewEvent.start+":00.981Z",
-    "dateEnd" : convertedDate+ "T"+this.props.timeToNewEvent.end+":00.981Z"
-  })
-  }
+  };
 
-
-  addedUsersHandler=(users)=>{
+  addedUsersHandler = users => {
     this.setState({
-      membersInEvent : users
-    })
-  }
+      membersInEvent: users
+    });
+  };
 
-  addedTitleHandler=(title)=>{
+  addedTitleHandler = title => {
     this.setState({
-      title : title
-    })
-  }
-  roomHandler=(room)=>{
-    console.log(room.target)
+      title: title
+    });
+  };
+
+  roomHandler = room => {
     this.setState({
-      room : room.target.id
-    })
+      room: room
+    });
+  };
+
+  dataToServerHandler=(data)=>{
+    //  console.log(data)
+    // this.setState({
+    //   dateToServer : data
+    // })
+
+    console.log(data)
+    this.date=data;
+    console.log("date")
   }
 
-  componentWillReceiveProps(nextProps){
-    nextProps.eventsQuery.events ?
-      this.setState({events : nextProps.eventsQuery.events})
-      : ""
+
+
+
+  componentWillReceiveProps(nextProps) {
+    nextProps.eventsQuery.events
+      ? this.setState({ events: nextProps.eventsQuery.events })
+      : "";
   }
-
-
-
-
 
   render() {
+    console.log(this.date)
+    console.log("ddddddddddd")
+    let splitDate = this.props.dateToNewEvent.split(".");
+    let convertedDate = splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
 
-    let splitDate=this.props.dateToNewEvent.split(".")
-    let convertedDate=splitDate[2]+"-"+splitDate[1]+"-"+splitDate[0]
+    let date = {
+      dateStart:
+        convertedDate + "T" + this.props.timeToNewEvent.start + ":00.981Z",
+      dateEnd: convertedDate + "T" + this.props.timeToNewEvent.end + ":00.981Z"
+    };
 
-    let date={"dateStart" : convertedDate+"T"+this.props.timeToNewEvent.start+":00.981Z",
-    "dateEnd" : convertedDate+ "T"+this.props.timeToNewEvent.end+":00.981Z"}
-
-
-    if (this.props.usersQuery.loading
-        ||this.props.roomQuery.loading
-        ||this.props.eventsQuery.loading) {
-        return (<div>Loading</div>)
+    if (
+      this.props.usersQuery.loading ||
+      this.props.roomQuery.loading ||
+      this.props.eventsQuery.loading
+    ) {
+      return <div>Loading</div>;
     }
 
-    if (this.props.usersQuery.error
-        ||this.props.roomQuery.error
-        ||this.props.eventsQuery.error) {
-      return (<div>An unexpected error occurred</div>)
+    if (
+      this.props.usersQuery.error ||
+      this.props.roomQuery.error ||
+      this.props.eventsQuery.error
+    ) {
+      return <div>An unexpected error occurred</div>;
+    } else {
+      return (
+        <div>
+          {/* <UpperBar/> */}
+          <MainBodyEvent
+            isEditedPage={this.props.isEditedPage}
+            users={this.props.usersQuery.users}
+            rooms={this.props.roomQuery.rooms}
+            events={this.state.events}
+            timeToNewEvent={this.props.timeToNewEvent}
+            dateToNewEvent={this.props.dateToNewEvent}
+            roomToNewEvent={this.props.roomToNewEvent}
+            cancelHandler={this.props.cancelHandler}
+            createHandler={this.props.createHandler}
+            addedUsersHandler={this.addedUsersHandler}
+            addedTitleHandler={this.addedTitleHandler}
+            roomHandler={this.roomHandler}
+            dataToServer={this.dataToServerHandler}
+            allRooms={this.props.roomQuery.rooms}
+            cancelHandler={this.props.cancelHandler}
+            createHandler={this.createHandler}
+            eventToEdit={this.props.eventToEdit}
+            eventEditedHandler={this.props.eventEditedHandler}
+            // roomToServer={this.roomToServerHandler}
+            // timeToServer={this.timeToServerHandler}
+            // usersToServer={this.usersToSererHandler}
+            isCreateButtonPushed ={this.state.isCreateButtonPushed}
+          />
+        </div>
+      );
     }
-
-    else {
-      console.log(this.props.roomToNewEvent)
-    return (
-          <div>
-            {/* <UpperBar/> */}
-            <MainBodyEvent
-                users={this.props.usersQuery.users}
-                rooms={this.props.roomQuery.rooms}
-                events={this.state.events}
-                timeToNewEvent={this.props.timeToNewEvent}
-                dateToNewEvent={this.props.dateToNewEvent}
-                roomToNewEvent={this.props.roomToNewEvent}
-                cancelHandler={this.props.cancelHandler}
-                createHandler={this.props.createHandler}
-                addedUsersHandler={this.addedUsersHandler}
-                addedTitleHandler={this.addedTitleHandler}
-                roomHandler={this.roomHandler}
-            />
-            <BottomBar
-              cancelHandler={this.props.cancelHandler}
-              createHandler={this.createHandler}
-              dataToServer={{"members" : this.state.membersInEvent,
-                              "title" :this.state.title,
-                              "room" : this.state.room,
-                              "date" : date
-                            }}
-
-
-            />
-          </div>
-    );
-  }
   }
 }
 
 const queries = {
-  getUsers : gql`
-  {
-   users{
-  	id,
-    login,
-    avatarUrl,
-    homeFloor
-  }
-}
-`,
-  getRooms : gql`
-  {
-   rooms{
-  	id,
-    title,
-    capacity,
-    floor
+  getUsers: gql`
+    {
+      users {
+        id
+        login
+        avatarUrl
+        homeFloor
+      }
+    }
+  `,
+  getRooms: gql`
+    {
+      rooms {
+        id
+        title
+        capacity
+        floor
+      }
+    }
+  `,
+  getEvents: gql`
+    {
+      events {
+        id
+        dateStart
+        dateEnd
+        title
+        users {
+          id
+        }
+        room {
+          id
+        }
+      }
+    }
+  `
+};
 
-  }
-}
-`,
-getEvents : gql`
-{
-events{
-id,
-  dateStart,
-  dateEnd,
-  title,
-  users {
-    id
-  },
-  room {
-    id
-  }
-
-}
-}
-`
-}
-
-
-  export default compose(graphql(queries.getUsers, {
-    name : "usersQuery"
+export default compose(
+  graphql(queries.getUsers, {
+    name: "usersQuery"
   }),
   graphql(queries.getRooms, {
-      name: "roomQuery"
-   }),
-   graphql(queries.getEvents, {
-       name: "eventsQuery"
-    }),
-)(EventEdit)
+    name: "roomQuery"
+  }),
+  graphql(queries.getEvents, {
+    name: "eventsQuery"
+  })
+)(EventEdit);

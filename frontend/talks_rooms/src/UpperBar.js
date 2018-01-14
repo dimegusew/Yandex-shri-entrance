@@ -5,6 +5,7 @@ import './UpperBar.css';
 
 
 class UpperBar extends Component {
+
   render() {
     return (
       <div className="upper-side">

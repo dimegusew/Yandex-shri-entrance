@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./EventDiagram.css";
 import AddButton from "./AddButton.js";
+import editLogo from './images/edit.svg'
 
 class Tooltip extends Component {
   convertDateTime(date) {
@@ -32,13 +33,22 @@ class Tooltip extends Component {
     };
   }
 
+  eventEditHandler=()=>{
+    console.log(this.props.event)
+    let event =this.props.event;
+    this.props.eventEdit(event)
+  }
+
+
+
   render() {
     let event = this.props.event;
     let numberOfUsers = event.users.length;
     return (
       <span className="tooltiptext">
         <span>
-          <h3> {event.title}</h3>
+          <h3> {event.title} <span onClick={this.eventEditHandler}><img src={editLogo}/></span></h3>
+
         </span>
         <div className="date-room">
           {this.convertDateTime(event.dateStart).date}
@@ -71,7 +81,6 @@ class Tooltip extends Component {
 
 class Cursor extends React.Component {
   render() {
-    console.log(this.props.coordinate);
     let myStyle = {
       visibility: this.props.visibile,
       left: `${this.props.coordinate}px`
@@ -150,7 +159,10 @@ class Event extends React.Component {
         onMouseEnter={this.mouseEnterHandler}
         onMouseMove={this.props.onMouseEnter}
       >
-        {this.state.isClicked ? <Tooltip event={event} /> : ""}
+        {this.state.isClicked ?
+          <Tooltip event={event}
+            eventEdit={this.props.eventEditHandler }
+        /> : ""}
       </div>
     );
   }
@@ -169,7 +181,6 @@ class EventDiagram extends Component {
   hovered = ev => this.props.roomHovered(ev);
 
   eventEnter = () => {
-    console.log("ff");
     this.setState({
       visible: "hidden"
     });
@@ -203,7 +214,6 @@ class EventDiagram extends Component {
 
 
   onClick = (event) => {
-    console.log(event.target.id)
     let room=event.target.id;
     let choosedTime=this.getTimeFromPosition(this.state.xCoordinate);
     this.props.timeToNewEvent(choosedTime,room)
@@ -226,6 +236,7 @@ class EventDiagram extends Component {
             event={el}
             clicked={this.clicked}
             onMouseEnter={this.eventEnter}
+            eventEditHandler={this.props.eventEditHandler}
           />
         ))}
         <div className="add-button"> </div>

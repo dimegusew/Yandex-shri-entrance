@@ -16,7 +16,7 @@ class RoomEventDiagram extends Component {
   }
 
    roomEnabled=(ev)=>
-   {console.log("roooooomennnaaablled")
+   {
       this.setState({
         roomEnabled : ev
       })}
@@ -42,6 +42,7 @@ class RoomEventDiagram extends Component {
             roomHovered={this.roomHovered}
             timeToNewEvent={this.props.timeToNewEvent}
             id={this.props.room.id}
+            eventEditHandler={this.props.eventEditHandler}
           />
       </div>
     );

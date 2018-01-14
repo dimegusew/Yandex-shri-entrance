@@ -72,6 +72,7 @@ else {
             rooms={el[Object.keys(el)]}
             events={this.state.filteredEvents}
             timeToNewEvent={this.props.timeToNewEvent}
+            eventEditHandler={this.props.eventEditHandler}
            />
       )}
 
