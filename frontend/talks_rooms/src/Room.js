@@ -13,10 +13,13 @@ class Room extends Component {
 
 
     return (
+      <div>
       <div className="room">
         <div className="name" style={myStyle}>{this.props.name}</div>
         <div className="capacity">до {this.props.capacity} человек</div>
     </div>
+    <div className="back" style={myStyle}>{this.props.name}</div>
+  </div>
     );
   }
 }

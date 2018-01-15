@@ -3,6 +3,7 @@
   min-width: 1035px;
   display: flex;
   max-height: 34px;
+  margin-left: -24px;
   /* background-color: #F6F7F9; */
 
 }
@@ -69,3 +70,31 @@
        height: 1000px;
 
     }
+
+    @media screen and (max-width: 600px) {
+      .time-bar{
+        padding-left:200px;
+        z-index: 7;
+        padding-bottom: 12px;
+        box-shadow: 0 1px 0 0 #E9ECEF;
+      }
+      .time-line{
+        padding-top:8px;
+        height: 4px;
+        position: sticky;
+        position: absolute;
+        z-index: 6;
+          box-shadow: 0 1px 0 0 #E9ECEF;
+        }
+
+        .percent-container{
+          margin-top: 100px;
+
+        }
+        .current-time{
+          z-index: 99
+        }
+        .hour-line{
+          z-index: 4;
+        }
+      }

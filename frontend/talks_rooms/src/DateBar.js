@@ -37,6 +37,7 @@ class DateBar extends Component {
 
  handleButtonClick=(ev)=>
  {
+   console.log(ev.target.className)
    let minusOrPlus= (ev.target.className=="minusButton") ? -1 : 1;
    let choosingDate= converterDate(this.state.selectedDay).fullDate.split('/')
    let changedDate=new Date(new Date(parseInt(choosingDate[0],10),
@@ -50,6 +51,8 @@ class DateBar extends Component {
 
 
   render() {
+    let width=document.documentElement.clientWidth;
+    let numberOfMonth=width<600 ? 1 : 3;
     let selectedDate=converterDate(this.state.selectedDay);
     let currentDate=converterDate(new Date());
 
@@ -132,7 +135,7 @@ class DateBar extends Component {
             <DayPicker
               className="calendar-mounth"
               canChangeMonth={false}
-              numberOfMonths={3}
+              numberOfMonths={numberOfMonth}
               months={MONTHS[locale]}
               weekdaysLong={WEEKDAYS_LONG[locale]}
               weekdaysShort={WEEKDAYS_SHORT[locale]}

@@ -28,6 +28,13 @@
           justify-content: center;
 }
 
+
+
+
+
+
+
+
 .DayPicker-Month {
   display: table;
   border-collapse: collapse;
@@ -224,3 +231,16 @@
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
+
+
+
+@media screen and (max-width: 600px) {
+  .DayPicker-Day {
+    padding: 0.5rem;
+
+  }
+
+  .DayPicker-wrapper {
+      margin-top: 50px;
+  }
+  }

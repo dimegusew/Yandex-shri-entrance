@@ -130,3 +130,23 @@ line-height: 17px; */
   opacity:100;
   z-index: 0;
 }
+
+
+@media screen and (max-width: 600px) {
+  .event-diagram{
+    height: 58px;
+      margin-top: 2px;
+      margin-left:1px;
+  }
+  .Event{
+    height: 58px;
+  }
+  .tooltiptext {
+    width: 344px;
+    margin-top: 500px;
+        z-index: 180;
+            position: fixed;
+            left: 0%;
+            margin-left: 1px;
+  }
+}

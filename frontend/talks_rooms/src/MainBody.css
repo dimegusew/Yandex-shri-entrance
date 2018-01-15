@@ -1,0 +1,9 @@
+.data-container{}
+
+
+  @media screen and (max-width: 600px) {
+    .data-container{
+      overflow-x:scroll;
+      position:relative;
+    }
+    }

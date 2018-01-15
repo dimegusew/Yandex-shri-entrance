@@ -209,11 +209,11 @@ closedButtonHandler=()=>{
               />
               </div>
   <div className="left-side">
-    <h3>
+    <h4>
       <div className="big-close-button">
         <img src={close} onClick={this.closedButtonHandler}/>
        </div>
-    </h3>
+    </h4>
     <div className="date-time-input">
 
 

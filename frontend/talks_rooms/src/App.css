@@ -35,9 +35,11 @@ font-style: normal;
 
 
 
+
+
+
 .App{
   max-width:1280px;
-  min-width:1280px;
   font-family: HelvecticanueMedium;
   height: 100%;
 }
@@ -47,3 +49,16 @@ font-style: normal;
   justify-content: center;
   min-width: 1280px;
 }
+
+@media screen and (max-width: 600px) {
+  .container{
+    min-width: 360px;
+  }
+  .App{
+
+    width: 360px;
+
+  }
+
+
+    }

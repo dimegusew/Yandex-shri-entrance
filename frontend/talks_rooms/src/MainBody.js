@@ -3,6 +3,7 @@ import DateTimeBar from './DateTimeBar'
 import RoomList from './RoomList';
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import './MainBody.css'
 
 
 
@@ -48,7 +49,7 @@ class MainBody extends Component {
 
     else {
     return (
-      <div>
+      <div className="data-container">
         <DateTimeBar choosingDate={this.choosingDate}
 
         />

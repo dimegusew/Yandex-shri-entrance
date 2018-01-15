@@ -1,5 +1,5 @@
 .date-bar{
-  width: 245px;
+  min-width: 245px;
   min-height: 22px;
   display: flex;
   margin-left: 24px;
@@ -62,3 +62,41 @@ button img{
   margin-top: 4px;
 
 }
+
+@media screen and (max-width: 600px)  {
+  .date-bar{
+    width: 360px;
+    height: 56px;
+    display: flex;
+    margin-left: 2px;
+    padding-left: 20px;
+    position:fixed;
+      box-shadow: 0px 1px 0px #E9ECEF;
+      z-index: 99;
+      background-color: white;
+      padding-top: 50px;
+  }
+  .date-bar p{
+    width: 220px;
+      margin-top: 17px;
+  }
+  button{
+
+      width:32px;
+      height: 32px;
+
+  }
+  .calendar{
+
+    width: 360px;
+    height:380px;
+    margin-left: -20px;
+
+  }
+  .calendar-mounth{
+    width:328px;
+    height:347px;
+  }
+
+
+    }

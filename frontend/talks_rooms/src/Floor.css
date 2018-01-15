@@ -11,3 +11,18 @@ letter-spacing: 0.4px;
 
 .floor{
 }
+
+@media screen and (max-width: 600px) {
+  .floor{
+    
+  }
+
+  .floor p{
+background-color:#F6F7F9;
+
+padding-bottom:4px;
+  }
+
+
+
+    }

@@ -11,7 +11,34 @@
 .event-background{
   z-index: -99;
   width: 1280px;
-  height: 1000px;
+  height: 890px;
+  /* height: 1000px; */
   background-color: #F6F7F9;
 
 }
+
+@media screen and (max-width: 600px) {
+  .date-time-bar{
+    height: 56px;
+    display: inline-block;
+    width:360px;
+  }
+  .room-list{
+    width:181px;
+    height: auto;
+  }
+  .event-background{
+
+    margin-top:15px;
+    box-shadow: 5px 5px 4 4 #E9ECEF;
+    min-height: 600px;
+    z-index: 9;
+    /* overflow-x: scroll; */
+    /* height: 890px; */
+    /* height: 1000px; */
+    background-color: #F6F7F9;
+
+  }
+
+
+    }
