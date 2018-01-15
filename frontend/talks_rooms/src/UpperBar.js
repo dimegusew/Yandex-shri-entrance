@@ -12,10 +12,13 @@ class UpperBar extends Component {
         <div>
           <img src={LogoMain}/>
         </div>
+        {this.props.isEventEditPage ?
+""
+          :
           <CreateButton text="Создать встречу"
-            className="create-button"
-            onClick={this.props.onClick}
-          />
+          className="create-button"
+          onClick={this.props.onClick}
+        />}
       </div>
     );
   }

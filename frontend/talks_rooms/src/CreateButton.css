@@ -26,4 +26,5 @@
 
 .createButton:disabled {
   background-color:#E9ECEF;
+  color:black;
 }

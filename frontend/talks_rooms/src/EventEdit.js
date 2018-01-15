@@ -7,6 +7,8 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { compose } from "react-apollo";
 
+import EventIsCreatedWindow from './EventIsCreatedWindow.js'
+
 class EventEdit extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class EventEdit extends Component {
       membersInEvent: [],
       title: "",
       events: [],
-      isCreateButtonPushed : false,
+      // isCreateButtonPushed : false,
       dataToServer : [],
     };
   }
@@ -93,7 +95,9 @@ class EventEdit extends Component {
       return (
         <div>
           {/* <UpperBar/> */}
+          {/* <EventIsCreatedWindow/> */}
           <MainBodyEvent
+            deleteIsPermitted={this.props.deleteIsPermitted}
             isEditedPage={this.props.isEditedPage}
             users={this.props.usersQuery.users}
             rooms={this.props.roomQuery.rooms}
@@ -112,10 +116,11 @@ class EventEdit extends Component {
             createHandler={this.createHandler}
             eventToEdit={this.props.eventToEdit}
             eventEditedHandler={this.props.eventEditedHandler}
+            eventDeletedHandler={this.props.eventDeletedHandler}
             // roomToServer={this.roomToServerHandler}
             // timeToServer={this.timeToServerHandler}
             // usersToServer={this.usersToSererHandler}
-            isCreateButtonPushed ={this.state.isCreateButtonPushed}
+            isCreateButtonPushed ={this.props.createButtonPush}
           />
         </div>
       );

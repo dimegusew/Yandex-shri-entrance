@@ -10,6 +10,7 @@ import ApolloClient, { createNetworkInterface } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import EventEdit from "./EventEdit.js";
 import EventIsCreatedWindow from "./EventIsCreatedWindow.js";
+import EventDeleteWindow from './EventDeleteWindow.js'
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -29,19 +30,24 @@ class App extends Component {
       iseventCreatedOpen: false,
       dataToEventsCreatedWindow: [],
       isEditedPage : false,
-      eventToEdit : {}
+      eventToEdit : {},
+      eventDeletePageIsOpen : false,
+      deleteIsPermitted:false,
     };
   }
-  pushingCreateButtonHandler = () => {
+  pushingCreateButtonHandler = () => { // обработчик нажатий на кнопку создать
     this.setState({
       isEventEditPage: true,
-      roomToNewEvent: null
+      roomToNewEvent: null,
+      createButtonPush:true,
+        isEditedPage :false
+
+
     });
   };
 
   timeToNewEventHandler = (time, room) => {
     console.log(time)
-    console.log("zzzzzz")
     this.setState({
       isEventEditPage: true,
       timeToNewEvent: time,
@@ -66,21 +72,22 @@ class App extends Component {
     });
   };
 
-  eventEditHandler=(eventToEdit)=>{
-    console.log(eventToEdit)
-  }
+  // eventEditHandler=(eventToEdit)=>{
+  //   console.log(eventToEdit)
+  // }
 
   componentDidMount() {
     this.setState({});
     createButtonPush: false;
   }
 
-  createHandler = event => {
+  createHandler = event => { // обработчик нажатий на свободный слот диаграммы
     this.setState({
       isEventEditPage: false,
       iseventCreatedOpen: true,
       isEditedPage :false,
-      dataToEventsCreatedWindow: event
+      dataToEventsCreatedWindow: event,
+      eventToEdit : {}
     });
   };
 
@@ -96,17 +103,53 @@ class App extends Component {
   eventEditedHandler=()=>{
     this.setState({
       isEventEditPage: false,
+      isEditedPage :false,
+      eventToEdit : {}
     })
   }
+
+  eventDeletedHandler=(condition)=>{
+    if(!condition){
+    this.setState({
+      eventDeletePageIsOpen : true
+    })
+  }
+  else{
+    this.setState({
+        isEventEditPage:false,
+        deleteIsPermitted:false
+      })
+}}
 
   eventIsCreatedHander = () => {
     this.setState({
       isEventEditPage: false,
-      iseventCreatedOpen: false
+      iseventCreatedOpen: false,
+      timeToNewEvent: { start: "", end: "" }
     });
   };
 
+
+  eventDeleteWindowHandler=(command)=>{
+    if (command==="cancel"){
+      this.setState({
+        eventDeletePageIsOpen : false,
+        deleteIsPermitted : false,
+
+      })}
+
+      else if(command==="delete") {
+        this.setState({
+          eventDeletePageIsOpen : false,
+          deleteIsPermitted : true,
+          // eventToEdit : {}
+          //isEventEditPage:false
+        })
+    }
+  }
+
   render() {
+    console.log(this.state.deleteIsPermitted)
     return (
       <ApolloProvider client={client}>
         <div>
@@ -118,11 +161,19 @@ class App extends Component {
           ) : (
             ""
           )}
+          {this.state.eventDeletePageIsOpen ?
+          <EventDeleteWindow
+            eventDeleteWindowHandler={this.eventDeleteWindowHandler}
+            />
+        : ""}
 
           <AppContainer>
-            <UpperBar onClick={this.pushingCreateButtonHandler} />
+            <UpperBar
+              onClick={this.pushingCreateButtonHandler}
+              isEventEditPage={this.state.isEventEditPage}/>
             {this.state.isEventEditPage ? (
               <EventEdit
+                deleteIsPermitted={this.state.deleteIsPermitted}
                 cancelHandler={this.cancelHandler}
                 timeToNewEvent={this.state.timeToNewEvent}
                 dateToNewEvent={this.state.dateToNewEvent}
@@ -132,7 +183,9 @@ class App extends Component {
                 isEditedPage={this.state.isEditedPage}
                 eventToEdit={this.state.eventToEdit}
                 eventEditedHandler={this.eventEditedHandler}
+                eventDeletedHandler={this.eventDeletedHandler}
               />
+
             ) : (
               <MainBody
                 timeToNewEvent={this.timeToNewEventHandler}

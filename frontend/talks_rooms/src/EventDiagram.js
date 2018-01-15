@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./EventDiagram.css";
 import AddButton from "./AddButton.js";
 import editLogo from './images/edit.svg'
+import LittleEventEditButton from './LittleEventEditButton.js'
 
 class Tooltip extends Component {
   convertDateTime(date) {
@@ -42,42 +43,46 @@ class Tooltip extends Component {
 
 
   render() {
-    let event = this.props.event;
-    let numberOfUsers = event.users.length;
-    return (
-      <span className="tooltiptext">
-        <span>
-          <h3> {event.title} <span onClick={this.eventEditHandler}><img src={editLogo}/></span></h3>
-
-        </span>
-        <div className="date-room">
-          {this.convertDateTime(event.dateStart).date}
-          , {this.convertDateTime(event.dateStart).time}
-          —{this.convertDateTime(event.dateEnd).time} ⋅ {event.room.title}
-        </div>
-
-        <div className="user">
-          {numberOfUsers ? <img src={event.users[0].avatarUrl} /> : ""}
+      let event = this.props.event;
+      let numberOfUsers = event.users.length;
+      return (
+        <span className="tooltiptext">
           <span>
-            {!numberOfUsers ? (
-              "Нет участников"
-            ) : (
-              <div className="users-info">
-                {event.users[0].login}
-                <span>
-                  &nbsp;{"и " +
-                    numberOfUsers +
-                    " участник" +
-                    (numberOfUsers == 1 ? "" : numberOfUsers < 4 ? "а" : "ов")}
-                </span>
-              </div>
-            )}
+            <h3> {event.title} </h3>
+            <LittleEventEditButton onClick={this.eventEditHandler}/>
+
           </span>
-        </div>
-      </span>
-    );
+          <div className="date-room">
+            {this.convertDateTime(event.dateStart).date}
+            , {this.convertDateTime(event.dateStart).time}
+            —{this.convertDateTime(event.dateEnd).time} ⋅ {event.room.title}
+          </div>
+
+          <div className="user">
+            {numberOfUsers ? <img src={event.users[0].avatarUrl} /> : ""}
+            <span>
+              {!numberOfUsers ? (
+                "Нет участников"
+              ) : (
+                <div className="users-info">
+                  {event.users[0].login}
+                  {numberOfUsers>1 ?
+                  <span>
+                    &nbsp;{"и " +
+                      (numberOfUsers-1) +
+                      " участник" +
+                      (numberOfUsers == 2 ? "" : numberOfUsers < 4 ? "а" : "ов")}
+                  </span>
+                  :"  "
+                }
+                </div>
+              )}
+            </span>
+          </div>
+        </span>
+      );
+    }
   }
-}
 
 class Cursor extends React.Component {
   render() {
@@ -87,7 +92,9 @@ class Cursor extends React.Component {
     };
 
     return (
-      <div className="Cursor" onClick={this.props.onClick} style={myStyle} />
+      <div className="Cursor" onClick={this.props.onClick} style={myStyle} >
+        +
+      </div>
     );
   }
 }

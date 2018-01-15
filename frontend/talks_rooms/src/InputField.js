@@ -5,6 +5,7 @@ import TimeInput from 'react-time-input';
 import MaskedInput from 'react-text-mask';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import './ModuleCalendar.css';
+import calendar from './images/calendar.svg'
 import MomentLocaleUtils, {
   formatDate,
   parseDate,
@@ -17,7 +18,7 @@ class InputField extends Component {
   constructor(props){
 
     super(props)
-    let xx= this.props.id==="date" ? this.props.value : xx
+    // let xx= this.props.id==="date" ? this.props.value : xx
     this.state={
       isClicked : false,
       selectedDay: this.props.value,
@@ -69,6 +70,7 @@ class InputField extends Component {
             style = {width}
             value ={this.props.value}
           />
+
             : this.props.type==="text" ?
           <input
             type={this.props.type}
@@ -93,7 +95,9 @@ class InputField extends Component {
                locale: 'ru',
                localeUtils: MomentLocaleUtils,
                    }}
-                 />
+                 >
+                   <img  src={calendar}/>
+                 </DayPickerInput>
 
         }
 

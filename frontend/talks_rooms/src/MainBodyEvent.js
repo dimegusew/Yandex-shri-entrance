@@ -91,13 +91,10 @@ class MainBodyEvent extends Component {
   onInputHandler=(change)=>{
     switch(change.target.id){
       case "title" :
-        change.target.value ?
          this.setState({
            EventTitle : change.target.value,
-         }) :
-         this.setState({
-           titleValid : false,
          })
+
          var title=change.target.value
          this.props.addedTitleHandler(change.target.value)
          break;
@@ -113,31 +110,29 @@ class MainBodyEvent extends Component {
 
       case "time-start":
         var timeStart= change.target.value;
-        //console.log(change.target.value)
-        // (timeStart.split("").length == 5) ?
           this.setState({
             timeStart : timeStart,
-            timeStartValid : true
-          }) //:
-          // this.setState({
-          //   timeStartValid : false
-          // }
-      //  )
+            timeStartValid : false
+          })
+          if (timeStart.split("").length === 5)
+          { this.setState({
+                timeStartValid : true
+              })
+            }
+            else {
+              this.setState({
+                timeStartValid : false
+              })
+            }
       break;
 
       case "time-end":
         var timeEnd= change.target.value;
-        // (timeEnd.split("").length == 5) ?
           this.setState({
-            timeEnd : (timeEnd),
-            timeEndValid : true,
-          }) //:
-          let timeEndToServ=timeEnd
-          // this.setState({
-          //   timeEndValid : false
-          // })
+            timeEnd : timeEnd,
+            timeEndValid : true
+          })
 
-          //add error when timeEnd<timeStart
       break;
     }
 
@@ -164,27 +159,23 @@ class MainBodyEvent extends Component {
     })
     this.props.roomHandler(room)
   }
-  componentWillUnmount(){
-    this.setState({
-      choosedUsersId:[],
-      addedUsers : [],
-      EventTitle :  "",
-      viewedUsers : [],
-      timeStart :  "",
-      timeEnd :  "",
-      date : "",
-      titleValid : false,
-      timeStartValid :  false,
-      timeEndValid  : false,
-      dateValid :   false,
-      choosedRoom : ''
-    })
 
-  }
+
+closedButtonHandler=()=>{
+  this.props.cancelHandler()
+}
 
 
   render() {
-
+    console.log(this.props.isCreateButtonPushed)
+    let TimeStartValid = this.state.timeStart ? (this.state.timeStart.length===5) :false
+    let TimeEndValid = this.state.timeEnd ? (this.state.timeEnd.length===5) :false
+    let timeValid =TimeStartValid && TimeEndValid
+    console.log(timeValid)
+    let titleValid=this.state.EventTitle
+    let dateValid=this.state.date
+    console.log(!!this.state.choosedRoom)
+    let formValid=dateValid&&titleValid&&timeValid && !!this.state.choosedRoom
 
     return (
       <div>
@@ -220,7 +211,7 @@ class MainBodyEvent extends Component {
   <div className="left-side">
     <h3>
       <div className="big-close-button">
-        <img src={close} />
+        <img src={close} onClick={this.closedButtonHandler}/>
        </div>
     </h3>
     <div className="date-time-input">
@@ -249,14 +240,11 @@ class MainBodyEvent extends Component {
         value={this.state.timeEnd}
     />
   </div>
-  {this.state.timeStartValid
-    && this.state.timeEndValid
-    && this.state.dateValid ?
+  {timeValid ?
 
     <RecomendedRooms
       roomToNewEvent={ this.props.roomToNewEvent}
       roomToEdit={ this.props.eventToEdit.room}
-    //  roomHandler={this.props.roomHandler}
       roomHandler={this.roomHandler}
       db={{"rooms":this.props.rooms,"events":this.props.events}}
       members= {this.state.addedUsers}
@@ -270,6 +258,9 @@ class MainBodyEvent extends Component {
 
 </div>
 <BottomBar
+  formValid={formValid}
+  deleteIsPermitted={this.props.deleteIsPermitted}
+  eventDeletedHandler={this.props.eventDeletedHandler}
   isEditedPage={this.props.isEditedPage}
   eventToEdit={this.props.eventToEdit}
   allRooms={this.props.allRooms}

@@ -89,8 +89,15 @@ class RecomendedRooms extends Component {
       roomIsChoosed: false
     });
   };
+  componentDidUnmount=()=>{
+    this.setState({
+      roomIsChoosed: false
+    });
+  };
 
   render() {
+    console.log()
+    console.log("is choosed from main")
     let recomendedRooms = getRecommendation(
       this.props.time,
       this.props.db,

@@ -4,6 +4,7 @@ import './BottomBar.css';
 import {Link} from 'react-router-dom';
 import Push from './Push.js'
 import EditEventPush from './EditEventPush.js'
+import DeleteEvent from './DeleteEvent.js'
 
 
 class BottomBar extends Component {
@@ -13,18 +14,23 @@ class BottomBar extends Component {
         <CancelButton text={"Отмена"} cancelHandler={this.props.cancelHandler}/>
         {this.props.isEditedPage ?
               <span>
-             <CancelButton width={"140px"} text={"Удалить встречу"}/>
-             <EditEventPush
-               eventToEdit={this.props.eventToEdit}
-               dataToServer={this.props.dataToServer}
-               onClick={this.props.eventEditedHandler}
+              <DeleteEvent
+                deleteIsPermitted={this.props.deleteIsPermitted}
+                eventToDelete={this.props.eventToEdit}
+                eventDeletedHandler={this.props.eventDeletedHandler} //callback to App.js
+              />
+
+               <EditEventPush
+                 eventToEdit={this.props.eventToEdit}
+                 dataToServer={this.props.dataToServer}
+                 onClick={this.props.eventEditedHandler}   //callback to App.js
 
            />
            </span>
            :   <Push dataToServer={this.props.dataToServer}
-               onClick={this.props.createHandler}
+                formValid={this.props.formValid}
+               onClick={this.props.createHandler}  //callback to App.js
                allRooms={this.props.allRooms}
-
              />
 
             }

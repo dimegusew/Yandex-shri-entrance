@@ -82,9 +82,17 @@ class Push extends Component {
   // };
 
   render() {
+    let formValid=this.props.formValid
+    console.log(this.props.formValid)
+
     return (
       <div>
-        <CreateButton text={"Создать встречу"} onClick={this.onClick} />
+
+        <CreateButton text={"Создать встречу"}
+          onClick={this.onClick}
+          disabled={!this.props.formValid}
+
+        />
       </div>
     );
   }
