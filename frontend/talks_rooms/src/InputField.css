@@ -4,44 +4,56 @@
   padding-top: 13px;
   padding-bottom: 12px;
   font-family: Helvecticanue-bold;
-font-size: 13px;
-color: #000000;
-letter-spacing: 0;
+  font-size: 13px;
+  color: #000000;
+  letter-spacing: 0;
 }
-.text-input p{
+
+.text-input p {
   margin-left: 2px;
   margin-top: -1px;
   margin-bottom: 0px;
 }
 
-
-.text-input input{
+.text-input input {
   margin-left: 2px;
   margin-right: 14px;
   font-family: Helvecticanue;
-font-size: 13px;
-color: #000000;
-letter-spacing: 0.47px;
-    width:228px;
+  font-size: 13px;
+  color: #000000;
+  letter-spacing: 0.47px;
+  width: 228px;
   height: 32px;
   background-color: #FFFFFF;
-border: 2px solid #E9ECEF;
-border-radius: 4px;
-padding-left: 7px;
-margin-top: 4px;
-margin-bottom: 12px;
-}
-.text-input input:focus{
-  border: 2px solid #007DFF;
+  border: 2px solid #E9ECEF;
+  border-radius: 4px;
+  padding-left: 7px;
+  margin-top: 4px;
+  margin-bottom: 12px;
 }
 
+.text-input input:focus {
+  border: 2px solid #007DFF;
+}
 
 .text-input .choosing-page {
   visibility: visible;
   position: absolute;
 }
 
-.form-control{
-  width:60px;
+.form-control {
+  width: 60px;
   background-color: red;
+}
+
+@media screen and (max-width: 600px) {
+  .text-input input {
+    width: 340px;
+    height: 38px;
+  }
+  .text-input {
+    width: 360px;
+    margin-left: 0px;
+    margin-right: 16px;
+  }
 }

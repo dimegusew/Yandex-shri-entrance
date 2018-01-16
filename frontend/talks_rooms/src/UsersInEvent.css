@@ -1,10 +1,9 @@
-.users-in-event{
-    display: flex;
-    flex-wrap: wrap;
+.users-in-event {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-
-.user-in-event{
+.user-in-event {
   background-color: #E9ECEF;
   border-radius: 16px;
   height: 24px;
@@ -12,32 +11,29 @@
   margin-left: 2px;
   margin-right: 8px;
   margin-bottom: 8px;
-
 }
 
-.avatar{
-  max-width:24px;
-  min-width:24px;
+.avatar {
+  max-width: 24px;
+  min-width: 24px;
   border-radius: 100px;
   margin-right: 7px;
 }
 
-
-
-.user-in-event div{
-margin-top: 3px;
-margin-bottom: 4px;
-margin-right: 16px;
-font-family: Helvecticanue;
-font-size: 13px;
-color: #000000;
-letter-spacing: 0;
-line-height: 17px;
+.user-in-event div {
+  margin-top: 3px;
+  margin-bottom: 4px;
+  margin-right: 16px;
+  font-family: Helvecticanue;
+  font-size: 13px;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 17px;
 }
 
-img.close{
-margin-right: 10px;
-margin-top: 6px;
-margin-bottom: 4px;
-width: 10px;
+img.close {
+  margin-right: 10px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  width: 10px;
 }

@@ -1,10 +1,8 @@
-.room-event-diagram{
+.room-event-diagram {
   display: flex;
   min-width: 1280px;
 }
 
-
 @media screen and (max-width: 600px) {
-  .room-event-diagram{
-  }
-  }
+  .room-event-diagram {}
+}

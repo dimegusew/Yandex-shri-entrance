@@ -1,35 +1,33 @@
-.room-list{
+.room-list {
   margin-top: 1px;
-  width:245px;
+  width: 245px;
   height: 100%;
   padding-top: 1px;
- box-shadow: 1px 0px 0px #E9ECEF;
- background-color: white;
- z-index: 5;
+  box-shadow: 1px 0px 0px #E9ECEF;
+  background-color: white;
+  z-index: 5;
 }
 
-.event-background{
+.event-background {
   z-index: -99;
   width: 1280px;
   height: 890px;
   /* height: 1000px; */
   background-color: #F6F7F9;
-
 }
 
 @media screen and (max-width: 600px) {
-  .date-time-bar{
+  .date-time-bar {
     height: 56px;
     display: inline-block;
-    width:360px;
+    width: 360px;
   }
-  .room-list{
-    width:181px;
+  .room-list {
+    width: 181px;
     height: auto;
   }
-  .event-background{
-
-    margin-top:15px;
+  .event-background {
+    margin-top: 15px;
     box-shadow: 5px 5px 4 4 #E9ECEF;
     min-height: 600px;
     z-index: 9;
@@ -37,8 +35,5 @@
     /* height: 890px; */
     /* height: 1000px; */
     background-color: #F6F7F9;
-
   }
-
-
-    }
+}

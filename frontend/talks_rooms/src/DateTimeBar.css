@@ -1,18 +1,14 @@
-.date-time-bar{
+.date-time-bar {
   display: flex;
   height: 46px;
   box-shadow: 0px 1px 0px #E9ECEF;
-
 }
 
-
 @media screen and (max-width: 600px) {
-  .date-time-bar{
+  .date-time-bar {
     height: 56px;
     display: inline-block;
-    width:360px;
-  box-shadow: 0px 0px 0px #E9ECEF;
+    width: 360px;
+    box-shadow: 0px 0px 0px #E9ECEF;
   }
-
-
-    }
+}

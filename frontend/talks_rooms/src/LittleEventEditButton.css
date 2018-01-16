@@ -1,27 +1,25 @@
-.button-container{
-  display:flex;
+.button-container {
+  display: flex;
   justify-content: flex-end;
-  left:77px;
-    margin-right:8px;
-    z-index: 30
-
+  left: 77px;
+  margin-right: 8px;
+  z-index: 30
 }
 
-
-.event-edit-button{
+.event-edit-button {
   margin: 1px;
   background-color: #E9ECEF;
   /* margin-right: 5px; */
-
 }
+
 .event-edit-button img {
   margin: 1px;
-  opacity:0.4;
+  opacity: 0.4;
   /* margin-right: 5px; */
 }
 
 .event-edit-button:hover img {
   margin: 1px;
-  opacity:1;
+  opacity: 1;
   /* margin-right: 5px; */
 }

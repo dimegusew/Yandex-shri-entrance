@@ -1,4 +1,4 @@
-.recomendation-field{
+.recomendation-field {
   font-family: Helvecticanue;
   font-size: 13px;
   color: #000000;
@@ -6,42 +6,40 @@
   line-height: 17px;
   margin-left: 6px;
 }
-.recomendation-field p{
+
+.recomendation-field p {
   font-family: Helvecticanue-bold;
-font-size: 13px;
-letter-spacing: 0;
-margin-bottom: 3px;
-margin-top : 12px;
+  font-size: 13px;
+  letter-spacing: 0;
+  margin-bottom: 3px;
+  margin-top: 12px;
 }
 
-.recomended-room{
+.recomended-room {
   background: #E9ECEF;
-border-radius: 4px;
-width: 420px;
-height: 37px;
-margin-bottom: 8px;
-
-
+  border-radius: 4px;
+  width: 420px;
+  height: 37px;
+  margin-bottom: 8px;
 }
 
-.recomended-room:hover{
-  background-color: #98A9B9 ;
+.recomended-room:hover {
+  background-color: #98A9B9;
 }
 
-.recomended-room div{
-  padding:10px;
+.recomended-room div {
+  padding: 10px;
 }
 
-.recomended-room div span{
+.recomended-room div span {
   font-family: Helvecticanue-bold;
   font-size: 13px;
   letter-spacing: 0;
   line-height: 17px;
   padding-right: 16px;
-
 }
-.recomended-room div span:nth-child(2){
-    position: relative;
-    left: 200px;
 
+.recomended-room div span:nth-child(2) {
+  position: relative;
+  left: 200px;
 }

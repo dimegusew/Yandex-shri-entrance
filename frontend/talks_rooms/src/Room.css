@@ -1,30 +1,31 @@
-.room{
+.room {
   min-width: 221px;
   font-size: 15px;
   padding-left: 25px;
   padding-top: 4px;
   padding-bottom: 4px;
   line-height: 17px;
-    font-family: Helvecticanue;
+  font-family: Helvecticanue;
 }
-.name{
-    font-family: Helvecticanue-bold;
+
+.name {
+  font-family: Helvecticanue-bold;
   margin-top: 4px;
   margin-bottom: 2px;
   font-weight: bold;
 }
-.capacity{
-    font-size: 13px;
-    margin-bottom:4px;
-}
-.back{
-display: none
+
+.capacity {
+  font-size: 13px;
+  margin-bottom: 4px;
 }
 
+.back {
+  display: none
+}
 
 @media screen and (max-width: 600px) {
-  .room{
-
+  .room {
     min-width: 156px;
     margin-top: 2px;
     padding-bottom: 12px;
@@ -32,34 +33,30 @@ display: none
     position: relative;
     z-index: 10;
     background-color: #FFFFFF;
-
-    }
-    .name{
-        position: absolute;
-        z-index: 7;
-        background-color: #FFFFFF;
-    }
-
-    .name span{
-
-      z-index: 1;
-    }
-    .capacity{
-        padding-top: 20px;
-    }
-    .back{
-      display:inline-block;
-      font-size: 11px;
-      position: fixed;
-      z-index: 1;
-      margin-top: -40px;
-      padding:5px 8px 6px 5px ;
-      font-family: Helvecticanue-bold;
+  }
+  .name {
+    position: absolute;
+    z-index: 7;
+    background-color: #FFFFFF;
+  }
+  .name span {
+    z-index: 1;
+  }
+  .capacity {
+    padding-top: 20px;
+  }
+  .back {
+    display: inline-block;
+    font-size: 11px;
+    position: fixed;
+    z-index: 1;
+    margin-top: -40px;
+    padding: 5px 8px 6px 5px;
+    font-family: Helvecticanue-bold;
     margin-bottom: 2px;
     font-weight: bold;
     background-color: #FFFFFF;
-box-shadow: 0 1px 8px 0 rgba(0,44,92,0.28);
-border-radius: 4px;
-    }
-
+    box-shadow: 0 1px 8px 0 rgba(0, 44, 92, 0.28);
+    border-radius: 4px;
   }
+}

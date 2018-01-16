@@ -9,21 +9,22 @@
   padding: 0px;
   margin: 18.5px 8px 17px 23px;
   padding: 10px 16px;
-  width:80px;
+  width: 80px;
   height: 36px;
   color: black;
   font-family: HelvecticanueMedium;
   z-index: 5;
 }
+
 .cancelButton:hover {
-background: rgba(0,16,33,0.05);
-border-radius: 4px;
+  background: rgba(0, 16, 33, 0.05);
+  border-radius: 4px;
 }
 
 .cancelButton:active {
-  background-color: rgba(4,29,56,0.14);
+  background-color: rgba(4, 29, 56, 0.14);
 }
 
 .cancelButton:disabled {
-  background-color:#E9ECEF;
+  background-color: #E9ECEF;
 }

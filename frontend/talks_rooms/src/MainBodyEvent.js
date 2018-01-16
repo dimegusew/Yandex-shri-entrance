@@ -177,6 +177,8 @@ closedButtonHandler=()=>{
     console.log(!!this.state.choosedRoom)
     let formValid=dateValid&&titleValid&&timeValid && !!this.state.choosedRoom
 
+    let width = document.documentElement.clientWidth
+    let inputfieldWidth = width<600 ? "320px" : "409px"
     return (
       <div>
       <div className="event-edit-container">
@@ -187,14 +189,14 @@ closedButtonHandler=()=>{
                   onChange={this.onInputHandler}
                   id={"title"}
                   type={"text"}
-                  width={"409px"}
+                  width={inputfieldWidth}
                   value={this.state.EventTitle}
               />
               <InputField title={"Участники"} placeholder={"Например"}
                 onChange={this.onInputHandler}
                 id ={"users"}
                 type={"text"}
-                width={"409px"}
+                width={inputfieldWidth}
                 >
                   <Users
                      users={this.state.viewedUsers}
@@ -239,6 +241,7 @@ closedButtonHandler=()=>{
         width={"60px"}
         value={this.state.timeEnd}
     />
+
   </div>
   {timeValid ?
 
