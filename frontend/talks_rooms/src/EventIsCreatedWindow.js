@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './EventIsCreatedWindow.css';
-import converter from './converterFromServerTime.js'
+import converter from './functions/converterFromServerTime.js'
 import newEmoji from './images/emoji2.svg'
 
 

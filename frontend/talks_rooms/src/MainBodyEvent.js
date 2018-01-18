@@ -8,7 +8,7 @@ import close from './images/close.svg'
 import Cleave from 'cleave.js/react';
 import RecomendedRooms from './RecomendedRooms.js'
 import BottomBar from "./BottomBar";
-import converterFromServerTime from "./converterFromServerTime"
+import converterFromServerTime from "./functions/converterFromServerTime"
 
 
 class Users extends Component {
@@ -25,8 +25,8 @@ class Users extends Component {
         {users.map((el)=>
           <div className="user-in-user-select" id={el.id} onClick={this.eventHandler} >
             <img id={el.id} src={el.avatarUrl} className="user-img"/>
-            <div id={el.id} >{el.login} .
-              <span>{el.homeFloor + " этаж"}</span>
+            <div id={el.id} >{el.login} ·
+              &nbsp;<span>{el.homeFloor + " этаж"}</span>
               </div>
           </div>
         )}
@@ -57,7 +57,7 @@ class MainBodyEvent extends Component {
       timeStartValid : this.props.timeToNewEvent.start || this.props.isEditedPage  ? true : false,
       timeEndValid : this.props.timeToNewEvent.end || this.props.isEditedPage ? true : false,
       dateValid : this.props.dateToNewEvent || this.props.isEditedPage ? true : false,
-      choosedRoom : ''
+      choosedRoom : '',
     }
   }
 
@@ -153,10 +153,14 @@ class MainBodyEvent extends Component {
     }
   }
 
-  roomHandler=(room)=>{
+  roomHandler=(room,roomSwap)=>{
     this.setState({
-      choosedRoom:room
+      choosedRoom:room,
+      roomSwap: roomSwap[0]
     })
+
+    console.log("swaapppeed")
+    console.log(roomSwap)
     this.props.roomHandler(room)
   }
 
@@ -167,14 +171,14 @@ closedButtonHandler=()=>{
 
 
   render() {
-    console.log(this.props.isCreateButtonPushed)
+    // console.log(this.props.isCreateButtonPushed)
     let TimeStartValid = this.state.timeStart ? (this.state.timeStart.length===5) :false
     let TimeEndValid = this.state.timeEnd ? (this.state.timeEnd.length===5) :false
     let timeValid =TimeStartValid && TimeEndValid
-    console.log(timeValid)
+    // console.log(timeValid)
     let titleValid=this.state.EventTitle
     let dateValid=this.state.date
-    console.log(!!this.state.choosedRoom)
+    // console.log(!!this.state.choosedRoom)
     let formValid=dateValid&&titleValid&&timeValid && !!this.state.choosedRoom
 
     let width = document.documentElement.clientWidth
@@ -192,7 +196,7 @@ closedButtonHandler=()=>{
                   width={inputfieldWidth}
                   value={this.state.EventTitle}
               />
-              <InputField title={"Участники"} placeholder={"Например"}
+              <InputField title={"Участники"} placeholder={`Например, ${this.props.users[0].login}`}
                 onChange={this.onInputHandler}
                 id ={"users"}
                 type={"text"}
@@ -275,7 +279,8 @@ closedButtonHandler=()=>{
         "dateEnd": this.state.date+ ("T"+this.state.timeEnd+":00.981Z"),
          "room":this.state.choosedRoom,
          "users" : this.state.addedUsers,
-        "title" :  this.state.EventTitle }}
+        "title" :  this.state.EventTitle,
+        "roomSwap" : this.state.roomSwap }}
 />
 </div>
     );

@@ -5,7 +5,7 @@ import arrowL from './images/arrow2.svg'
 import ArrowButton from './ArrowButton';
 import DayPicker from 'react-day-picker';
 import './ModuleCalendar.css';
-import converterDate from './convertDate.js'
+import converterDate from './functions/convertDate.js'
 
 
 

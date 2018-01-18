@@ -3,7 +3,7 @@ import './RoomList.css'
 import Floor from './Floor.js'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
-import converterDate from "./convertDate.js"
+import converterDate from "./functions/convertDate.js"
 
 
 

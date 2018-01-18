@@ -42,7 +42,7 @@
   z-index: 10;
 }
 
-button {
+.date-bar button {
   width: 24px;
   height: 24px;
   background-color: #E9ECEF;
@@ -53,9 +53,16 @@ button {
   padding: 0;
 }
 
-button img {
+.date-bar button.plusButton img {
   pointer-events: none;
+  margin-left: 4px;
   margin-top: 4px;
+}
+.date-bar button.minusButton img {
+  pointer-events: none;
+  margin-right: 4px;
+  margin-top: 6px;
+
 }
 
 @media screen and (max-width: 600px) {

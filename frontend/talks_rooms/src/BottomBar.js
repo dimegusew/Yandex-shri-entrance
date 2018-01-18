@@ -5,10 +5,16 @@ import {Link} from 'react-router-dom';
 import Push from './Push.js'
 import EditEventPush from './EditEventPush.js'
 import DeleteEvent from './DeleteEvent.js'
+import PushWithReplace from './PushWithReplace.js'
 
 
 class BottomBar extends Component {
   render() {
+
+    console.log("yaaas")
+    console.log(this.props.dataToServer.roomSwap)
+    let needToRoomSwap = this.props.dataToServer.roomSwap ? true :false
+    console.log(needToRoomSwap)
     return (
       <div className="bottom-bar">
         <CancelButton text={"Отмена"} cancelHandler={this.props.cancelHandler}/>
@@ -27,11 +33,27 @@ class BottomBar extends Component {
 
            />
            </span>
-           :   <Push dataToServer={this.props.dataToServer}
-                formValid={this.props.formValid}
-               onClick={this.props.createHandler}  //callback to App.js
-               allRooms={this.props.allRooms}
-             />
+           :
+            <div>
+              {needToRoomSwap ?
+
+                   <PushWithReplace dataToServer={this.props.dataToServer}
+                        formValid={this.props.formValid}
+                       onClick={this.props.createHandler}  //callback to App.js
+                       allRooms={this.props.allRooms}
+                     />
+                     :
+                     <Push dataToServer={this.props.dataToServer}
+                          formValid={this.props.formValid}
+                         onClick={this.props.createHandler}  //callback to App.js
+                         allRooms={this.props.allRooms}
+                       />
+      }
+
+            </div>
+
+
+
 
             }
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import convertDate from "./convertDate.js";
+import convertDate from "./functions/convertDate.js";
 
 class CurrentTime extends Component {
   constructor(props) {

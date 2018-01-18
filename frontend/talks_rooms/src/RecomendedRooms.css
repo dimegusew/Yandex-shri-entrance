@@ -29,6 +29,7 @@
 
 .recomended-room div {
   padding: 10px;
+  position: relative;
 }
 
 .recomended-room div span {
@@ -37,9 +38,22 @@
   letter-spacing: 0;
   line-height: 17px;
   padding-right: 16px;
+  z-index: 0;
 }
 
-.recomended-room div span:nth-child(2) {
-  position: relative;
-  left: 200px;
+.recomended-room div span:nth-child(2){
+font-family: Helvecticanue;
+z-index: 0;
+
+
+
+}
+
+.recomended-room div img {
+  position: absolute;
+  padding-top: 3px;
+  color: white;
+  z-index: 5;
+  left: 399px;
+  fill: white;
 }

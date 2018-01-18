@@ -69,6 +69,7 @@ class InputField extends Component {
             onChange={this.props.onChange}
             style = {width}
             value ={this.props.value}
+            placeholder={this.props.placeholder}
           />
 
             : this.props.type==="text" ?

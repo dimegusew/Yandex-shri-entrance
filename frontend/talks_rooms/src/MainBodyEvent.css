@@ -25,7 +25,6 @@
   margin-bottom: 9px;
   font-family: Helvecticanue-bold;
   font-size: 20px;
-  color: #000000;
   letter-spacing: 0;
 }
 
@@ -35,7 +34,6 @@
   margin-bottom: 7px;
   font-family: Helvecticanue-bold;
   font-size: 20px;
-  color: #000000;
   letter-spacing: 0;
 }
 
@@ -59,7 +57,6 @@
   border-radius: 4px;
   font-family: Helvectica;
   font-size: 13px;
-  color: #000000;
   letter-spacing: 0;
 }
 
@@ -67,19 +64,24 @@
   padding-left: 16px;
   display: flex;
   height: 34px;
+  font-family: Helvecticanue;
+font-size: 13px;
+  color: #37003E;
 }
 
 .user-in-user-select:hover {
   background-color: #F6F7F9;
+  font-family: Helvecticanue-bold
 }
 
 .user-in-user-select div {
   margin-top: 10px;
   margin-bottom: 9px;
+
 }
 
-.user-in-user-select span {
-  color: #37003E;
+.user-in-user-select div span {
+  color: grey;
   letter-spacing: 0;
   line-height: 15px;
   pointer-events: none;
@@ -104,7 +106,7 @@
 }
 
 .big-close-button img {
-  margin-left: 6px;
+  margin: 7px;
   margin-bottom: 2px;
 }
 

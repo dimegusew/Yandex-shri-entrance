@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './DateTimeBar.css'
 import DateBar from './DateBar.js'
 import TimeBar from './TimeBar.js';
-import convertDate from './convertDate.js'
+import convertDate from './functions/convertDate.js'
 
 class DateTimeBar extends Component {
   constructor(props){

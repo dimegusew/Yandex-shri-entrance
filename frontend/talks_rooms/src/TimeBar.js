@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./TimeBar.css";
 import CurrentTime from "./CurrentTime";
-import converterDate from "./convertDate.js";
+import converterDate from "./functions/convertDate.js";
 
 function Hours({ choosingDate, currentTime }) {
   let currentDate = new Date();

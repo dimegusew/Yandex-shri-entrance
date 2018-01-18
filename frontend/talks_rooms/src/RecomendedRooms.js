@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./RecomendedRooms.css";
-import getRecommendation from "./getRecomendation.js";
+import getRecommendation from "./functions/getRecomendation.js";
+import close from './images/close.svg'
 
 class RecomendedRoom extends Component {
   constructor(props) {
@@ -47,9 +48,11 @@ class RecomendedRoom extends Component {
             {this.convertDate(this.props.date.start)} –{" "}
             {this.convertDate(this.props.date.end)}
           </span>
+          <span>
           {this.props.title} · {this.props.floor + " этаж"}
+        </span>
           {this.props.roomIsChoosed ? (
-            <span onClick={this.onCancelRoom}> x</span>
+            <span onClick={this.onCancelRoom}><img src={close}/></span>
           ) : (
             ""
           )}
@@ -77,11 +80,21 @@ class RecomendedRooms extends Component {
   };
 
   onClick = roomId => {
+    let recomendedRooms = getRecommendation(
+      this.props.time,
+      this.props.db,
+      this.props.members
+    );
+        console.log("roomSwap")
+
+    let roomSwap=recomendedRooms[0].roomSwap
+    console.log(roomSwap)
     this.setState({
-      choosingRoomId: roomId
+      choosingRoomId: roomId,
+      roomSwap: roomSwap
     });
 
-    this.props.roomHandler(roomId);
+    this.props.roomHandler(roomId,roomSwap);
   };
 
   cancelRoom = () => {
@@ -104,6 +117,8 @@ class RecomendedRooms extends Component {
       this.props.db,
       this.props.members
     );
+
+
     let choosedFromMainPageRoom = this.props.db.rooms.filter(
       el => el.id === this.props.roomToNewEvent
     );

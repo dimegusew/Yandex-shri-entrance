@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './EventDeleteWindow.css';
-import converter from './converterFromServerTime.js'
+import converter from './functions/converterFromServerTime.js'
 import newEmoji from './images/emoji1.svg'
 
 
