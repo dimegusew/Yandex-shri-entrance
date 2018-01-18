@@ -86,7 +86,8 @@ class RecomendedRooms extends Component {
 
   cancelRoom = () => {
     this.setState({
-      roomIsChoosed: false
+      roomIsChoosed: false,
+      choosingRoomId: null
     });
   };
   componentDidUnmount=()=>{

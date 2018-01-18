@@ -12,7 +12,7 @@ class CurrentTime extends Component {
 
   getPosition(time) {
     let minutes = time.getHours() * 60 + time.getMinutes();
-    return (minutes - 470) * 0.11111;
+    return (minutes - 470) * 0.11111; // былло 470
   }
 
   componentDidMount() {

@@ -112,12 +112,14 @@ class App extends Component {
     if(!condition){
     this.setState({
       eventDeletePageIsOpen : true
+
     })
   }
   else{
     this.setState({
         isEventEditPage:false,
-        deleteIsPermitted:false
+        deleteIsPermitted:false,
+        isEditedPage : false
       })
 }}
 
