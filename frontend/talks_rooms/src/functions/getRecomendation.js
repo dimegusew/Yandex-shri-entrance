@@ -236,17 +236,7 @@ console.log(events.filter(event =>
       }]
 		}
 		else {Recomendations=[]}
-
-
-
-
-
-
-
-
-
 	 	}
-
 
 		console.log("reeecomendatioon")
 		console.log(Recomendations)

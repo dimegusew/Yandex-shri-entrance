@@ -58,6 +58,7 @@ class MainBodyEvent extends Component {
       timeEndValid : this.props.timeToNewEvent.end || this.props.isEditedPage ? true : false,
       dateValid : this.props.dateToNewEvent || this.props.isEditedPage ? true : false,
       choosedRoom : '',
+      roomToNewEvent:this.props.roomToNewEvent
     }
   }
 
@@ -112,7 +113,8 @@ class MainBodyEvent extends Component {
         var timeStart= change.target.value;
           this.setState({
             timeStart : timeStart,
-            timeStartValid : false
+            timeStartValid : false,
+            roomToNewEvent:""
           })
           if (timeStart.split("").length === 5)
           { this.setState({
@@ -130,7 +132,8 @@ class MainBodyEvent extends Component {
         var timeEnd= change.target.value;
           this.setState({
             timeEnd : timeEnd,
-            timeEndValid : true
+            timeEndValid : true,
+            roomToNewEvent:""
           })
 
       break;
@@ -250,7 +253,7 @@ closedButtonHandler=()=>{
   {timeValid ?
 
     <RecomendedRooms
-      roomToNewEvent={ this.props.roomToNewEvent}
+      roomToNewEvent={ this.state.roomToNewEvent}
       roomToEdit={ this.props.eventToEdit.room}
       roomHandler={this.roomHandler}
       db={{"rooms":this.props.rooms,"events":this.props.events}}
