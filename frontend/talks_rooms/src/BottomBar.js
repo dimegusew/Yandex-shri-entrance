@@ -11,16 +11,17 @@ import PushWithReplace from './PushWithReplace.js'
 class BottomBar extends Component {
   render() {
 
-    console.log("yaaas")
-    console.log(this.props.dataToServer.roomSwap)
     let needToRoomSwap = this.props.dataToServer.roomSwap ? true :false
-    console.log(needToRoomSwap)
     return (
+      <div>
+          {/* <div className="choose-room-info">"Выберете переговорку </div> */}
       <div className="bottom-bar">
+
         <CancelButton text={"Отмена"} cancelHandler={this.props.cancelHandler}/>
         {this.props.isEditedPage ?
               <span>
               <DeleteEvent
+                isMobile={this.props.isMobile}
                 deleteIsPermitted={this.props.deleteIsPermitted}
                 eventToDelete={this.props.eventToEdit}
                 eventDeletedHandler={this.props.eventDeletedHandler} //callback to App.js
@@ -57,6 +58,7 @@ class BottomBar extends Component {
 
             }
       </div>
+    </div>
     );
   }
 }

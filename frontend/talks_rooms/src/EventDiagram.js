@@ -35,7 +35,6 @@ class Tooltip extends Component {
   }
 
   eventEditHandler=()=>{
-    console.log(this.props.event)
     let event =this.props.event;
     this.props.eventEdit(event)
   }

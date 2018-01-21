@@ -10,7 +10,6 @@ import converterDate from "./functions/convertDate.js"
 class RoomList extends Component {
   constructor(props){
     super(props)
-    console.log(this.props.data.events)
       this.state={
         filteredEvents : []
       }
@@ -58,7 +57,6 @@ if (this.props.data.loading) {
 }
 
 if (this.props.data.error) {
-  console.log(this.props.data.error)
   return (<div>An unexpected error occurred</div>)
 }
 

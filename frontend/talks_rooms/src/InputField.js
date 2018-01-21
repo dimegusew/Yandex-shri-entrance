@@ -94,6 +94,9 @@ class InputField extends Component {
           />
         </div>
             :
+            <div>
+              <img src={calendar}
+              className="calendar-img"/>
             <DayPickerInput
               type={this.props.type}
               canChangeMonth={false}
@@ -109,6 +112,7 @@ class InputField extends Component {
                localeUtils: MomentLocaleUtils,
                    }}
                  />
+              </div>
 
 
         }

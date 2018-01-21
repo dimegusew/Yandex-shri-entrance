@@ -5,8 +5,8 @@ import './Room.css';
 class Room extends Component {
   onScroll(event) {
 
-  console.log(event)
-  console.log("roomevent")
+  (event)
+  ("roomevent")
 }
 
 

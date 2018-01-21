@@ -190,8 +190,6 @@ usersButtonHandler=()=>{
 }
 
 componentWillUpdate=()=>{
-  console.log(document.documentElement.clientWidth)
-  console.log("document.documentElement.clientWidth")
 }
 
 
@@ -239,6 +237,7 @@ componentWillUpdate=()=>{
                   type={"date"}
                   width={"198px"}
                   value={this.props.dateToNewEvent}
+                  img={close}
               />
               <span>
               <InputField title={"Начало"} placeholder={`${time}`}
@@ -300,6 +299,7 @@ componentWillUpdate=()=>{
                "end": this.state.date+ ("T"+this.state.timeEnd+":00.981Z")}}
             />
          : ""}
+
          <BottomBar
            formValid={formValid}
            deleteIsPermitted={this.props.deleteIsPermitted}
@@ -318,6 +318,7 @@ componentWillUpdate=()=>{
                  "title" :  this.state.EventTitle,
                  "roomSwap" : this.state.roomSwap }}
          />
+
             </div>
 
 
@@ -425,6 +426,7 @@ componentWillUpdate=()=>{
 </div>
 {pageWidth>425 ?
   <BottomBar
+    isMobile = {pageWidth<=425}
   formValid={formValid}
   deleteIsPermitted={this.props.deleteIsPermitted}
   eventDeletedHandler={this.props.eventDeletedHandler}

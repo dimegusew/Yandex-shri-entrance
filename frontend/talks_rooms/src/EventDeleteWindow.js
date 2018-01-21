@@ -6,13 +6,13 @@ import newEmoji from './images/emoji1.svg'
 
 class EventDeleteWindow extends Component {
   onClick=(event)=>{
-    console.log(event.target.id)
+    (event.target.id)
     this.props.eventDeleteWindowHandler(event.target.id)
   }
 
 
   render() {
-    // console.log(this.props.dataToEventsCreatedWindow)
+    // (this.props.dataToEventsCreatedWindow)
     // let data=this.props.dataToEventsCreatedWindow
     // let dateStart = data.date.dateStart;
     // let dateEnd = data.date.dateEnd;

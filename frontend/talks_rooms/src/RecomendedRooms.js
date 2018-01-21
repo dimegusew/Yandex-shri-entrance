@@ -65,7 +65,7 @@ class RecomendedRoom extends Component {
 class RecomendedRooms extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.roomToEdit)
+    (this.props.roomToEdit)
     this.state = {
       roomIsChoosed: this.props.roomToNewEvent || this.props.roomToEdit ? true : false,
       choosingRoomId: null
@@ -85,10 +85,9 @@ class RecomendedRooms extends Component {
       this.props.db,
       this.props.members
     );
-        console.log("roomSwap")
 
-    let roomSwap=recomendedRooms[0].roomSwap
-    console.log(roomSwap)
+    let roomSwap= recomendedRooms[0].roomSwap
+
     this.setState({
       choosingRoomId: roomId,
       roomSwap: roomSwap
@@ -110,8 +109,6 @@ class RecomendedRooms extends Component {
   };
 
   render() {
-    console.log()
-    console.log("is choosed from main")
     let recomendedRooms = getRecommendation(
       this.props.time,
       this.props.db,

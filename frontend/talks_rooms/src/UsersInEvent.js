@@ -20,7 +20,7 @@ class User extends Component {
 class UsersInEvent extends Component {
 
 onclick=(ev)=>{
-  console.log("ds")
+  ("ds")
 }
 
 removedUser=(userToRemove)=>{

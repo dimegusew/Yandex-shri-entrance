@@ -9,7 +9,6 @@ class EditEventPush extends Component {
   onClick=()=>{
     let data=this.props.dataToServer;
     let eventId=this.props.eventToEdit.id
-    console.log(this.props.dataToServer)
     let id=this.props.eventToEdit.id;
     let inp={dateStart: data.dateStart,
               dateEnd: data.dateEnd,
@@ -17,11 +16,6 @@ class EditEventPush extends Component {
 
     let roomId=data.room
     let usersIds=data.users.map(el => el.id)
-
-console.log(this.props.eventToEdit.id)
-console.log(inp)
-console.log(roomId)
-console.log(usersIds)
 
 
     this.props

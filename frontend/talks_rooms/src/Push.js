@@ -7,7 +7,7 @@ class Push extends Component {
 
   onClick=()=>{
      let allRooms = this.props.allRooms;
-    console.log(this.props.dataToServer)
+    (this.props.dataToServer)
     let date = {
       title: this.props.dataToServer.title,
       dateStart: this.props.dataToServer.dateStart,
@@ -21,8 +21,6 @@ class Push extends Component {
       date: date,
       room: currentRoom
     };
-    console.log(currentRoom)
-    console.log("curr room")
 
 
         this.props
@@ -34,18 +32,12 @@ class Push extends Component {
             }
           })
           .then(({ data }) => {
-            console.log("got data", data);
+            ("got data", data);
           this.props.onClick(datePushedToServer);
           })
           .catch(error => {
-            console.log("there was an error sending the query", error);
+            ("there was an error sending the query", error);
           });
-
-
-    console.log("PUSH THIS DATE TO SER")
-    console.log(date)
-    console.log(usersIds)
-    console.log(roomId)
   }
 
 
@@ -73,17 +65,16 @@ class Push extends Component {
   //       }
   //     })
   //     .then(({ data }) => {
-  //       console.log("got data", data);
+  //       ("got data", data);
   //       //this.props.onClick(datePushedToServer);
   //     })
   //     .catch(error => {
-  //       console.log("there was an error sending the query", error);
+  //       ("there was an error sending the query", error);
   //     });
   // };
 
   render() {
     let formValid=this.props.formValid
-    console.log(this.props.formValid)
 
     return (
       <div>

@@ -9,10 +9,27 @@
 @media screen and (max-width: 425px) {
   .bottom-bar {
     margin-left: -20px;
-    width: 360px;
+    width: 100%;
     position: fixed;
+    height: 80px;
     z-index: 10;
     top: 88%;
     background-color: white;
+  }
+  .choose-room-info{
+
+    margin-left: -20px;
+    padding-top: 12px;
+    padding-left: 10px;
+    z-index: 10;
+    width: 100%;
+    position: fixed;
+    top:81%;
+    opacity: 0.93;
+    background-color: rgba(0,16,33,0.80);
+    font-family: Helvecticanue-bold;
+font-size: 15px;
+height: 43px;
+color: #FFFFFF;
   }
 }

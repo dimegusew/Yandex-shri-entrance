@@ -253,6 +253,9 @@ display: none;
   }
   .DayPickerInput-Overlay {
     width:310px;
+    height:310px;
+    z-index: 150;
+
   }
 
 

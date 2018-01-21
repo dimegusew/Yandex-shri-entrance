@@ -6,7 +6,7 @@ import newEmoji from './images/emoji2.svg'
 
 class EventIsCreatedWindow extends Component {
   render() {
-    console.log(this.props.dataToEventsCreatedWindow)
+    (this.props.dataToEventsCreatedWindow)
     let data=this.props.dataToEventsCreatedWindow
     let dateStart = data.date.dateStart;
     let dateEnd = data.date.dateEnd;

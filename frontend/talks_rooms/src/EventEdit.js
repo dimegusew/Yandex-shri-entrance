@@ -22,7 +22,7 @@ class EventEdit extends Component {
   }
 
   createHandler = (data) => {
-    console.log("create handler")
+    ("create handler")
     this.props.createHandler(data);
 
   };
@@ -46,14 +46,14 @@ class EventEdit extends Component {
   };
 
   dataToServerHandler=(data)=>{
-    //  console.log(data)
+    //  (data)
     // this.setState({
     //   dateToServer : data
     // })
 
-    console.log(data)
+    (data)
     this.date=data;
-    console.log("date")
+    ("date")
   }
 
 

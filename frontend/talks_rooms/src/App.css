@@ -41,10 +41,10 @@
 
 @media screen and (max-width: 425px) {
   .container {
-    min-width: 360px;
+    /* min-width: 360px; */
   }
   .App {
-    min-width: 360px;
+    /* min-width: 360px; */
   }
   ::-webkit-scrollbar {
     display: none;

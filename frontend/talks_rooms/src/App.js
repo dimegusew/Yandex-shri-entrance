@@ -47,7 +47,6 @@ class App extends Component {
   };
 
   timeToNewEventHandler = (time, room) => {
-    console.log(time)
     this.setState({
       isEventEditPage: true,
       timeToNewEvent: time,
@@ -72,9 +71,6 @@ class App extends Component {
     });
   };
 
-  // eventEditHandler=(eventToEdit)=>{
-  //   console.log(eventToEdit)
-  // }
 
   componentDidMount() {
     this.setState({});
@@ -97,7 +93,6 @@ class App extends Component {
       isEventEditPage: true,
       eventToEdit : eventToEdit
     })
-    console.log(eventToEdit)
   }
 
   eventEditedHandler=()=>{
@@ -152,7 +147,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.deleteIsPermitted)
     return (
       <ApolloProvider client={client}>
         <div>

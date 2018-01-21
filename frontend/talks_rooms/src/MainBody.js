@@ -37,9 +37,6 @@ class MainBody extends Component {
     nextProps.viewedDate(formated)
   }
 
-  onScroll=(ev)=>{
-    console.log( )
-  }
 
   render() {
 
@@ -48,7 +45,6 @@ class MainBody extends Component {
     }
 
     if (this.props.data.error) {
-      console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
 

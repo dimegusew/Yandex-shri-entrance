@@ -5,9 +5,6 @@ export default function getRecommendation(date,db,members) {
 	let numberOfmembers = members.length;
 	let AllRooms= db ? db.rooms : [];
 	let AllEvents= db ? db.events : [];
-	console.log(AllRooms)
-	console.log(AllEvents)
-	console.log(members)
 
 	function getRoomsFilteredByCapacity(rooms, members) {
 	    let numberOfmembers = members.length;
@@ -60,15 +57,15 @@ export default function getRecommendation(date,db,members) {
 	  }
 
 	  function checkOverlapEvents(events, dateToCheck) {
-			// console.log(events[0])
-		// console.log(dateToCheck)
-		// console.log(convertTimeFromDate(dateToCheck.start))
-		// console.log("events")
-		// console.log(events)
-		// 	// console.log(convertTimeFromDate(dateToCheck.start))
-		// 	// console.log(convertTimeFromDate(events[0].dateStart))
-		// 	console.log("res")
-console.log(events.filter(event =>
+			// (events[0])
+		// (dateToCheck)
+		// (convertTimeFromDate(dateToCheck.start))
+		// ("events")
+		// (events)
+		// 	// (convertTimeFromDate(dateToCheck.start))
+		// 	// (convertTimeFromDate(events[0].dateStart))
+		// 	("res")
+(events.filter(event =>
 	checkOverlap(
 		{ start: convertTimeFromDate(dateToCheck.start), end: convertTimeFromDate(dateToCheck.end) },
 		{
@@ -112,7 +109,7 @@ console.log(events.filter(event =>
 	     RoomsIdsSortedByMinDistance
 	   );
 
-		 console.log(eventsInRecomededRooms)
+		 (eventsInRecomededRooms)
 
 		 let eventsInRecomededRoomsFilteredByDate=eventsInRecomededRooms.filter((event)=>
 			 convertDate(event.dateStart)===convertDate(date.start))
@@ -167,7 +164,7 @@ console.log(events.filter(event =>
 		 let eventsInCurrRoom = eventsInRecomededRoomsFilteredByDate.filter((el)=>el.room.id===room)
 		 let eventsInCurrRoomWithoutCurrEv = eventsInCurrRoom.filter((el)=>
 																																el.id!==event.id)
-																																console.log(event)
+																																(event)
 		let newEv={"start": event.dateStart,"end": event.dateEnd }
 		 let checkOverlapInRoom=checkOverlapEvents(eventsInCurrRoomWithoutCurrEv, newEv);
 		 if (checkOverlapInRoom.length==0){return true}
@@ -190,8 +187,8 @@ console.log(events.filter(event =>
 
 	}
 		let roomsToChange=allMap.filter((event)=>event.freeroomsIds.length>1);
-		// console.log('roomsToChange')
-		// console.log (roomsToChange)
+		// ('roomsToChange')
+		//  (roomsToChange)
 
 
 		function checkPlaceToAddNewEV(date,room,eventId){
@@ -207,9 +204,9 @@ console.log(events.filter(event =>
 		 let Roomswap
 		 let recomededRoomId
 		for (let roomToChange of roomsToChange){
-			//console.log(checkPlaceToAddNewEV(date,roomToChange.freeroomsIds[0],roomToChange.event))
+			//(checkPlaceToAddNewEV(date,roomToChange.freeroomsIds[0],roomToChange.event))
 			if (checkPlaceToAddNewEV(date,roomToChange.freeroomsIds[0],roomToChange.event)){
-				//console.log(roomToChange)
+				//(roomToChange)
 					// Recomendations={}
 				Roomswap={event:roomToChange.event, room:roomToChange.freeroomsIds[1]}
 				recomededRoomId=roomToChange.freeroomsIds[0]
@@ -217,13 +214,13 @@ console.log(events.filter(event =>
 
 		}
 
-		// console.log('Roomswap')
-		// console.log(Roomswap)
-		// console.log(recomededRoomId)
+		// ('Roomswap')
+		// (Roomswap)
+		// (recomededRoomId)
 
 		if(Roomswap){
 		let recomededRoom=RoomsFilterdByCapacity.filter((el)=>el.id==recomededRoomId)[0]
-		// console.log(recomededRoom.title)
+		// (recomededRoom.title)
 
 		Recomendations=[{date: {
           start: date.start,
@@ -238,7 +235,5 @@ console.log(events.filter(event =>
 		else {Recomendations=[]}
 	 	}
 
-		console.log("reeecomendatioon")
-		console.log(Recomendations)
 	   return Recomendations;
 	 }

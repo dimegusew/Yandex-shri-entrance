@@ -56,6 +56,14 @@
   width: 60px;
   background-color: red;
 }
+.calendar-img {
+
+    position: absolute;
+    left: 220px;
+    bottom: 28px;
+    height: 9.1px;
+
+}
 
 @media screen and (max-width: 425px) {
   .text-input input {
@@ -71,4 +79,7 @@
   .text-input .Img {
     left: 310px;
   }
+  .calendar-img {
+    left: 310px;
+}
 }
