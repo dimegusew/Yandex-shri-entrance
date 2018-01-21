@@ -9,8 +9,9 @@ class LittleEventEditButton extends Component {
     return (
       <span className="button-container">
         {this.props.text}
-        <div className="event-edit-button" onClick={this.props.onClick}>
-          <img src={edit}/>
+        <div className="event-edit-button"
+          onClick={this.props.onClick}>
+          <img src={edit} alt={"edit-button"}/>
           </div>
       </span>
     );

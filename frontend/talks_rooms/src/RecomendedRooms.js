@@ -105,11 +105,7 @@ class RecomendedRooms extends Component {
       choosingRoomId: null
     });
   };
-  componentDidUnmount = () => {
-    this.setState({
-      roomIsChoosed: false
-    });
-  };
+
 
   render() {
     let recomendedRooms = getRecommendation(

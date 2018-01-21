@@ -3,9 +3,6 @@ export default function getRecommendation(date, db, members) {
   let numberOfmembers = members.length;
   let AllRooms = db ? db.rooms : [];
   let AllEvents = db ? db.events : [];
-  console.log(AllRooms);
-  console.log(AllEvents);
-  console.log(members);
 
   function getRoomsFilteredByCapacity(rooms, members) {
     let numberOfmembers = members.length;
@@ -237,7 +234,5 @@ export default function getRecommendation(date, db, members) {
     }
   }
 
-  console.log("reeecomendatioon");
-  console.log(Recomendations);
   return Recomendations;
 }

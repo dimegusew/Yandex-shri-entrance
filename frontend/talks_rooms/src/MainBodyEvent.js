@@ -207,8 +207,7 @@ class MainBodyEvent extends Component {
     let pageWidth = document.documentElement.clientWidth;
     let currentTime = new Date();
     let isMobile = pageWidth <= 425;
-    console.log(isMobile);
-    console.log("ismobile");
+
     let time =
       currentTime.getHours() +
       ":" +

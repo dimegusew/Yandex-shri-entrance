@@ -8,7 +8,6 @@ class PushWithReplace extends Component {
     let EventToSwap = this.props.dataToServer.roomSwap.event;
     let RoonToSwapEvent = this.props.dataToServer.roomSwap.room;
     let allRooms = this.props.allRooms;
-    this.props.dataToServer;
     let date = {
       title: this.props.dataToServer.title,
       dateStart: this.props.dataToServer.dateStart,
@@ -34,7 +33,6 @@ class PushWithReplace extends Component {
         }
       })
       .then(({ data }) => {
-        "got data", data;
         this.props.onClick(datePushedToServer);
       })
       .catch(error => {

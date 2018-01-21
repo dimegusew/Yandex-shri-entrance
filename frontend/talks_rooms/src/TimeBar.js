@@ -18,7 +18,7 @@ function Hours({ choosingDate, currentTime }) {
           ? { color: " black" }
           : { color: " #858E98" };
     rows.push(
-      <div>
+      <div key={i}>
         <div className="hour" style={myStyle}>
           {i}
         </div>

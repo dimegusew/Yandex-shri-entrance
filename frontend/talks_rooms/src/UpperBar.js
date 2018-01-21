@@ -8,7 +8,7 @@ class UpperBar extends Component {
     return (
       <div className="upper-side">
         <div>
-          <img src={LogoMain} />
+          <img src={LogoMain} alt={"logo main"} />
         </div>
         {this.props.isEventEditPage ? (
           ""
