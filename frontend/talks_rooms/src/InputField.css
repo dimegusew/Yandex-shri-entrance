@@ -7,6 +7,7 @@
   font-size: 13px;
   color: #000000;
   letter-spacing: 0;
+  position: relative;
 }
 
 .text-input p {
@@ -32,6 +33,16 @@
   margin-bottom: 12px;
 }
 
+.text-input .Img {
+  position: absolute;
+  height: 20px;
+  left: 400px;
+  bottom: 28px;
+  width: 12.1px;
+  height: 9.1px;
+  transform: rotate(90);
+}
+
 .text-input input:focus {
   border: 2px solid #007DFF;
 }
@@ -46,14 +57,18 @@
   background-color: red;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 425px) {
   .text-input input {
-    width: 340px;
+    width: 320px;
     height: 38px;
+    margin-right: 0px;
   }
   .text-input {
     width: 360px;
     margin-left: 0px;
     margin-right: 16px;
+  }
+  .text-input .Img {
+    left: 310px;
   }
 }

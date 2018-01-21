@@ -69,6 +69,9 @@ font-size: 13px;
   color: #37003E;
 }
 
+
+
+
 .user-in-user-select:hover {
   background-color: #F6F7F9;
   font-family: Helvecticanue-bold
@@ -89,6 +92,11 @@ font-size: 13px;
 
 .date-time-input {
   display: flex;
+}
+
+.date-time-input span{
+  display: flex;
+  width: 200px;
 }
 
 .dash {
@@ -114,9 +122,10 @@ font-size: 13px;
   display: flex;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 425px) {
   .event-edit-container {
     min-width: 360px;
+      min-height: 572px;
     display: flex;
     margin-top: 30px;
   }
@@ -124,11 +133,39 @@ font-size: 13px;
     margin-left: 16px;
     margin-right: 32px;
     width: 360px;
-    height: 200px;
+    min-height: 200px;
   }
   .event-edit {
     padding-top: 24px;
     width: 360px;
-    display: block;
+    display: flex;
+    overflow-x: scroll;
+  }
+  .date-time-input {
+    width:330px;
+    flex-wrap: wrap;
+    position: relative;
+    /* top:-120px; */
+  }
+  .big-close-button  {
+    display: none;
+  }
+  .user-select {
+    z-index: 100;
+    position: relative;
+    overflow-y: scroll;
+    margin-top: -10px;
+    max-width: 335px;
+  }
+
+  .delimeter {
+    min-width:360px;
+    margin-top: 8px;
+    margin-left: -16px;
+    height:8px;
+    background-color: #E9ECEF;
+  }
+  .user-choose{
+    min-height:92px;
   }
 }

@@ -73,6 +73,16 @@ class InputField extends Component {
           />
 
             : this.props.type==="text" ?
+          <div>
+            {this.props.isButtonActive ?
+              <img src={this.props.img}
+                className="Img"
+              onClick={this.props.inputButtonHandler}
+              onFocus={this.props.onFocusHandler}
+
+            />
+          : ""}
+
           <input
             type={this.props.type}
             id={this.props.id}
@@ -82,9 +92,11 @@ class InputField extends Component {
             value ={this.props.value}
             style = {width}
           />
+        </div>
             :
             <DayPickerInput
               type={this.props.type}
+              canChangeMonth={false}
               id={this.props.id}
               style = {width}
               formatDate={formatDate}
@@ -96,9 +108,8 @@ class InputField extends Component {
                locale: 'ru',
                localeUtils: MomentLocaleUtils,
                    }}
-                 >
-                   <img  src={calendar}/>
-                 </DayPickerInput>
+                 />
+
 
         }
 

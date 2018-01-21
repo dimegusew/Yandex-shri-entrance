@@ -1,15 +1,14 @@
-.time-line{
+.time-line {
   max-width: 1035px;
   min-width: 1035px;
   display: flex;
   max-height: 34px;
   z-index: 5;
   /* background-color: #F6F7F9; */
-
 }
 
-.hour{
-  min-width:49px;
+.hour {
+  min-width: 49px;
   display: flex;
   height: 13px;
   justify-content: center;
@@ -18,83 +17,97 @@
   padding-right: 8.5px;
   font-family: Helvecticanue-bold;
   letter-spacing: 0.4px;
-  margin-top: -20px;
+  margin-top: -22px;
 }
 
-.current-time{
+.current-time {
   z-index: 4;
   margin-top: 10px;
   margin-bottom: 5px;
-    width: 49px;
+  width: 49px;
   height: 20px;
   background-color: #007DFF;
   border-radius: 100px;
   font-family: HelvecticanueMedium;
   font-size: 11px;
   color: #FFFFFF;
-  position:relative;
+  position: relative;
 }
-.current-time p{
+
+.current-time p {
   display: flex;
   justify-content: center;
   padding-top: 4px;
   padding-bottom: 3px;
 }
 
-.percent-container{
-  width:986px;
+.percent-container {
+  width: 986px;
   position: relative;
   padding-top: 5px;
 }
 
-.time-bar{
+.time-bar {
   z-index: 4;
-  margin-left:-24px;
+  margin-left: -23px;
 }
 
-.vert-line{
+.vert-line {
   margin-top: -15px;
   margin-left: 50%;
   margin-right: 50%;
   width: 1px;
-  border-left:1px solid #007DFF;
-   height: 1000px;
-  }
+  border-left: 1px solid #007DFF;
+  min-height: 910px;
+}
 
-  .hour-line{
-    position: static;
-    margin-top: 15px;
-      margin-left: 50%;
-      margin-right: 50%;
-      width: 1px;
-      opacity: 10%;
-      border-left:1px solid rgba(19,100,205,0.10);
-       height: 1000px;
+.hour-line {
+  position: static;
+  margin-top: 15px;
+  margin-left: 47%;
+  margin-right: 50%;
+  width: 1px;
+  opacity: 10%;
+  border-left: 1px solid rgba(19, 100, 205, 0.10);
+  min-height: 890px;
+}
 
-    }
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 425px) {
   .time-bar {
     padding-left: 200px;
     z-index: 7;
+    height: 29px;
+    width: 1100px;
+    background-color: white;
     padding-bottom: 12px;
     box-shadow: 0 1px 0 0 #E9ECEF;
   }
   .time-line {
-    padding-top: 8px;
-    height: 4px;
+    padding-top: 0px;
+    height: 2px;
     position: sticky;
     position: absolute;
     z-index: 6;
-    box-shadow: 0 1px 0 0 #E9ECEF;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .percent-container {
-    margin-top: 100px;
+    margin-top: 98px;
   }
   .current-time {
-    z-index: 99
+    z-index: 10;
+    margin-top: 10px;
+    margin-bottom: 5px;
   }
   .hour-line {
     z-index: 4;
+    margin-top: 10px;
+    min-height: 490px;
+  }
+  .hour {
+    margin-top: -30px;
+  }
+  .vert-line {
+    min-height: 500px;
   }
 }

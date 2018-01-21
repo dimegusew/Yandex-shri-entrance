@@ -9,17 +9,24 @@
 .event-edit-button {
   margin: 1px;
   background-color: #E9ECEF;
-  /* margin-right: 5px; */
+  width: 24px;
+  height: 24px;
+  background-color: #E9ECEF;
+  border-radius: 30px;
+  margin-top: 11px;
+  position: absolute;
+  bottom: 81px;
 }
 
+
 .event-edit-button img {
-  margin: 1px;
+  /* margin: 1px; */
   opacity: 0.4;
-  /* margin-right: 5px; */
+  width: 12px;
+  height: 12px;
+  padding: 6.5px 9px 8px 6px;
 }
 
 .event-edit-button:hover img {
-  margin: 1px;
   opacity: 1;
-  /* margin-right: 5px; */
 }

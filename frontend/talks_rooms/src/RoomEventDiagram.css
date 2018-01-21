@@ -3,6 +3,6 @@
   min-width: 1280px;
 }
 
-@media screen and (max-width: 600px) {
-  .room-event-diagram {}
+@media screen and (max-width: 425px) {
+  .room-event-diagram {clip:rect(0px, 10000px, 300px, 0px);}
 }

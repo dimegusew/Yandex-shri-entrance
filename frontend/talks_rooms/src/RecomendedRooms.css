@@ -57,3 +57,27 @@ z-index: 0;
   left: 399px;
   fill: white;
 }
+
+
+@media screen and (max-width: 425px) {
+  .recomended-room {
+    width: 320px;
+  }
+  .recomended-room div img {
+    left: 299px;
+}
+.recomendation-field p {
+  width: 340px;
+
+}
+.recomendation-field {
+  font-family: Helvecticanue;
+  font-size: 13px;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 17px;
+  margin-left: 6px;
+  padding-bottom: 70px;
+}
+
+}

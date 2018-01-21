@@ -124,6 +124,7 @@ class App extends Component {
 }}
 
   eventIsCreatedHander = () => {
+
     this.setState({
       isEventEditPage: false,
       iseventCreatedOpen: false,

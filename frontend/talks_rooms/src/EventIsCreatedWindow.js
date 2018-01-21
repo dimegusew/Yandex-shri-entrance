@@ -15,13 +15,18 @@ class EventIsCreatedWindow extends Component {
       <div className="evet-created-window">
 
         <div>
-          <img src={newEmoji}/>
+          <span className={"congrad"}><img src={newEmoji}/></span>
           <h4>Встреча создана</h4>
           <p>{converter(dateStart).date}, {converter(dateStart).time} - {converter(dateEnd).time}</p>
-          <p>{data.room.title} . {data.room.floor + "Этаж"}</p>
+          <p>{data.room.title} · {data.room.floor + " этаж"}</p>
           <button onClick={this.props.onClick}>Хорошо</button>
         </div>
     </div>
+
+
+
+
+
 
     );
   }

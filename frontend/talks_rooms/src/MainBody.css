@@ -1,8 +1,12 @@
-.data-container {}
+.data-container {
+      position: relative;
+}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 425px) {
   .data-container {
+    height: 640px;
     overflow-x: scroll;
     position: relative;
+    z-index: 15;
   }
 }

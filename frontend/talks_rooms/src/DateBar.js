@@ -52,7 +52,7 @@ class DateBar extends Component {
 
   render() {
     let width=document.documentElement.clientWidth;
-    let numberOfMonth=width<600 ? 1 : 3;
+    let numberOfMonth=width<=425 ? 1 : 3;
     let selectedDate=converterDate(this.state.selectedDay);
     let currentDate=converterDate(new Date());
 

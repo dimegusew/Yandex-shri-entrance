@@ -66,8 +66,6 @@ class EventEdit extends Component {
   }
 
   render() {
-    console.log(this.date)
-    console.log("ddddddddddd")
     let splitDate = this.props.dateToNewEvent.split(".");
     let convertedDate = splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
 

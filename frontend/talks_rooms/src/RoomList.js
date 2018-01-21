@@ -50,6 +50,7 @@ componentWillReceiveProps(nextProps){
 
 
 
+
 render() {
 
 if (this.props.data.loading) {
@@ -64,7 +65,7 @@ if (this.props.data.error) {
 else {
   let roomsGroupedByFloor=this.roomsHandler(this.props.data.rooms)
     return (
-      <div className="event-background">
+      <div className="event-background" onScroll={this.onScroll}>
       <div className='room-list'>
         {roomsGroupedByFloor.map((el,i)=>
           <Floor floorNumber={Object.keys(el)}

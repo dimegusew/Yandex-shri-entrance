@@ -20,6 +20,7 @@ class MainBody extends Component {
   }
 
 
+
   choosingDate=(date)=>
   {
     this.setState({
@@ -36,6 +37,10 @@ class MainBody extends Component {
     nextProps.viewedDate(formated)
   }
 
+  onScroll=(ev)=>{
+    console.log( )
+  }
+
   render() {
 
     if (this.props.data.loading) {
@@ -49,7 +54,7 @@ class MainBody extends Component {
 
     else {
     return (
-      <div className="data-container">
+      <div className="data-container" onScroll={this.onScroll}>
         <DateTimeBar choosingDate={this.choosingDate}
 
         />

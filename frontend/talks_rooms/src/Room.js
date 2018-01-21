@@ -3,6 +3,13 @@ import './Room.css';
 
 
 class Room extends Component {
+  onScroll(event) {
+
+  console.log(event)
+  console.log("roomevent")
+}
+
+
 
   render() {
     let myStyle= this.props.enabled ?
@@ -18,7 +25,7 @@ class Room extends Component {
         <div className="name" style={myStyle}>{this.props.name}</div>
         <div className="capacity">до {this.props.capacity} человек</div>
     </div>
-    <div className="back" style={myStyle}>{this.props.name}</div>
+    <div className="back"style={myStyle}>{this.props.name}</div>
   </div>
     );
   }

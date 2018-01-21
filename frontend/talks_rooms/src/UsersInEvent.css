@@ -37,3 +37,19 @@ img.close {
   margin-bottom: 4px;
   width: 10px;
 }
+
+
+
+@media screen and (max-width: 425px) {
+  img.close {
+  position: absolute;
+  left: 306px;
+
+  }
+
+  .user-in-event {
+  width: 330px;
+  position: relative;
+  }
+
+}

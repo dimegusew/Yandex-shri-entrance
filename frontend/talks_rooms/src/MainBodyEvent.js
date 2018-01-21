@@ -5,10 +5,13 @@ import UsersInEvent from "./UsersInEvent";
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag'
 import close from './images/close.svg'
+import arrowRotate from './images/arrowRotate.svg'
+import arrowRotateBack from './images/arrowRotateBack.svg'
 import Cleave from 'cleave.js/react';
 import RecomendedRooms from './RecomendedRooms.js'
 import BottomBar from "./BottomBar";
 import converterFromServerTime from "./functions/converterFromServerTime"
+import convertDate from './functions/convertDate.js'
 
 
 class Users extends Component {
@@ -58,7 +61,10 @@ class MainBodyEvent extends Component {
       timeEndValid : this.props.timeToNewEvent.end || this.props.isEditedPage ? true : false,
       dateValid : this.props.dateToNewEvent || this.props.isEditedPage ? true : false,
       choosedRoom : '',
-      roomToNewEvent:this.props.roomToNewEvent
+      roomToNewEvent:this.props.roomToNewEvent,
+      isTitleButtonActive:false,
+      isUsersButtonActive:false,
+      isUsersListOpen:true
     }
   }
 
@@ -94,6 +100,7 @@ class MainBodyEvent extends Component {
       case "title" :
          this.setState({
            EventTitle : change.target.value,
+           isTitleButtonActive : change.target.value ? true:false
          })
 
          var title=change.target.value
@@ -105,7 +112,8 @@ class MainBodyEvent extends Component {
         viewedUsers=this.props.users.filter((el)=>
             el.login.indexOf(change.target.value)!=-1);
         this.setState({
-          viewedUsers : viewedUsers
+          viewedUsers : viewedUsers,
+          isUsersButtonActive:change.target.value.length ? true : false
         })
         break;
 
@@ -142,9 +150,6 @@ class MainBodyEvent extends Component {
   }
 
 
-
-
-
   dateHandler=(date)=>{
     if (date){
       let year= date.getFullYear();
@@ -161,9 +166,6 @@ class MainBodyEvent extends Component {
       choosedRoom:room,
       roomSwap: roomSwap[0]
     })
-
-    console.log("swaapppeed")
-    console.log(roomSwap)
     this.props.roomHandler(room)
   }
 
@@ -173,23 +175,49 @@ closedButtonHandler=()=>{
 }
 
 
+titleButtonHandler=()=>{
+  this.setState({
+   EventTitle : "",
+   isTitleButtonActive : false
+  })
+}
+
+usersButtonHandler=()=>{
+  this.setState({
+   isUsersButtonActive : true,
+   isUsersListOpen:!this.state.isUsersListOpen
+  })
+}
+
+componentWillUpdate=()=>{
+  console.log(document.documentElement.clientWidth)
+  console.log("document.documentElement.clientWidth")
+}
+
+
   render() {
-    // console.log(this.props.isCreateButtonPushed)
+    let pageWidth= document.documentElement.clientWidth;
+    let currentTime=new Date();
+    let time=currentTime.getHours() + ":"+ (currentTime.getMinutes()<10 ? ("0"+currentTime.getMinutes()) : currentTime.getMinutes() )
+    let timeEnd=currentTime.getHours()+1 + ":"+ currentTime.getMinutes()
+
     let TimeStartValid = this.state.timeStart ? (this.state.timeStart.length===5) :false
     let TimeEndValid = this.state.timeEnd ? (this.state.timeEnd.length===5) :false
     let timeValid =TimeStartValid && TimeEndValid
-    // console.log(timeValid)
     let titleValid=this.state.EventTitle
     let dateValid=this.state.date
-    // console.log(!!this.state.choosedRoom)
     let formValid=dateValid&&titleValid&&timeValid && !!this.state.choosedRoom
 
     let width = document.documentElement.clientWidth
-    let inputfieldWidth = width<600 ? "320px" : "409px"
+    let inputfieldWidth = width<=425 ? "320px" : "409px";
+    let inputTimeFieldWidth = pageWidth<=425 ? "143px" :"60px";
+    // let marginTop={"paddingTop":"139px"};
+
     return (
       <div>
       <div className="event-edit-container">
-        <div className="event-edit">
+        {pageWidth<=425 ?
+          <div className="event-edit">
             <div className="left-side">
               <h3>{this.props.isEditedPage ? "Редактирование встречи": "Новая встреча"}</h3>
               <InputField title={"Тема"} placeholder={"О чем будете говорить?"}
@@ -198,25 +226,151 @@ closedButtonHandler=()=>{
                   type={"text"}
                   width={inputfieldWidth}
                   value={this.state.EventTitle}
+                  img={close}
+                  inputButtonHandler={this.titleButtonHandler}
+                  isButtonActive={this.state.isTitleButtonActive}
               />
-              <InputField title={"Участники"} placeholder={`Например, ${this.props.users[0].login}`}
-                onChange={this.onInputHandler}
-                id ={"users"}
-                type={"text"}
-                width={inputfieldWidth}
-                >
+              <div className="date-time-input">
+
+
+              <InputField title={pageWidth<425 ? "Дата и время" :"Дата"} placeholder={"Дата"}
+                  onChange={this.dateHandler}
+                  id={"date"}
+                  type={"date"}
+                  width={"198px"}
+                  value={this.props.dateToNewEvent}
+              />
+              <span>
+              <InputField title={"Начало"} placeholder={`${time}`}
+                  onChange={this.onInputHandler}
+                  id={"time-start"}
+                  type={"time"}
+                  width={inputTimeFieldWidth}
+                  value={this.state.timeStart}
+              />
+              <div className="dash">–</div>
+              <InputField title={"Конец"} placeholder={`${timeEnd}`}
+                  onChange={this.onInputHandler}
+                  id={"time-end"}
+                  type={"time"}
+                  width={inputTimeFieldWidth}
+                  value={this.state.timeEnd}
+              />
+
+            </span>
+
+
+            </div>
+            <div className="delimeter"></div>
+            <div className={"user-choose"}>
+            <InputField  title={"Участники"} placeholder={`Например, ${this.props.users[0].login}`}
+              onChange={this.onInputHandler}
+              id ={"users"}
+              type={"text"}
+              width={inputfieldWidth}
+              img={this.state.isUsersListOpen ? arrowRotate : arrowRotateBack}
+              inputButtonHandler={this.usersButtonHandler}
+              isButtonActive={this.state.isUsersButtonActive}
+              // onFocus={this.usersButtonHandler}
+              >
+                {this.state.isUsersListOpen ?
                   <Users
                      users={this.state.viewedUsers}
                      className="list"
                      choosedUser={this.choosedUser}
-                   />
-              </InputField>
+                   /> : "" }
 
+
+            </InputField>
+            <UsersInEvent
+              addedUsers={this.state.addedUsers}
+              removedUser={this.removedUser}
+            />
+          </div>
+          <div className="delimeter"></div>
+          {timeValid ?
+
+            <RecomendedRooms
+              roomToNewEvent={ this.state.roomToNewEvent}
+              roomToEdit={ this.props.eventToEdit.room}
+              roomHandler={this.roomHandler}
+              db={{"rooms":this.props.rooms,"events":this.props.events}}
+              members= {this.state.addedUsers}
+              time={{"start": this.state.date+("T"+this.state.timeStart+":00.981Z"),
+               "end": this.state.date+ ("T"+this.state.timeEnd+":00.981Z")}}
+            />
+         : ""}
+         <BottomBar
+           formValid={formValid}
+           deleteIsPermitted={this.props.deleteIsPermitted}
+           eventDeletedHandler={this.props.eventDeletedHandler}
+           isEditedPage={this.props.isEditedPage}
+           eventToEdit={this.props.eventToEdit}
+           allRooms={this.props.allRooms}
+           cancelHandler={this.props.cancelHandler}
+           createHandler={this.props.createHandler}
+           eventEditedHandler={this.props.eventEditedHandler}
+           dataToServer={{
+                 "dateStart": this.state.date+("T"+this.state.timeStart+":00.981Z"),
+                 "dateEnd": this.state.date+ ("T"+this.state.timeEnd+":00.981Z"),
+                  "room":this.state.choosedRoom,
+                  "users" : this.state.addedUsers,
+                 "title" :  this.state.EventTitle,
+                 "roomSwap" : this.state.roomSwap }}
+         />
+            </div>
+
+
+          </div>
+
+
+
+           :
+
+
+
+        <div className="event-edit">
+          {/* {pageWidth ? : } */}
+
+            <div className="left-side">
+              <h3>{this.props.isEditedPage ? "Редактирование встречи": "Новая встреча"}</h3>
+              <InputField title={"Тема"} placeholder={"О чем будете говорить?"}
+                  onChange={this.onInputHandler}
+                  id={"title"}
+                  type={"text"}
+                  width={inputfieldWidth}
+                  value={this.state.EventTitle}
+                  img={close}
+                  inputButtonHandler={this.titleButtonHandler}
+                  isButtonActive={this.state.isTitleButtonActive}
+              />
+              <div className={"user-choose"}>
+              <InputField  title={"Участники"} placeholder={`Например, ${this.props.users[0].login}`}
+                onChange={this.onInputHandler}
+                id ={"users"}
+                type={"text"}
+                width={inputfieldWidth}
+                img={this.state.isUsersListOpen ? arrowRotate : arrowRotateBack}
+                inputButtonHandler={this.usersButtonHandler}
+                isButtonActive={this.state.isUsersButtonActive}
+                // onFocus={this.usersButtonHandler}
+                >
+                  {this.state.isUsersListOpen ?
+                    <Users
+                       users={this.state.viewedUsers}
+                       className="list"
+                       choosedUser={this.choosedUser}
+                     /> : "" }
+
+
+              </InputField>
               <UsersInEvent
                 addedUsers={this.state.addedUsers}
                 removedUser={this.removedUser}
               />
+            </div>
               </div>
+
   <div className="left-side">
     <h4>
       <div className="big-close-button">
@@ -226,28 +380,30 @@ closedButtonHandler=()=>{
     <div className="date-time-input">
 
 
-    <InputField title={"Дата"} placeholder={"Дата"}
+    <InputField title={pageWidth<425 ? "Дата и время" :"Дата"} placeholder={"Дата"}
         onChange={this.dateHandler}
         id={"date"}
         type={"date"}
-        width={"228px"}
+        width={"198px"}
         value={this.props.dateToNewEvent}
     />
-    <InputField title={"Начало"} placeholder={"Время"}
+    <span>
+    <InputField title={"Начало"} placeholder={`${time}`}
         onChange={this.onInputHandler}
         id={"time-start"}
         type={"time"}
-        width={"60px"}
+        width={inputTimeFieldWidth}
         value={this.state.timeStart}
     />
     <div className="dash">–</div>
-    <InputField title={"Конец"} placeholder={"Время"}
+    <InputField title={"Конец"} placeholder={`${timeEnd}`}
         onChange={this.onInputHandler}
         id={"time-end"}
         type={"time"}
-        width={"60px"}
+        width={inputTimeFieldWidth}
         value={this.state.timeEnd}
     />
+  </span>
 
   </div>
   {timeValid ?
@@ -265,9 +421,10 @@ closedButtonHandler=()=>{
 
 </div>
 </div>
-
+}
 </div>
-<BottomBar
+{pageWidth>425 ?
+  <BottomBar
   formValid={formValid}
   deleteIsPermitted={this.props.deleteIsPermitted}
   eventDeletedHandler={this.props.eventDeletedHandler}
@@ -285,6 +442,8 @@ closedButtonHandler=()=>{
         "title" :  this.state.EventTitle,
         "roomSwap" : this.state.roomSwap }}
 />
+: ""}
+
 </div>
     );
   }
