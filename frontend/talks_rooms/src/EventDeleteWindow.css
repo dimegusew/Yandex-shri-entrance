@@ -58,7 +58,7 @@
 
 @media screen and (max-width: 425px) {
   .evet-delete-window div {
-    top:30%;
+    top:20%;
     width: 100%;
   }
 }
