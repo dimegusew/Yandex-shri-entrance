@@ -7,7 +7,7 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { compose } from "react-apollo";
 
-import EventIsCreatedWindow from './EventIsCreatedWindow.js'
+import EventIsCreatedWindow from "./EventIsCreatedWindow.js";
 
 class EventEdit extends Component {
   constructor(props) {
@@ -16,15 +16,13 @@ class EventEdit extends Component {
       membersInEvent: [],
       title: "",
       events: [],
-      // isCreateButtonPushed : false,
-      dataToServer : [],
+      dataToServer: []
     };
   }
 
-  createHandler = (data) => {
-    ("create handler")
+  createHandler = data => {
+    ("create handler");
     this.props.createHandler(data);
-
   };
 
   addedUsersHandler = users => {
@@ -45,19 +43,11 @@ class EventEdit extends Component {
     });
   };
 
-  dataToServerHandler=(data)=>{
-    //  (data)
-    // this.setState({
-    //   dateToServer : data
-    // })
-
-    (data)
-    this.date=data;
-    ("date")
-  }
-
-
-
+  dataToServerHandler = data => {
+    data;
+    this.date = data;
+    ("date");
+  };
 
   componentWillReceiveProps(nextProps) {
     nextProps.eventsQuery.events
@@ -92,8 +82,6 @@ class EventEdit extends Component {
     } else {
       return (
         <div>
-          {/* <UpperBar/> */}
-          {/* <EventIsCreatedWindow/> */}
           <MainBodyEvent
             deleteIsPermitted={this.props.deleteIsPermitted}
             isEditedPage={this.props.isEditedPage}
@@ -115,10 +103,7 @@ class EventEdit extends Component {
             eventToEdit={this.props.eventToEdit}
             eventEditedHandler={this.props.eventEditedHandler}
             eventDeletedHandler={this.props.eventDeletedHandler}
-            // roomToServer={this.roomToServerHandler}
-            // timeToServer={this.timeToServerHandler}
-            // usersToServer={this.usersToSererHandler}
-            isCreateButtonPushed ={this.props.createButtonPush}
+            isCreateButtonPushed={this.props.createButtonPush}
           />
         </div>
       );

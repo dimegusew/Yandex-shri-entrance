@@ -10,7 +10,7 @@ import ApolloClient, { createNetworkInterface } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import EventEdit from "./EventEdit.js";
 import EventIsCreatedWindow from "./EventIsCreatedWindow.js";
-import EventDeleteWindow from './EventDeleteWindow.js'
+import EventDeleteWindow from "./EventDeleteWindow.js";
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -29,20 +29,19 @@ class App extends Component {
       createButtonPush: false,
       iseventCreatedOpen: false,
       dataToEventsCreatedWindow: [],
-      isEditedPage : false,
-      eventToEdit : {},
-      eventDeletePageIsOpen : false,
-      deleteIsPermitted:false,
+      isEditedPage: false,
+      eventToEdit: {},
+      eventDeletePageIsOpen: false,
+      deleteIsPermitted: false
     };
   }
-  pushingCreateButtonHandler = () => { // обработчик нажатий на кнопку создать
+  pushingCreateButtonHandler = () => {
+    // обработчик нажатий на кнопку создать
     this.setState({
       isEventEditPage: true,
       roomToNewEvent: null,
-      createButtonPush:true,
-        isEditedPage :false
-
-
+      createButtonPush: true,
+      isEditedPage: false
     });
   };
 
@@ -58,68 +57,66 @@ class App extends Component {
     this.setState({
       isEventEditPage: false,
       timeToNewEvent: { start: "", end: "" },
-      isEditedPage :false,
-      eventToEdit : {}
+      isEditedPage: false,
+      eventToEdit: {}
     });
   };
 
   dateHandler = date => {
-    let fulldateDate=date.split(".")
-    let [day,month,year]=fulldateDate
+    let fulldateDate = date.split(".");
+    let [day, month, year] = fulldateDate;
     this.setState({
       dateToNewEvent: `${year}-${month}-${day}`
     });
   };
-
 
   componentDidMount() {
     this.setState({});
     createButtonPush: false;
   }
 
-  createHandler = event => { // обработчик нажатий на свободный слот диаграммы
+  createHandler = event => {
+    // обработчик нажатий на свободный слот диаграммы
     this.setState({
       isEventEditPage: false,
       iseventCreatedOpen: true,
-      isEditedPage :false,
+      isEditedPage: false,
       dataToEventsCreatedWindow: event,
-      eventToEdit : {}
+      eventToEdit: {}
     });
   };
 
-  eventEditHandler=(eventToEdit)=>{
+  eventEditHandler = eventToEdit => {
     this.setState({
-      isEditedPage :true,
+      isEditedPage: true,
       isEventEditPage: true,
-      eventToEdit : eventToEdit
-    })
-  }
+      eventToEdit: eventToEdit
+    });
+  };
 
-  eventEditedHandler=()=>{
+  eventEditedHandler = () => {
     this.setState({
       isEventEditPage: false,
-      isEditedPage :false,
-      eventToEdit : {}
-    })
-  }
+      isEditedPage: false,
+      eventToEdit: {}
+    });
+  };
 
-  eventDeletedHandler=(condition)=>{
-    if(!condition){
-    this.setState({
-      eventDeletePageIsOpen : true
-
-    })
-  }
-  else{
-    this.setState({
-        isEventEditPage:false,
-        deleteIsPermitted:false,
-        isEditedPage : false
-      })
-}}
+  eventDeletedHandler = condition => {
+    if (!condition) {
+      this.setState({
+        eventDeletePageIsOpen: true
+      });
+    } else {
+      this.setState({
+        isEventEditPage: false,
+        deleteIsPermitted: false,
+        isEditedPage: false
+      });
+    }
+  };
 
   eventIsCreatedHander = () => {
-
     this.setState({
       isEventEditPage: false,
       iseventCreatedOpen: false,
@@ -127,24 +124,21 @@ class App extends Component {
     });
   };
 
-
-  eventDeleteWindowHandler=(command)=>{
-    if (command==="cancel"){
+  eventDeleteWindowHandler = command => {
+    if (command === "cancel") {
       this.setState({
-        eventDeletePageIsOpen : false,
-        deleteIsPermitted : false,
-
-      })}
-
-      else if(command==="delete") {
-        this.setState({
-          eventDeletePageIsOpen : false,
-          deleteIsPermitted : true,
-          // eventToEdit : {}
-          //isEventEditPage:false
-        })
+        eventDeletePageIsOpen: false,
+        deleteIsPermitted: false
+      });
+    } else if (command === "delete") {
+      this.setState({
+        eventDeletePageIsOpen: false,
+        deleteIsPermitted: true
+        // eventToEdit : {}
+        //isEventEditPage:false
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -158,16 +152,19 @@ class App extends Component {
           ) : (
             ""
           )}
-          {this.state.eventDeletePageIsOpen ?
-          <EventDeleteWindow
-            eventDeleteWindowHandler={this.eventDeleteWindowHandler}
+          {this.state.eventDeletePageIsOpen ? (
+            <EventDeleteWindow
+              eventDeleteWindowHandler={this.eventDeleteWindowHandler}
             />
-        : ""}
+          ) : (
+            ""
+          )}
 
           <AppContainer>
             <UpperBar
               onClick={this.pushingCreateButtonHandler}
-              isEventEditPage={this.state.isEventEditPage}/>
+              isEventEditPage={this.state.isEventEditPage}
+            />
             {this.state.isEventEditPage ? (
               <EventEdit
                 deleteIsPermitted={this.state.deleteIsPermitted}
@@ -182,7 +179,6 @@ class App extends Component {
                 eventEditedHandler={this.eventEditedHandler}
                 eventDeletedHandler={this.eventDeletedHandler}
               />
-
             ) : (
               <MainBody
                 timeToNewEvent={this.timeToNewEventHandler}

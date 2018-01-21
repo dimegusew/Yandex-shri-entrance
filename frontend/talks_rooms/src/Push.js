@@ -4,10 +4,9 @@ import gql from "graphql-tag";
 import CreateButton from "./CreateButton";
 
 class Push extends Component {
-
-  onClick=()=>{
-     let allRooms = this.props.allRooms;
-    (this.props.dataToServer)
+  onClick = () => {
+    let allRooms = this.props.allRooms;
+    this.props.dataToServer;
     let date = {
       title: this.props.dataToServer.title,
       dateStart: this.props.dataToServer.dateStart,
@@ -22,67 +21,32 @@ class Push extends Component {
       room: currentRoom
     };
 
-
-        this.props
-          .mutate({
-            variables: {
-              in1: date,
-              in2: usersIds,
-              in3: roomId
-            }
-          })
-          .then(({ data }) => {
-            ("got data", data);
-          this.props.onClick(datePushedToServer);
-          })
-          .catch(error => {
-            ("there was an error sending the query", error);
-          });
-  }
-
-
-  // onClick = () => {
-  //   let date = {
-  //     title: this.props.dataToServer.title,
-  //     dateStart: this.props.dataToServer.date.dateStart,
-  //     dateEnd: this.props.dataToServer.date.dateEnd
-  //   };
-  //   let usersIds = this.props.dataToServer.members.map(el => el.id);
-  //   let roomId = this.props.dataToServer.room;
-  //   let allRooms = this.props.allRooms;
-  //   let currentRoom = allRooms.filter(el => el.id === roomId)[0];
-  //   let datePushedToServer = {
-  //     date: date,
-  //     room: currentRoom
-  //   };
-  //
-  //   this.props
-  //     .mutate({
-  //       variables: {
-  //         in1: date,
-  //         in2: usersIds,
-  //         in3: roomId
-  //       }
-  //     })
-  //     .then(({ data }) => {
-  //       ("got data", data);
-  //       //this.props.onClick(datePushedToServer);
-  //     })
-  //     .catch(error => {
-  //       ("there was an error sending the query", error);
-  //     });
-  // };
+    this.props
+      .mutate({
+        variables: {
+          in1: date,
+          in2: usersIds,
+          in3: roomId
+        }
+      })
+      .then(({ data }) => {
+        "got data", data;
+        this.props.onClick(datePushedToServer);
+      })
+      .catch(error => {
+        "there was an error sending the query", error;
+      });
+  };
 
   render() {
-    let formValid=this.props.formValid
+    let formValid = this.props.formValid;
 
     return (
       <div>
-
-        <CreateButton text={"Создать встречу"}
+        <CreateButton
+          text={"Создать встречу"}
           onClick={this.onClick}
           disabled={!this.props.formValid}
-
         />
       </div>
     );

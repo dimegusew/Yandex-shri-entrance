@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./RecomendedRooms.css";
 import getRecommendation from "./functions/getRecomendation.js";
-import close from './images/close.svg'
+import close from "./images/close.svg";
 
 class RecomendedRoom extends Component {
   constructor(props) {
@@ -49,10 +49,12 @@ class RecomendedRoom extends Component {
             {this.convertDate(this.props.date.end)}
           </span>
           <span>
-          {this.props.title} · {this.props.floor + " этаж"}
-        </span>
+            {this.props.title} · {this.props.floor + " этаж"}
+          </span>
           {this.props.roomIsChoosed ? (
-            <span onClick={this.onCancelRoom}><img src={close}/></span>
+            <span onClick={this.onCancelRoom}>
+              <img src={close} />
+            </span>
           ) : (
             ""
           )}
@@ -65,9 +67,10 @@ class RecomendedRoom extends Component {
 class RecomendedRooms extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.roomToEdit)
+    console.log(this.props.roomToEdit);
     this.state = {
-      roomIsChoosed: this.props.roomToNewEvent || this.props.roomToEdit ? true : false,
+      roomIsChoosed:
+        this.props.roomToNewEvent || this.props.roomToEdit ? true : false,
       choosingRoomId: null
     };
   }
@@ -85,15 +88,15 @@ class RecomendedRooms extends Component {
       this.props.db,
       this.props.members
     );
-    console.log(recomendedRooms[0])
-    let roomSwap= !!recomendedRooms[0]? recomendedRooms[0].roomSwap : []
+    console.log(recomendedRooms[0]);
+    let roomSwap = !!recomendedRooms[0] ? recomendedRooms[0].roomSwap : [];
 
     this.setState({
       choosingRoomId: roomId,
       roomSwap: roomSwap
     });
 
-    this.props.roomHandler(roomId,roomSwap);
+    this.props.roomHandler(roomId, roomSwap);
   };
 
   cancelRoom = () => {
@@ -102,7 +105,7 @@ class RecomendedRooms extends Component {
       choosingRoomId: null
     });
   };
-  componentDidUnmount=()=>{
+  componentDidUnmount = () => {
     this.setState({
       roomIsChoosed: false
     });
@@ -115,15 +118,15 @@ class RecomendedRooms extends Component {
       this.props.members
     );
 
-
     let choosedFromMainPageRoom = this.props.db.rooms.filter(
       el => el.id === this.props.roomToNewEvent
     );
 
-    let editedRoom = this.props.roomToEdit ? this.props.db.rooms.filter(
-      el => el.id === this.props.roomToEdit.id ) : {};
+    let editedRoom = this.props.roomToEdit
+      ? this.props.db.rooms.filter(el => el.id === this.props.roomToEdit.id)
+      : {};
 
-    let roomToEdit=editedRoom[0]
+    let roomToEdit = editedRoom[0];
 
     return (
       <div className="recomendation-field">
@@ -134,11 +137,23 @@ class RecomendedRooms extends Component {
         </p>
         {this.state.roomIsChoosed ? (
           <RecomendedRoom
-            title={this.props.roomToEdit? roomToEdit.title : choosedFromMainPageRoom[0].title }
-            floor={this.props.roomToEdit? roomToEdit.floor :choosedFromMainPageRoom[0].floor}
+            title={
+              this.props.roomToEdit
+                ? roomToEdit.title
+                : choosedFromMainPageRoom[0].title
+            }
+            floor={
+              this.props.roomToEdit
+                ? roomToEdit.floor
+                : choosedFromMainPageRoom[0].floor
+            }
             date={this.props.time}
             onClick={this.onClick}
-            id={this.props.roomToEdit? roomToEdit.id : choosedFromMainPageRoom[0].id}
+            id={
+              this.props.roomToEdit
+                ? roomToEdit.id
+                : choosedFromMainPageRoom[0].id
+            }
             roomChoosedFromMainPage={this.state.roomIsChoosed}
             choosedRoom={this.state.roomIsChoosed}
             cancelRoom={this.cancelRoom}

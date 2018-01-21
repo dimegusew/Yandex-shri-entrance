@@ -40,13 +40,15 @@ class CurrentTime extends Component {
       ":" +
       (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes());
     let myStyle = { left: this.state.pointerPosition + "%" };
-    let timetrue=(this.state.pointerPosition<100) && this.state.pointerPosition>0
+    let timetrue =
+      this.state.pointerPosition < 100 && this.state.pointerPosition > 0;
     let dateTrue =
       convertDate(this.props.choosingDate).fullDate ==
       convertDate(this.state.date).fullDate;
-    let visible = dateTrue && timetrue
-      ? { visibility: "visible" }
-      : { visibility: "hidden" };
+    let visible =
+      dateTrue && timetrue
+        ? { visibility: "visible" }
+        : { visibility: "hidden" };
     return (
       <div style={visible}>
         <div className="current-time" style={myStyle}>

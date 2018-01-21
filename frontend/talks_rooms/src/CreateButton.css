@@ -28,3 +28,10 @@
   background-color:#E9ECEF;
   color:black;
 }
+
+@media screen and (max-width: 425px) {
+  .createButton {
+    font-size: 15px;
+    width:160px;
+  }
+}

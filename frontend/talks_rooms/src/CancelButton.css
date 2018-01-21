@@ -39,4 +39,8 @@
   ::-webkit-scrollbar {
     display: none;
   }
+  .cancelButton {
+    font-size: 15px;
+    padding-left: 13px;
+  }
 }

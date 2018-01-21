@@ -49,6 +49,7 @@ body{
   }
   .App {
     /* min-width: 360px; */
+    font-size: 15px;
   }
   ::-webkit-scrollbar {
     display: none;

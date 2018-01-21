@@ -43,13 +43,23 @@ img.close {
 @media screen and (max-width: 425px) {
   img.close {
   position: absolute;
+  margin-top: 10px;
   left: 306px;
 
+  }
+  .avatar {
+    max-width: 32px;
+    min-width: 32px;
   }
 
   .user-in-event {
   width: 330px;
   position: relative;
+  height: 32px;
+  }
+  .user-in-event div {
+    margin-top: 7px;
+    margin-bottom: 8px;
   }
 
 }

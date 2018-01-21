@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./EventDiagram.css";
 import AddButton from "./AddButton.js";
-import editLogo from './images/edit.svg'
-import LittleEventEditButton from './LittleEventEditButton.js'
+import editLogo from "./images/edit.svg";
+import LittleEventEditButton from "./LittleEventEditButton.js";
 
 class Tooltip extends Component {
   convertDateTime(date) {
@@ -34,54 +34,54 @@ class Tooltip extends Component {
     };
   }
 
-  eventEditHandler=()=>{
-    let event =this.props.event;
-    this.props.eventEdit(event)
-  }
-
-
+  eventEditHandler = () => {
+    let event = this.props.event;
+    this.props.eventEdit(event);
+  };
 
   render() {
-      let event = this.props.event;
-      let numberOfUsers = event.users.length;
-      return (
-        <span className="tooltiptext">
+    let event = this.props.event;
+    let numberOfUsers = event.users.length;
+    return (
+      <span className="tooltiptext">
+        <span>
+          <h3> {event.title} </h3>
+          <LittleEventEditButton onClick={this.eventEditHandler} />
+        </span>
+        <div className="date-room">
+          {this.convertDateTime(event.dateStart).date}
+          , {this.convertDateTime(event.dateStart).time}
+          —{this.convertDateTime(event.dateEnd).time} ⋅ {event.room.title}
+        </div>
+
+        <div className="user">
+          {numberOfUsers ? <img src={event.users[0].avatarUrl} /> : ""}
           <span>
-            <h3> {event.title} </h3>
-            <LittleEventEditButton onClick={this.eventEditHandler}/>
-
-          </span>
-          <div className="date-room">
-            {this.convertDateTime(event.dateStart).date}
-            , {this.convertDateTime(event.dateStart).time}
-            —{this.convertDateTime(event.dateEnd).time} ⋅ {event.room.title}
-          </div>
-
-          <div className="user">
-            {numberOfUsers ? <img src={event.users[0].avatarUrl} /> : ""}
-            <span>
-              {!numberOfUsers ? (
-                "Нет участников"
-              ) : (
-                <div className="users-info">
-                  {event.users[0].login}
-                  {numberOfUsers>1 ?
+            {!numberOfUsers ? (
+              "Нет участников"
+            ) : (
+              <div className="users-info">
+                {event.users[0].login}
+                {numberOfUsers > 1 ? (
                   <span>
                     &nbsp;{"и " +
-                      (numberOfUsers-1) +
+                      (numberOfUsers - 1) +
                       " участник" +
-                      (numberOfUsers == 2 ? "" : numberOfUsers < 4 ? "а" : "ов")}
+                      (numberOfUsers == 2
+                        ? ""
+                        : numberOfUsers < 4 ? "а" : "ов")}
                   </span>
-                  :"  "
-                }
-                </div>
-              )}
-            </span>
-          </div>
-        </span>
-      );
-    }
+                ) : (
+                  "  "
+                )}
+              </div>
+            )}
+          </span>
+        </div>
+      </span>
+    );
   }
+}
 
 class Cursor extends React.Component {
   render() {
@@ -91,7 +91,7 @@ class Cursor extends React.Component {
     };
 
     return (
-      <div className="Cursor" onClick={this.props.onClick} style={myStyle} >
+      <div className="Cursor" onClick={this.props.onClick} style={myStyle}>
         +
       </div>
     );
@@ -165,10 +165,11 @@ class Event extends React.Component {
         onMouseEnter={this.mouseEnterHandler}
         onMouseMove={this.props.onMouseEnter}
       >
-        {this.state.isClicked ?
-          <Tooltip event={event}
-            eventEdit={this.props.eventEditHandler }
-        /> : ""}
+        {this.state.isClicked ? (
+          <Tooltip event={event} eventEdit={this.props.eventEditHandler} />
+        ) : (
+          ""
+        )}
       </div>
     );
   }
@@ -208,21 +209,28 @@ class EventDiagram extends Component {
     this.hovered(false);
   };
 
-  getTimeFromPosition(position){
-  	let time=(position)*0.909+480;
-  	let hourStart=time/60^0;
-    let hourEnd=hourStart+1;
-  	let min=parseInt(time%60);
-  	(min<10 ? "0"+ min : min)
-  	return {"start" : (hourStart<10 ? "0"+ hourStart : hourStart)  +":"+ (min<10 ? "0"+ min : min),
-  				 "end": (hourEnd<10 ? "0"+ hourEnd : hourEnd) +":"+ (min<10 ? "0"+ min : min) }
+  getTimeFromPosition(position) {
+    let time = position * 0.909 + 480;
+    let hourStart = (time / 60) ^ 0;
+    let hourEnd = hourStart + 1;
+    let min = parseInt(time % 60);
+    min < 10 ? "0" + min : min;
+    return {
+      start:
+        (hourStart < 10 ? "0" + hourStart : hourStart) +
+        ":" +
+        (min < 10 ? "0" + min : min),
+      end:
+        (hourEnd < 10 ? "0" + hourEnd : hourEnd) +
+        ":" +
+        (min < 10 ? "0" + min : min)
+    };
   }
 
-
-  onClick = (event) => {
-    let room=event.target.id;
-    let choosedTime=this.getTimeFromPosition(this.state.xCoordinate);
-    this.props.timeToNewEvent(choosedTime,room)
+  onClick = event => {
+    let room = event.target.id;
+    let choosedTime = this.getTimeFromPosition(this.state.xCoordinate);
+    this.props.timeToNewEvent(choosedTime, room);
   };
 
   render() {
