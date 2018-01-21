@@ -145,10 +145,36 @@ line-height: 17px; */
   }
   .Event .tooltiptext {
     width: 95%;
+    height: 129px;
     z-index: 180;
     position: fixed;
     top:60%;
     left: 0%;
     margin-left: 1px;
+  }
+  .Event span h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+
+  }
+  .date-room {
+    margin-top: -3px;
+   font-size: 15px;
+  }
+  .user img {
+    width: 32px;
+    height: 32px;
+    margin-top: 16px;
+  }
+  .users-info {
+    font-size:15px;
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+  }
+  .users-info {
+    padding-top: 12px;
   }
 }

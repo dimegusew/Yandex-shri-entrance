@@ -132,7 +132,7 @@ font-size: 13px;
   .left-side {
     margin-left: 16px;
     margin-right: 32px;
-    width: 360px;
+    width: 100%;
     min-height: 200px;
   }
   .event-edit {
@@ -161,7 +161,6 @@ font-size: 13px;
   .delimeter {
     min-width:360px;
     margin-top: 8px;
-    width:100%;
     margin-left: -16px;
     height:8px;
     background-color: #E9ECEF;

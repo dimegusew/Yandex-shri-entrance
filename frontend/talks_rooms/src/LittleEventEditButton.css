@@ -30,3 +30,19 @@
 .event-edit-button:hover img {
   opacity: 1;
 }
+
+
+.event-edit-button img {
+  /* margin: 1px; */
+  opacity: 0.4;
+  width: 12px;
+  height: 12px;
+  padding: 6.5px 9px 8px 6px;
+}
+
+@media screen and (max-width: 425px) {
+  .event-edit-button  {
+    bottom: 89px;
+  }
+
+}

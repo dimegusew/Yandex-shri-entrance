@@ -24,7 +24,7 @@
   }
   .room-list {
     width: 181px;
-    min-height: 590px;
+    min-height: 510px;
       padding-top: 0px;
       background-color: #F6F7F9;
 
@@ -32,7 +32,7 @@
   .event-background {
     margin-top: -1px;
     box-shadow: 5px 5px 4 4 #E9ECEF;
-    min-height: 600px;
+    min-height: 200px;
     z-index: 9;
     /* overflow-x: scroll; */
     /* height: 890px; */

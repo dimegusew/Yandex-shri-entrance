@@ -82,6 +82,8 @@
     z-index: 99;
     background-color: white;
     padding-top: 50px;
+      justify-content: center;
+      padding-left: 0px;
   }
   .date-bar p {
     min-width: 220px;
