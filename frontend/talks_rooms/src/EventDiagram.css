@@ -144,7 +144,7 @@ line-height: 17px; */
     position: absolute;
   }
   .Event .tooltiptext {
-    width: 344px;
+    width: 95%;
     z-index: 180;
     position: fixed;
     top:60%;

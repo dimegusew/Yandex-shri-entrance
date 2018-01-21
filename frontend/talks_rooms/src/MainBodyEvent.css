@@ -161,6 +161,7 @@ font-size: 13px;
   .delimeter {
     min-width:360px;
     margin-top: 8px;
+    width:100%;
     margin-left: -16px;
     height:8px;
     background-color: #E9ECEF;

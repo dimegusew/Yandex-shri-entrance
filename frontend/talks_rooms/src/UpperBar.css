@@ -17,6 +17,7 @@
     height: 49px;
     position: fixed;
     z-index: 100;
+    left: 0;
   }
   .upper-side img {
     margin: 15.8px 20.5px 11.3px 20.5px;

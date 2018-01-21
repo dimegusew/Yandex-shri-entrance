@@ -62,6 +62,7 @@ class MainBodyEvent extends Component {
       dateValid : this.props.dateToNewEvent || this.props.isEditedPage ? true : false,
       choosedRoom : '',
       roomToNewEvent:this.props.roomToNewEvent,
+      roomToEditEvent: this.props.eventToEdit.room,
       isTitleButtonActive:false,
       isUsersButtonActive:false,
       isUsersListOpen:true
@@ -122,7 +123,8 @@ class MainBodyEvent extends Component {
           this.setState({
             timeStart : timeStart,
             timeStartValid : false,
-            roomToNewEvent:""
+            roomToNewEvent:"",
+            roomToEditEvent:""
           })
           if (timeStart.split("").length === 5)
           { this.setState({
@@ -141,7 +143,8 @@ class MainBodyEvent extends Component {
           this.setState({
             timeEnd : timeEnd,
             timeEndValid : true,
-            roomToNewEvent:""
+            roomToNewEvent:"",
+            roomToEditEvent:""
           })
 
       break;
@@ -272,6 +275,7 @@ componentWillUpdate=()=>{
               isButtonActive={this.state.isUsersButtonActive}
               // onFocus={this.usersButtonHandler}
               >
+
                 {this.state.isUsersListOpen ?
                   <Users
                      users={this.state.viewedUsers}
@@ -291,7 +295,7 @@ componentWillUpdate=()=>{
 
             <RecomendedRooms
               roomToNewEvent={ this.state.roomToNewEvent}
-              roomToEdit={ this.props.eventToEdit.room}
+              roomToEdit={this.state.roomToEditEvent}
               roomHandler={this.roomHandler}
               db={{"rooms":this.props.rooms,"events":this.props.events}}
               members= {this.state.addedUsers}

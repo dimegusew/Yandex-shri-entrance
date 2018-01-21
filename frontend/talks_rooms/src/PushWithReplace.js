@@ -23,8 +23,6 @@ class PushWithReplace extends Component {
       date: date,
       room: currentRoom
     };
-    (currentRoom)
-    ("curr room")
 
 
         this.props
@@ -46,10 +44,6 @@ class PushWithReplace extends Component {
           });
 
 
-    ("PUSH THIS DATE TO SER")
-    (date)
-    (usersIds)
-    (roomId)
   }
 
 
@@ -87,7 +81,6 @@ class PushWithReplace extends Component {
 
   render() {
     let formValid=this.props.formValid
-    (this.props.formValid)
 
     return (
       <div>
