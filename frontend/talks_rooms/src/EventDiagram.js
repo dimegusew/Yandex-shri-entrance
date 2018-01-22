@@ -42,6 +42,7 @@ class Tooltip extends Component {
     let numberOfUsers = event.users.length;
     return (
       <span className="tooltiptext">
+        <div className={"arrow"}></div>
         <span>
           <h3> {event.title} </h3>
           <LittleEventEditButton onClick={this.eventEditHandler} />

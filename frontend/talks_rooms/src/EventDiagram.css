@@ -76,7 +76,7 @@ line-height: 17px; */
   margin-right: 169px;
   height: 102px;
   padding: 5px 0;
-  top: 20.2px;
+  top: 28.2px;
   position: absolute;
   z-index: 6;
   padding-left: 16px;
@@ -101,13 +101,12 @@ line-height: 17px; */
   visibility: visible;
 }
 
-.Event .tooltiptext.arrow {
+.tooltiptext .arrow {
   bottom: 100%;
   position: absolute;
-  /* At the top of the tooltip */
   left: 50%;
   margin-left: -9px;
-  border-width: 9px;
+  border-width: 7px;
   border-style: solid;
   border-color: transparent transparent white transparent;
 }
@@ -193,5 +192,8 @@ line-height: 17px; */
   }
   .users-info {
     padding-top: 12px;
+  }
+  .tooltiptext .arrow {
+    display: none;
   }
 }
