@@ -12,6 +12,8 @@ import RecomendedRooms from "./RecomendedRooms.js";
 import BottomBar from "./BottomBar";
 import converterFromServerTime from "./functions/converterFromServerTime";
 import convertDate from "./functions/convertDate.js";
+import dateFromRu from './functions/dateFromRu.js'
+
 
 class Users extends Component {
   eventHandler = el => {
@@ -57,7 +59,7 @@ class MainBodyEvent extends Component {
         : this.props.timeToNewEvent.end,
       date: this.props.isEditedPage
         ? converterFromServerTime(this.props.eventToEdit.dateStart).notconverted
-        : this.props.dateToNewEvent,
+        : dateFromRu(this.props.dateToNewEvent),
       titleValid: false,
       timeStartValid:
         this.props.timeToNewEvent.start || this.props.isEditedPage
@@ -233,6 +235,9 @@ class MainBodyEvent extends Component {
     let inputTimeFieldWidth = pageWidth <= 425 ? "143px" : "60px";
     // let marginTop={"paddingTop":"139px"};
 
+    console.log("datee")
+    console.log(dateFromRu(this.props.dateToNewEvent))
+    console.log(this.state.date)
     return (
       <div>
         <div className="event-edit-container">

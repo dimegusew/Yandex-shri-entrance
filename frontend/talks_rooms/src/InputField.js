@@ -100,6 +100,7 @@ class InputField extends Component {
               id={this.props.id}
               style={width}
               formatDate={formatDate}
+              format="LL"
               parseDate={parseDate}
               onDayChange={this.props.onChange}
               value={this.state.selectedDay}

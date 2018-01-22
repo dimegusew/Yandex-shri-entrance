@@ -62,11 +62,26 @@ class App extends Component {
     });
   };
 
+
   dateHandler = date => {
     let fulldateDate = date.split(".");
     let [day, month, year] = fulldateDate;
+    const MONTHS =  [
+      'января',
+      'февраля',
+      'марта',
+      'апреля',
+      'мая',
+      'июня',
+      'июля',
+      'августа',
+      'сентября',
+      'октября',
+      'ноября',
+      'декабря',
+    ];
     this.setState({
-      dateToNewEvent: `${year}-${month}-${day}`
+      dateToNewEvent: `${day} ${MONTHS[parseInt(month,10)-1]} ${year} г.`
     });
   };
 
