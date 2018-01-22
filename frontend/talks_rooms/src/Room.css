@@ -28,7 +28,7 @@
   .room {
     min-width: 156px;
     margin-top: 2px;
-      padding-bottom: 0px;
+    padding-bottom: 0px;
     padding-bottom: 12px;
     position: relative;
     z-index: 10;
@@ -50,12 +50,14 @@
     font-size: 11px;
     position: fixed;
     z-index: 1;
+    margin-left: 10px;
     margin-top: -58px;
     padding: 5px 8px 6px 5px;
     font-family: Helvecticanue-bold;
     margin-bottom: 2px;
     font-weight: bold;
     background-color: #FFFFFF;
+    -webkit-box-shadow: 0 1px 8px 0 rgba(0, 44, 92, 0.28);
     box-shadow: 0 1px 8px 0 rgba(0, 44, 92, 0.28);
     border-radius: 4px;
   }

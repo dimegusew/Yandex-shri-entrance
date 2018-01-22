@@ -3,6 +3,8 @@
   height: 28px;
   position: relative;
   margin-top: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background-color: white;
 }
@@ -15,6 +17,8 @@
 }
 
 .Event span h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-family: Helvecticanue-bold;
   width: 156px;
@@ -40,12 +44,18 @@ line-height: 17px; */
 }
 
 .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-top: 14px;
 }
 
 .users-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -71,6 +81,7 @@ line-height: 17px; */
   z-index: 6;
   padding-left: 16px;
   background-color: #FFFFFF;
+  -webkit-box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
   box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
   border-radius: 8px;
   left: 50%;
@@ -126,6 +137,8 @@ line-height: 17px; */
   height: 28px;
   position: relative;
   margin-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   opacity: 100;
   z-index: 0;
@@ -140,7 +153,8 @@ line-height: 17px; */
     margin-left: 1px;
   }
   .Event {
-    height: 58px;
+    height: 59px;
+    margin-top: -1px;
     position: absolute;
   }
   .Event .tooltiptext {
@@ -148,18 +162,17 @@ line-height: 17px; */
     height: 129px;
     z-index: 180;
     position: fixed;
-    top:60%;
+    top: 60%;
     left: 0%;
     margin-left: 1px;
   }
   .Event span h3 {
     font-size: 20px;
     margin-bottom: 8px;
-
   }
   .date-room {
     margin-top: -3px;
-   font-size: 15px;
+    font-size: 15px;
   }
   .user img {
     width: 32px;
@@ -167,10 +180,14 @@ line-height: 17px; */
     margin-top: 16px;
   }
   .users-info {
-    font-size:15px;
+    font-size: 15px;
   }
   .user {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     margin-top: 14px;
   }

@@ -1,4 +1,4 @@
-body{
+body {
   height: 100%;
 }
 
@@ -37,7 +37,11 @@ body{
 }
 
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   min-width: 1280px;
   height: 100%;

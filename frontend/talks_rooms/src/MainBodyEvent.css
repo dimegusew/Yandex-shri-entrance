@@ -1,8 +1,14 @@
 .event-edit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 572px;
   min-width: 1280px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -10,6 +16,8 @@
   width: 876px;
   min-height: 572px;
   max-height: 572px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -53,6 +61,7 @@
   max-width: 420px;
   max-height: 136px;
   background-color: #FFFFFF;
+  -webkit-box-shadow: 0 1px 10px 0 rgba(0, 44, 92, 0.28);
   box-shadow: 0 1px 10px 0 rgba(0, 44, 92, 0.28);
   border-radius: 4px;
   font-family: Helvectica;
@@ -62,10 +71,12 @@
 
 .user-in-user-select {
   padding-left: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 34px;
   font-family: Helvecticanue;
-font-size: 13px;
+  font-size: 13px;
   color: #37003E;
 }
 
@@ -77,7 +88,6 @@ font-size: 13px;
 .user-in-user-select div {
   margin-top: 10px;
   margin-bottom: 9px;
-
 }
 
 .user-in-user-select div span {
@@ -88,10 +98,14 @@ font-size: 13px;
 }
 
 .date-time-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
-.date-time-input span{
+.date-time-input span {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 200px;
 }
@@ -116,13 +130,17 @@ font-size: 13px;
 }
 
 .time-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 @media screen and (max-width: 425px) {
   .event-edit-container {
     min-width: 360px;
-      min-height: 572px;
+    min-height: 572px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin-top: 30px;
   }
@@ -135,16 +153,19 @@ font-size: 13px;
   .event-edit {
     padding-top: 24px;
     width: 360px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     overflow-x: scroll;
   }
   .date-time-input {
-    width:330px;
+    width: 330px;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     position: relative;
     /* top:-120px; */
   }
-  .big-close-button  {
+  .big-close-button {
     display: none;
   }
   .user-select {
@@ -154,15 +175,14 @@ font-size: 13px;
     margin-top: -10px;
     max-width: 335px;
   }
-
   .delimeter {
-    min-width:360px;
+    min-width: 360px;
     margin-top: 8px;
     margin-left: -16px;
-    height:8px;
+    height: 8px;
     background-color: #E9ECEF;
   }
-  .user-choose{
-    min-height:92px;
+  .user-choose {
+    min-height: 92px;
   }
 }

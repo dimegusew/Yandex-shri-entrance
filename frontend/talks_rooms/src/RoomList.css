@@ -3,6 +3,7 @@
   width: 245px;
   min-height: 890px;
   padding-top: 1px;
+  -webkit-box-shadow: 1px 0px 0px #E9ECEF;
   box-shadow: 1px 0px 0px #E9ECEF;
   background-color: white;
   z-index: 5;
@@ -16,6 +17,10 @@
   background-color: #F6F7F9;
 }
 
+.loading-page {
+  min-width: 600px;
+}
+
 @media screen and (max-width: 425px) {
   .date-time-bar {
     height: 56px;
@@ -25,12 +30,12 @@
   .room-list {
     width: 181px;
     min-height: 510px;
-      padding-top: 0px;
-      background-color: #F6F7F9;
-
+    padding-top: 0px;
+    background-color: #F6F7F9;
   }
   .event-background {
     margin-top: -1px;
+    -webkit-box-shadow: 5px 5px 4 4 #E9ECEF;
     box-shadow: 5px 5px 4 4 #E9ECEF;
     min-height: 200px;
     z-index: 9;

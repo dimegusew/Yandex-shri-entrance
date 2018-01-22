@@ -40,6 +40,7 @@
   bottom: 28px;
   width: 12.1px;
   height: 9.1px;
+  -webkit-transform: rotate(90);
   transform: rotate(90);
 }
 
@@ -56,13 +57,12 @@
   width: 60px;
   background-color: red;
 }
+
 .calendar-img {
-
-    position: absolute;
-    left: 220px;
-    bottom: 28px;
-    height: 9.1px;
-
+  position: absolute;
+  left: 220px;
+  bottom: 28px;
+  height: 9.1px;
 }
 
 @media screen and (max-width: 425px) {
@@ -81,5 +81,5 @@
   }
   .calendar-img {
     left: 310px;
-}
+  }
 }

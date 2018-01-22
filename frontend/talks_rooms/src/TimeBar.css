@@ -1,6 +1,8 @@
 .time-line {
   max-width: 1035px;
   min-width: 1035px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   max-height: 34px;
   z-index: 5;
@@ -9,8 +11,12 @@
 
 .hour {
   min-width: 49px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 13px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   font-size: 11px;
   padding-left: 8.5px;
@@ -35,7 +41,11 @@
 }
 
 .current-time p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding-top: 4px;
   padding-bottom: 3px;
@@ -80,11 +90,13 @@
     width: 1100px;
     background-color: white;
     padding-bottom: 12px;
+    -webkit-box-shadow: 0 1px 0 0 #E9ECEF;
     box-shadow: 0 1px 0 0 #E9ECEF;
   }
   .time-line {
     padding-top: 0px;
     height: 2px;
+    position: -webkit-sticky;
     position: sticky;
     position: absolute;
     z-index: 6;

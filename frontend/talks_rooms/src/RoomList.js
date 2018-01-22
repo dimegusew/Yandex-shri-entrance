@@ -47,7 +47,7 @@ class RoomList extends Component {
 
   render() {
     if (this.props.data.loading) {
-      return <div>Loading</div>;
+      return <div className={"loading-page"}>Loading</div>;
     }
 
     if (this.props.data.error) {

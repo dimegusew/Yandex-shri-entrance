@@ -5,7 +5,11 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 16, 33, 0.40);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   font-family: Helvecticanue;
 }
@@ -13,6 +17,7 @@
 .evet-delete-window div {
   margin-top: 245px;
   background-color: #FFFFFF;
+  -webkit-box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
   box-shadow: 0 1px 16px 0 rgba(0, 44, 92, 0.28);
   border-radius: 8px;
   width: 444px;
@@ -58,7 +63,7 @@
 
 @media screen and (max-width: 425px) {
   .evet-delete-window div {
-    top:20%;
+    top: 20%;
     width: 100%;
   }
 }
