@@ -53,7 +53,7 @@ class Tooltip extends Component {
         </div>
 
         <div className="user">
-          {numberOfUsers ? <img src={event.users[0].avatarUrl} /> : ""}
+          {numberOfUsers ? <img src={event.users[0].avatarUrl} alt={"avatar"}/> : ""}
           <span>
             {!numberOfUsers ? (
               "Нет участников"
@@ -65,7 +65,7 @@ class Tooltip extends Component {
                     &nbsp;{"и " +
                       (numberOfUsers - 1) +
                       " участник" +
-                      (numberOfUsers == 2
+                      (numberOfUsers === 2
                         ? ""
                         : numberOfUsers < 4 ? "а" : "ов")}
                   </span>
@@ -131,7 +131,7 @@ class Event extends React.Component {
       .split("T")[1]
       .split(".")[0]
       .split(":")
-      .reduce((acc, curr, i, arr) => arr[0] * 60 + parseInt(arr[1]));
+      .reduce((acc, curr, i, arr) => arr[0] * 60 + parseInt(arr[1],10));
   }
 
   getPositionFromTime(startTime, endTime) {
@@ -211,7 +211,7 @@ class EventDiagram extends Component {
     let time = position * 0.909 + 480;
     let hourStart = (time / 60) ^ 0;
     let hourEnd = hourStart + 1;
-    let min = parseInt(time % 60);
+    let min = parseInt((time % 60),10);
     min < 10 ? "0" + min : min;
     return {
       start:
@@ -232,7 +232,7 @@ class EventDiagram extends Component {
   };
 
   render() {
-    let coordinate = this.x;
+
     return (
       <div className="event-diagram" onMouseLeave={this.mouseLeave}>
         <div

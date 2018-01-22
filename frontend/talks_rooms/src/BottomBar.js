@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CancelButton from "./CancelButton";
 import "./BottomBar.css";
-import { Link } from "react-router-dom";
 import Push from "./Push.js";
 import EditEventPush from "./EditEventPush.js";
 import DeleteEvent from "./DeleteEvent.js";

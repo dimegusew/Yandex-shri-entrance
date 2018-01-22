@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import "./MainBodyEvent.css";
 import InputField from "./InputField";
 import UsersInEvent from "./UsersInEvent";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
 import close from "./images/close.svg";
 import arrowRotate from "./images/arrowRotate.svg";
 import arrowRotateBack from "./images/arrowRotateBack.svg";
-import Cleave from "cleave.js/react";
 import RecomendedRooms from "./RecomendedRooms.js";
 import BottomBar from "./BottomBar";
 import converterFromServerTime from "./functions/converterFromServerTime";
-import convertDate from "./functions/convertDate.js";
 import dateFromRu from './functions/dateFromRu.js'
 
 
@@ -31,7 +27,11 @@ class Users extends Component {
             id={el.id}
             onClick={this.eventHandler}
           >
-            <img id={el.id} src={el.avatarUrl} className="user-img" />
+            <img id={el.id}
+              src={el.avatarUrl}
+              className="user-img"
+              alt={"user"}
+             />
             <div id={el.id}>
               {el.login} · &nbsp;<span>{el.homeFloor + " этаж"}</span>
             </div>
@@ -234,11 +234,7 @@ class MainBodyEvent extends Component {
     let width = document.documentElement.clientWidth;
     let inputfieldWidth = width <= 425 ? "320px" : "409px";
     let inputTimeFieldWidth = pageWidth <= 425 ? "143px" : "60px";
-    // let marginTop={"paddingTop":"139px"};
 
-    console.log("datee")
-    console.log(dateFromRu(this.props.dateToNewEvent))
-    console.log(this.state.date)
     return (
       <div>
         <div className="event-edit-container">

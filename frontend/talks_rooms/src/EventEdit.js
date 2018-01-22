@@ -52,16 +52,6 @@ class EventEdit extends Component {
   }
 
   render() {
-
-    let splitDate = this.props.dateToNewEvent.split(".");
-    let convertedDate = splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
-        // console.log(convertedDate)
-    // let date = {
-    //   dateStart:
-    //     convertedDate + "T" + this.props.timeToNewEvent.start + ":00.981Z",
-    //   dateEnd: convertedDate + "T" + this.props.timeToNewEvent.end + ":00.981Z"
-    // };
-
     if (
       this.props.usersQuery.loading ||
       this.props.roomQuery.loading ||

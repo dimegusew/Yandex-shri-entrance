@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import UpperBar from "./UpperBar.js";
 import MainBody from "./MainBody.js";
-import { Link } from "react-router-dom";
 import AppContainer from "./AppContainer.js";
 import ApolloClient, { createNetworkInterface } from "apollo-client";
 import { ApolloProvider } from "react-apollo";
@@ -82,11 +81,6 @@ class App extends Component {
       dateToNewEvent: `${day} ${MONTHS[parseInt(month,10)-1]} ${year} г.`
     });
   };
-
-  componentDidMount() {
-    this.setState({});
-    createButtonPush: false;
-  }
 
   createHandler = event => {
     // обработчик нажатий на свободный слот диаграммы

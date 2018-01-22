@@ -46,7 +46,7 @@ class InputField extends Component {
   };
 
   render() {
-    const { selectedDay, isDisabled } = this.state;
+    // const { selectedDay, isDisabled } = this.state;
     let style = this.state.isClicked
       ? { display: "block" }
       : { display: "none" };
@@ -72,6 +72,7 @@ class InputField extends Component {
               <img
                 src={this.props.img}
                 className="Img"
+                alt={"text"}
                 onClick={this.props.inputButtonHandler}
                 onFocus={this.props.onFocusHandler}
               />

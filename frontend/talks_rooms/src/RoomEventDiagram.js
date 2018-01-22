@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Room from "./Room";
 import EventDiagram from "./EventDiagram";
 import "./RoomEventDiagram.css";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
 
 class RoomEventDiagram extends Component {
   constructor(props) {

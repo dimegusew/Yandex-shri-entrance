@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import CreateButton from "./CreateButton";
 import CancelButton from "./CancelButton";
 
 class EditEventPush extends Component {
   onClick = () => {
     let data = this.props.dataToServer;
     let eventId = this.props.eventToEdit.id;
-    let id = this.props.eventToEdit.id;
     let inp = {
       dateStart: data.dateStart,
       dateEnd: data.dateEnd,

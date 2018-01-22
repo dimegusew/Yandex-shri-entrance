@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./DateBar.css";
 import arrowR from "./images/arrow.svg";
 import arrowL from "./images/arrow2.svg";
-import ArrowButton from "./ArrowButton";
 import DayPicker from "react-day-picker";
 import "./ModuleCalendar.css";
 import converterDate from "./functions/convertDate.js";
@@ -31,7 +30,7 @@ class DateBar extends Component {
   };
 
   handleButtonClick = ev => {
-    let minusOrPlus = ev.target.className == "minusButton" ? -1 : 1;
+    let minusOrPlus = ev.target.className === "minusButton" ? -1 : 1;
     let choosingDate = converterDate(this.state.selectedDay).fullDate.split(
       "/"
     );
@@ -112,15 +111,15 @@ class DateBar extends Component {
     return (
       <div className="date-bar">
         <button className="minusButton" onClick={this.handleButtonClick}>
-          <img src={arrowL} />
+          <img src={arrowL} alt={"back"}/>
         </button>
         <p onClick={this.eventHandler} style={myStyle}>
           {selectedDate.day + " " + MONTHS_short[selectedDate.mounth - 1]}
-          {selectedDate.fullDate == currentDate.fullDate ? " ⋅ Сегодня" : ""}
+          {selectedDate.fullDate === currentDate.fullDate ? " ⋅ Сегодня" : ""}
         </p>
 
         <button className="plusButton" onClick={this.handleButtonClick}>
-          <img src={arrowR} />
+          <img src={arrowR} alt={"front"}/>
         </button>
 
         {this.state.isClicked ? (
