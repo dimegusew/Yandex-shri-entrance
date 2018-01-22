@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./InputField.css";
-import InputMask from "react-input-mask";
-import TimeInput from "react-time-input";
 import MaskedInput from "react-text-mask";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "./ModuleCalendar.css";

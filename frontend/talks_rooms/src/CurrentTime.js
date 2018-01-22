@@ -43,7 +43,7 @@ class CurrentTime extends Component {
     let timetrue =
       this.state.pointerPosition < 100 && this.state.pointerPosition > 0;
     let dateTrue =
-      convertDate(this.props.choosingDate).fullDate ==
+      convertDate(this.props.choosingDate).fullDate ===
       convertDate(this.state.date).fullDate;
     let visible =
       dateTrue && timetrue

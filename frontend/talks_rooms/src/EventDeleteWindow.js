@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./EventDeleteWindow.css";
-import converter from "./functions/converterFromServerTime.js";
 import newEmoji from "./images/emoji1.svg";
 
 class EventDeleteWindow extends Component {

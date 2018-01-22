@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./EventDiagram.css";
-import AddButton from "./AddButton.js";
-import editLogo from "./images/edit.svg";
 import LittleEventEditButton from "./LittleEventEditButton.js";
 
 class Tooltip extends Component {
@@ -247,6 +245,7 @@ class EventDiagram extends Component {
         </div>
         {this.props.events.map(el => (
           <Event
+            key={el.id}
             event={el}
             clicked={this.clicked}
             onMouseEnter={this.eventEnter}

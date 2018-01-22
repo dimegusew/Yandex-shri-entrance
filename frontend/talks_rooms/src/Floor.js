@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Room from './Room.js'
 import RoomEventDiagram from './RoomEventDiagram';
 import './Floor.css';
 
@@ -15,6 +14,7 @@ class Floor extends Component {
         <p>{this.props.floorNumber+' ЭТАЖ'}</p>
         <div>{this.props.rooms.map((el)=>
         <RoomEventDiagram
+          key={el.id}
           room={el}
           events={this.eventsHandler(this.props.events,el.id)}
           timeToNewEvent={this.props.timeToNewEvent}

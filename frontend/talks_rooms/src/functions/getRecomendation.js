@@ -30,18 +30,13 @@ export default function getRecommendation(date, db, members) {
     return AllEvents.filter(event => roomsIds.indexOf(event.room.id) !== -1);
   }
 
-  function convertTime(time) {
-    let timeMinSplit = time.split(":");
-    return parseInt(timeMinSplit[0]) * 60 + parseInt(timeMinSplit[1]);
-  }
-
   function convertDate(date) {
     return date.split("T")[0];
   }
 
   function convertTimeFromDate(date) {
     let timeMinSplit = date.split("T")[1].split(":");
-    return parseInt(timeMinSplit[0]) * 60 + parseInt(timeMinSplit[1]);
+    return parseInt(timeMinSplit[0],10) * 60 + parseInt(timeMinSplit[1],10);
   }
 
   function checkOverlap(A, B) {
@@ -54,7 +49,7 @@ export default function getRecommendation(date, db, members) {
   }
 
   function checkOverlapEvents(events, dateToCheck) {
-    console.log(
+    return(
       events.filter(event =>
         checkOverlap(
           {
@@ -99,7 +94,6 @@ export default function getRecommendation(date, db, members) {
     RoomsIdsSortedByMinDistance
   );
 
-  console.log(eventsInRecomededRooms);
 
   let eventsInRecomededRoomsFilteredByDate = eventsInRecomededRooms.filter(
     event => convertDate(event.dateStart) === convertDate(date.start)
@@ -115,7 +109,7 @@ export default function getRecommendation(date, db, members) {
   let allRoomsIds = RoomsFilterdByCapacity.map(el => el.id);
 
   let notOverlapedEvents = allRoomsIds.filter(
-    el => OverlapedEventRoomsID.indexOf(el) == -1
+    el => OverlapedEventRoomsID.indexOf(el) === -1
   );
 
   let freeRooms = RoomsSortedByMinDistance.filter(
@@ -147,13 +141,12 @@ export default function getRecommendation(date, db, members) {
       let eventsInCurrRoomWithoutCurrEv = eventsInCurrRoom.filter(
         el => el.id !== event.id
       );
-      console.log(event);
       let newEv = { start: event.dateStart, end: event.dateEnd };
       let checkOverlapInRoom = checkOverlapEvents(
         eventsInCurrRoomWithoutCurrEv,
         newEv
       );
-      if (checkOverlapInRoom.length == 0) {
+      if (checkOverlapInRoom.length === 0) {
         return true;
       } else {
         return false;
@@ -183,7 +176,7 @@ export default function getRecommendation(date, db, members) {
         el => el.id !== eventId
       );
 
-      if (eventsInRoomWithoutCurr.length == 0) {
+      if (eventsInRoomWithoutCurr.length === 0) {
         return true;
       }
       return checkOverlapEvents(eventsInRoomWithoutCurr, date).length
@@ -212,7 +205,7 @@ export default function getRecommendation(date, db, members) {
 
     if (Roomswap) {
       let recomededRoom = RoomsFilterdByCapacity.filter(
-        el => el.id == recomededRoomId
+        el => el.id === recomededRoomId
       )[0];
 
       Recomendations = [

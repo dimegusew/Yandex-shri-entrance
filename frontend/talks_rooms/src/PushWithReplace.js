@@ -36,12 +36,11 @@ class PushWithReplace extends Component {
         this.props.onClick(datePushedToServer);
       })
       .catch(error => {
-        "there was an error sending the query", error;
+        console.log("there was an error sending the query", error);
       });
   };
 
   render() {
-    let formValid = this.props.formValid;
 
     return (
       <div>

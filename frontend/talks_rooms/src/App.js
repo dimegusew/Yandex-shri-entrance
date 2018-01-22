@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import CreateButton from "./CreateButton";
-import AddButton from "./AddButton.js";
 import UpperBar from "./UpperBar.js";
 import MainBody from "./MainBody.js";
 import { Link } from "react-router-dom";

@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import UpperBar from "./UpperBar.js";
-import AppContainer from "./AppContainer.js";
 import MainBodyEvent from "./MainBodyEvent.js";
-import BottomBar from "./BottomBar";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { compose } from "react-apollo";
 
-import EventIsCreatedWindow from "./EventIsCreatedWindow.js";
 
 class EventEdit extends Component {
   constructor(props) {
@@ -44,9 +40,9 @@ class EventEdit extends Component {
   };
 
   dataToServerHandler = data => {
-    data;
+    // data;
     this.date = data;
-    ("date");
+    // ("date");
   };
 
   componentWillReceiveProps(nextProps) {
@@ -59,12 +55,12 @@ class EventEdit extends Component {
 
     let splitDate = this.props.dateToNewEvent.split(".");
     let convertedDate = splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
-        console.log(convertedDate)
-    let date = {
-      dateStart:
-        convertedDate + "T" + this.props.timeToNewEvent.start + ":00.981Z",
-      dateEnd: convertedDate + "T" + this.props.timeToNewEvent.end + ":00.981Z"
-    };
+        // console.log(convertedDate)
+    // let date = {
+    //   dateStart:
+    //     convertedDate + "T" + this.props.timeToNewEvent.start + ":00.981Z",
+    //   dateEnd: convertedDate + "T" + this.props.timeToNewEvent.end + ":00.981Z"
+    // };
 
     if (
       this.props.usersQuery.loading ||

@@ -14,7 +14,7 @@ function Hours({ choosingDate, currentTime }) {
     myStyle =
       convertedCurrent < convertedChoosing
         ? { color: " black" }
-        : convertedCurrent == convertedChoosing && i > currentTime
+        : convertedCurrent === convertedChoosing && i > currentTime
           ? { color: " black" }
           : { color: " #858E98" };
     rows.push(

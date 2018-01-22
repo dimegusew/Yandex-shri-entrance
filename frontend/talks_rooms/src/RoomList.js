@@ -59,8 +59,8 @@ class RoomList extends Component {
           <div className="room-list">
             {roomsGroupedByFloor.map((el, i) => (
               <Floor
+                key={i}
                 floorNumber={Object.keys(el)}
-                key={el.id}
                 rooms={el[Object.keys(el)]}
                 events={this.state.filteredEvents}
                 timeToNewEvent={this.props.timeToNewEvent}

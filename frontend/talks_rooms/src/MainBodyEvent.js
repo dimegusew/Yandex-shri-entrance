@@ -26,6 +26,7 @@ class Users extends Component {
       <div className="user-select">
         {users.map(el => (
           <div
+            key={el.id}
             className="user-in-user-select"
             id={el.id}
             onClick={this.eventHandler}

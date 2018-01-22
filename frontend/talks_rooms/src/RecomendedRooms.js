@@ -53,7 +53,9 @@ class RecomendedRoom extends Component {
           </span>
           {this.props.roomIsChoosed ? (
             <span onClick={this.onCancelRoom}>
-              <img src={close} />
+              <img src={close}
+                alt="close"
+              />
             </span>
           ) : (
             ""
@@ -158,6 +160,7 @@ class RecomendedRooms extends Component {
         ) : (
           recomendedRooms.map(el => (
             <RecomendedRoom
+              key={el.room.id}
               title={el.room.title}
               floor={el.room.floor}
               date={el.date}
