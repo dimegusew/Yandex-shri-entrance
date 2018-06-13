@@ -1,4 +1,36 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+}
+
+.date-time-input{
+  display: flex;
+  justify-content: center;
+}
+
+.input-with-name{
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
+.time-input{
+  width: 60px;
+}
+.text-input {
+  width: 240px;
+  margin-right: 20px;
+}
+
+.form{
+  max-width: 700px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.recomendation{
+  height: 150px;
+  width: 399px;
 }
