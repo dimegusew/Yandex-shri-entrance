@@ -5,8 +5,14 @@ import DropDown from '../Components/DropDown'
 const AddDropDown = (InputComponent)=>
 class extends Component {
   state={input:"",isOpen:false,choosedItem:null}
+
+  //   componentWillUpdate(){
+  //   this.props.onInput(this.state)
+  // }
+
   render(){
     console.log(this.state)
+
     return(
       <div>
       <InputComponent
@@ -19,10 +25,12 @@ class extends Component {
           &&<DropDown
              onClick={(data)=>
              this.setState({
-               input:data.target.id,
+               //input:data.target.id,
                isOpen:false,
-               choosedItem:data.target.id
-             })}
+               choosedItem:data.target.id,
+               input:""
+             },
+            this.props.onInp(data.target.id))}
              {...this.props}
              {...this.state}
            />

@@ -7,6 +7,5 @@ const Input = ({...props})=>{
     <input {...props}/>
   )
 }
-// const InputWithName = AddName(Input);
 export default AddName(Input);
 export const InputWithDropDown = AddDropDown(AddName(Input))

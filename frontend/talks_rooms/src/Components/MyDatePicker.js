@@ -5,10 +5,10 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const MyDatePicker = ({startDateTime,...props})=>{
+const MyDatePicker = ({dateTime,...props})=>{
   return(
     <DatePicker
-       selected={startDateTime.date}
+       selected={dateTime.date}
        {...props}
        locale="ru"
        dateFormat="DD MMMM YYYY"
@@ -17,6 +17,4 @@ const MyDatePicker = ({startDateTime,...props})=>{
    />
   )
 }
-
 export default AddName(MyDatePicker);
-// export default AddName(MyDatePicker);

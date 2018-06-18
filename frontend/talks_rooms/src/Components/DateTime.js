@@ -1,43 +1,47 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'moment/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
-import MaskedInput from 'react-text-mask';
 import InputWithName from './Input.js'
 import DatePickerWithName from './MyDatePicker.js'
 
 
 class DateTime extends Component {
    state = {
-     startDateTime: {date:moment(),
-                    time: {start:moment().format('LT'),
-                            end:moment().add(30, 'minutes').format('LT') }}
+     dateTime: {date:moment(),
+                time: {start:moment().format('LT'),
+                        end:moment().add(30, 'minutes').format('LT') }}
    };
 
+  componentDidMount(){
+      this.props.onInput(this.state)
+  }
+
  render() {
-   const {startDateTime} = this.state;
-   this.props.onChange(startDateTime)
+   const {dateTime} = this.state;
+   //this.props.onChange(dateTime)
    return(
      <div className='date-time-input'>
 
    <DatePickerWithName
       {...this.props}
       name = "Дата"
-      startDateTime={startDateTime}
+      dateTime={dateTime}
       onChange={(date)=> {this.setState(
-        {startDateTime: {...startDateTime,date}
-      })}}
+        {dateTime: {...dateTime,date}
+      },
+      this.props.onInput(this.state)
+    )}}
    />
 
    <InputWithName
       className='time-input'
       name ="Начало"
-      value={startDateTime.time.start}
+      value={dateTime.time.start}
       onChange={(dat)=> {
         this.setState(
-        {startDateTime: {...startDateTime,
-          time:{...startDateTime.time,
+        {dateTime: {...dateTime,
+          time:{...dateTime.time,
             start:dat.target.value}}
       })}}
     />
@@ -45,11 +49,11 @@ class DateTime extends Component {
   <InputWithName
     className='time-input'
      name ="Конец"
-     value={startDateTime.time.end}
+     value={dateTime.time.end}
      onChange={(dat)=> {
        this.setState(
-       {startDateTime: {...startDateTime,
-         time:{...startDateTime.time,
+       {dateTime: {...dateTime,
+         time:{...dateTime.time,
            end:dat.target.value}}
      })}}
    />

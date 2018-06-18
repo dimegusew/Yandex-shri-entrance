@@ -1,39 +1,57 @@
 import React, { Component } from 'react';
 import './App.css';
-import moment from 'moment';
 import 'moment/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 import DateTime from './Components/DateTime.js';
 import InputWithName, {InputWithDropDown} from './Components/Input.js'
+import Mock from './MockUsers.js'
 
-const Mock = [
-    {
-      login: 'veged',
-      avatarUrl: 'https://avatars3.githubusercontent.com/u/15365?s=460&v=4',
-      homeFloor: 0
-    },
-    {
-      login: 'alt-j',
-      avatarUrl: 'https://avatars1.githubusercontent.com/u/3763844?s=400&v=4',
-      homeFloor: 3
-    },
-    {
-      login: 'yeti-or',
-      avatarUrl: 'https://avatars0.githubusercontent.com/u/1813468?s=460&v=4',
-      homeFloor: 2
-    }
-  ];
+const UserList = ({users})=>{
+  return(
+    <div>
+      {users.map(el=>
+        <div>{el}</div>
+      )}
+    </div>
+  )
+}
 
-
+const AddUsers=({...props})=>{
+  return(
+    <div>
+      <InputWithDropDown {...props}/>
+      <UserList {...props} />
+    </div>
+  )
+}
 
 class App extends Component {
+  state ={
+    dateTime:{},
+    users:[],
+    theme:''
+
+  }
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <div className = 'form'>
-        <InputWithName name="Тема" className='text-input'/>
-        <DateTime className='text-input' onChange={(data)=>console.log(data)}/>
-        <InputWithDropDown name={'Участники'} data={Mock}/>
+        <InputWithName name="Тема"
+           className='text-input'
+           onChange={(data)=>this.setState({theme:data.target.value})}
+         />
+        <DateTime
+           className='text-input'
+           onInput={(data)=>this.setState({dateTime:data})}
+         />
+       <AddUsers
+         name={'Участники'}
+         className='text-input'
+         data={Mock}
+         onInp={(data)=>this.setState({users:[...this.state.users,data]})}
+         {...this.state}
+       />
       </div>
       </div>
     );

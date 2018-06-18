@@ -8,5 +8,4 @@ const AddName = (Component)=>({name,...props})=>
     </div>
   )
 }
-
 export default AddName;

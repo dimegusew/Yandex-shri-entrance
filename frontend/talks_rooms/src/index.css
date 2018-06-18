@@ -2,11 +2,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-family: 'Helveticaneue';
+}
+
+@font-face {
+  font-family: 'Helveticaneue';
+  src: url('./fonts/HelveticaNeueCyr-Roman.woff');
+  font-weight: 200;
+  font-style: normal;
+}
+input{
+  border-radius: 2px;
+  outline: none;
+  border: 1px solid #cccccc;
+  height: 20px;
 }
 
 .date-time-input{
   display: flex;
   justify-content: center;
+}
+
+.dropdown{
+    border: 1px solid #cccccc;
+    width: 240px;
 }
 
 .input-with-name{
@@ -24,10 +43,11 @@ body {
 }
 
 .form{
+  font-size: 15px;
   max-width: 700px;
   flex-wrap: wrap;
   display: flex;
-  justify-content:center;
+  /* justify-content:center; */
   align-items: center;
 }
 .recomendation{
