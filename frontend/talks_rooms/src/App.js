@@ -16,7 +16,7 @@ const UserList = ({users})=>{
   )
 }
 
-const AddUsers=({...props})=>{
+const UserChecker=({...props})=>{
   return(
     <div>
       <InputWithDropDown {...props}/>
@@ -45,7 +45,7 @@ class App extends Component {
            className='text-input'
            onInput={(data)=>this.setState({dateTime:data})}
          />
-       <AddUsers
+       <UserChecker
          name={'Участники'}
          className='text-input'
          data={Mock}
