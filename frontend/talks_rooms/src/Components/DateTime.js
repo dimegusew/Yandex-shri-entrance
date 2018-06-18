@@ -13,10 +13,6 @@ class DateTime extends Component {
                         end:moment().add(30, 'minutes').format('LT') }}
    };
 
-  componentDidMount(){
-      this.props.onInput(this.state)
-  }
-
  render() {
    const {dateTime} = this.state;
    //this.props.onChange(dateTime)
@@ -25,6 +21,7 @@ class DateTime extends Component {
 
    <DatePickerWithName
       {...this.props}
+      className='date-input'
       name = "Дата"
       dateTime={dateTime}
       onChange={(date)=> {this.setState(

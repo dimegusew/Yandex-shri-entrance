@@ -3,37 +3,30 @@ import './App.css';
 import 'moment/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 import DateTime from './Components/DateTime.js';
-import InputWithName, {InputWithDropDown} from './Components/Input.js'
+import InputWithName from './Components/Input.js'
 import Mock from './MockUsers.js'
-
-const UserList = ({users})=>{
-  return(
-    <div>
-      {users.map(el=>
-        <div>{el}</div>
-      )}
-    </div>
-  )
-}
-
-const UserChecker=({...props})=>{
-  return(
-    <div>
-      <InputWithDropDown {...props}/>
-      <UserList {...props} />
-    </div>
-  )
-}
+import UserChecker from './Components/Userchecker.js';
 
 class App extends Component {
   state ={
     dateTime:{},
     users:[],
     theme:''
-
   }
+
+  setUser = (data,userLogin) =>{
+    return(
+      data.find(el=>el.login===userLogin)
+    )
+  }
+
+  deleteUser = (data,userLogin) =>{
+    return(
+      data.filter(el=>el.login !== userLogin)
+    )
+  }
+
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <div className = 'form'>
@@ -49,7 +42,12 @@ class App extends Component {
          name={'Участники'}
          className='text-input'
          data={Mock}
-         onInp={(data)=>this.setState({users:[...this.state.users,data]})}
+         onDeleteClick={(data)=>
+           this.setState({users: this.deleteUser(this.state.users,data.target.id)})
+         }
+         onInp={(data)=>
+           this.setState({users:[...this.state.users,this.setUser(Mock,data)]})
+         }
          {...this.state}
        />
       </div>
