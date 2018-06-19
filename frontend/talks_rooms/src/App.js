@@ -31,6 +31,7 @@ class App extends Component {
       <div className="App">
         <div className = 'form'>
         <InputWithName name="Тема"
+          placeholder={'О чем будете говорить?'}
            className='text-input'
            onChange={(data)=>this.setState({theme:data.target.value})}
          />
@@ -41,6 +42,7 @@ class App extends Component {
        <UserChecker
          name={'Участники'}
          className='text-input'
+         placeholder={`Например ${Mock[0].login}`}
          data={Mock}
          onDeleteClick={(data)=>
            this.setState({users: this.deleteUser(this.state.users,data.target.id)})

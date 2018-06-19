@@ -12,10 +12,13 @@ body {
   font-style: normal;
 }
 input{
-  border-radius: 2px;
+  border-radius: 4px;
   outline: none;
-  border: 1px solid #cccccc;
-  height:38px;
+  background: #FFFFFF;
+  border: 2px solid #E9ECEF;
+  border-radius: 4px;
+  height: 32px;
+  padding: 0px;
 }
 
 .date-time-input{
@@ -23,30 +26,54 @@ input{
   justify-content: center;
 }
 
-
-
 .dropdown{
+  background-color: white;
     border: 1px solid #cccccc;
-    width: 240px;
+    max-height: 102px;
+    position: fixed;
+    z-index: 99;
 }
 
-
+.dropdown-item{
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding-left: 16px;
+}
 
 .dropdown-item img, .choosed-user img{
   width: 20px;
   height: 20px;
   border-radius: 40px;
+  margin-right: 8px;
 }
 .dropdown-item:hover, .choosed-user{
-  background-color: #e9ecef;
+  background-color: #F6F7F9;
 }
+
+.dropdown-item:hover{
+  font-weight: bold;
+}
+
+.choosed-user, .dropdown-item{
+  font-size: 13px;
+}
+
 .choosed-user{
+  margin: 4px 8px;
+  position: relative;
   width:142px;
   height: 24px;
-  margin: 2px;
   display: flex;
   align-items: center;
   border-radius: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.choosed-user :last-child{
+  position: absolute;
+  right: 10px;
 }
 
 .input-with-name{
@@ -54,12 +81,18 @@ input{
   flex-flow: column;
   align-items: flex-start;
 }
+.user-list{
+  display: flex;
+  justify-content: row;
+  width: 400px;
+  flex-wrap: wrap;
+}
 
 .time-input{
   width: 72px;
 }
 .dropdown, .text-input{
-  width: 420px;
+  width: 418px;
 }
 .text-input {
   background: #FFFFFF;

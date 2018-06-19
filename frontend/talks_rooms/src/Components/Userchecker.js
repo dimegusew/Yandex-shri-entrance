@@ -6,14 +6,14 @@ const User = ({...props})=>{
     <div className = "choosed-user">
       <img src={props.avatarUrl}/>
       <p5>{props.login}</p5>
-      <p5 id ={props.login} onClick={props.onDeleteClick}>X</p5>
+    <p5 id ={props.login} onClick={props.onDeleteClick}>X</p5>
     </div>
   )
 }
 
 const UserList = ({users,...props})=>{
   return(
-    <div>
+    <div className= 'user-list'>
       {users.map(el=>
         <User
           {...el}
@@ -26,7 +26,8 @@ const UserList = ({users,...props})=>{
 const UserChecker=({...props})=>{
   return(
     <div>
-      <InputWithDropDown {...props}/>
+      <InputWithDropDown
+         {...props}/>
       <UserList {...props}/>
     </div>
   )

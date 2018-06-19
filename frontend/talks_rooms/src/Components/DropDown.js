@@ -7,12 +7,13 @@ const DropDownItem = ({el,...props})=>{
       onClick={props.onClick} id ={el.login}>
       <img src = {el.avatarUrl}/>
       {el.login}
+      <div>{`·${el.homeFloor} этаж`} </div>
     </div>
   )
 }
 
 const DropDown = ({input,...props})=>{
-  const logins= props.users.map(el=>el.login);
+  const logins= props.users.map(el=>el ? el.login : "");
   return(
     <div className='dropdown'>
       {props.data.filter(el=>(el.login
