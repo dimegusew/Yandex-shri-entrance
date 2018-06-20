@@ -3,7 +3,7 @@ const AddName = (Component)=>({name,...props})=>
 {
   return(
     <div className = "input-with-name">
-      {name}
+      <p>{name}</p>
       <Component {...props}/>
     </div>
   )

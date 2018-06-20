@@ -6,7 +6,7 @@ const User = ({...props})=>{
     <div className = "choosed-user">
       <img src={props.avatarUrl}/>
       <p5>{props.login}</p5>
-    <p5 id ={props.login} onClick={props.onDeleteClick}>X</p5>
+    <p5 id ={props.login} onClick={props.onDeleteClick}>x</p5>
     </div>
   )
 }

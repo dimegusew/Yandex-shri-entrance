@@ -13,6 +13,16 @@ const Mock = [
       login: 'yeti-or',
       avatarUrl: 'https://avatars0.githubusercontent.com/u/1813468?s=460&v=4',
       homeFloor: 2
+    },
+    {
+      login: 'asd',
+      avatarUrl: 'https://avatars0.githubusercontent.com/u/1813468?s=460&v=4',
+      homeFloor: 2
+    },
+    {
+      login: ',,sad',
+      avatarUrl: 'https://avatars0.githubusercontent.com/u/1813468?s=460&v=4',
+      homeFloor: 2
     }
   ];
 

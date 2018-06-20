@@ -1,6 +1,20 @@
 import React, {Component} from 'react';
-import DropDown from '../Components/DropDown'
+import DropDown from '../Components/DropDown';
+import Arrow1 from '../assets/arrow1.js'
+import Arrow2 from '../assets/arrow2.js'
 
+
+
+
+const Arrow =({...props})=>{
+  return(
+    <div className="arrow">
+    {props.isOpen ?
+      <Arrow2/>
+       : <Arrow1/>}
+  </div>
+  )
+}
 
 const AddDropDown = (InputComponent)=>
 class extends Component {
@@ -9,9 +23,12 @@ class extends Component {
     console.log(this.state)
 
     return(
-      <div>
+      <div className='input-with-dropdown'
+         onBlur={(el)=>this.setState({isOpen:false})}>
+      {/* <Arrow {...this.state}/> */}
       <InputComponent
-         onChange = {(data)=>this.setState({input:data.target.value})}
+        tabIndex="1"
+         onChange = {(data)=>this.setState({input:data.target.value,isOpen:true})}
          onFocus = {()=>this.setState({isOpen:true})}
          value ={this.state.input}
          {...this.props}

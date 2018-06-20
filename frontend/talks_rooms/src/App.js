@@ -7,6 +7,23 @@ import InputWithName from './Components/Input.js'
 import Mock from './MockUsers.js'
 import UserChecker from './Components/Userchecker.js';
 
+const Header =()=>{
+  return(
+    <div className="header">
+      <h>Новая встреча</h>
+    <button/>
+    </div>
+  )
+}
+
+const Hat = () =>{
+  return(
+    <div className='Hat'>dq </div>
+  )
+}
+
+
+
 class App extends Component {
   state ={
     dateTime:{},
@@ -29,14 +46,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Hat/>
         <div className = 'form'>
+        <Header/>
         <InputWithName name="Тема"
           placeholder={'О чем будете говорить?'}
            className='text-input'
            onChange={(data)=>this.setState({theme:data.target.value})}
          />
         <DateTime
-           className='text-input'
+           // className='date-time '
            onInput={(data)=>this.setState({dateTime:data})}
          />
        <UserChecker

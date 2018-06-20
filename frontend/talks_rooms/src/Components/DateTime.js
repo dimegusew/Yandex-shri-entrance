@@ -42,7 +42,6 @@ class DateTime extends Component {
             start:dat.target.value}}
       })}}
     />
-  -
   <InputWithName
     className='time-input'
      name ="Конец"

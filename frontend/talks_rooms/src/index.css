@@ -15,16 +15,42 @@ input{
   border-radius: 4px;
   outline: none;
   background: #FFFFFF;
-  border: 2px solid #E9ECEF;
+  border: 1.5px solid #E9ECEF;
   border-radius: 4px;
   height: 32px;
-  padding: 0px;
+  padding-left: 3px;
+}
+input:focus{
+  border-color: #007DFF;
+}
+.header{
+  width: 100%;
+  padding-left: 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.Hat{
+  height: 71px;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 -1px 0 0 #E9ECEF;
 }
 
 .date-time-input{
   display: flex;
-  justify-content: center;
+  width:424px;
+  /* justify-content: center; */
+  /* padding-right: 16px; */
 }
+
+.date-time-input > div{
+  padding-right: 12px;
+}
+
 
 .dropdown{
   background-color: white;
@@ -32,8 +58,22 @@ input{
     max-height: 102px;
     position: fixed;
     z-index: 99;
+    background: #FFFFFF;
+    box-shadow: 0 1px 10px 0 rgba(0,44,92,0.28);
+    border-radius: 4px;
+    overflow-y: scroll;
+
 }
 
+.input-with-dropdown{
+  position: relative;
+}
+
+.arrow{
+  position: absolute;
+  top:30px;
+  right: 10px;
+}
 .dropdown-item{
   display: flex;
   align-items: center;
@@ -80,6 +120,11 @@ input{
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+  font-size: 13px;
+  font-weight: bold;
+}
+.input-with-name p{
+  margin-bottom: 4px;
 }
 .user-list{
   display: flex;
@@ -87,6 +132,9 @@ input{
   width: 400px;
   flex-wrap: wrap;
 }
+/* .date-time{
+  padding: 116px;
+} */
 
 .time-input{
   width: 72px;
@@ -105,13 +153,38 @@ input{
 
 .form{
   font-size: 15px;
+  min-width: 700px;
   max-width: 1000px;
+  max-height: 200px;
   flex-wrap: wrap;
   display: flex;
-  /* justify-content:center; */
   align-items: center;
+  justify-content: center;
+}
+
+.form>div{
+  margin-right: 32px;
+  margin-bottom: 24px;
 }
 .recomendation{
   height: 150px;
   width: 399px;
+}
+
+.dropdown::-webkit-scrollbar-track
+{
+	background-color: white;
+  border-radius: 8px;
+}
+
+.dropdown::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: white;
+}
+
+.dropdown::-webkit-scrollbar-thumb
+{
+	background-color: #D5DFE9;
+  border-radius: 8px;
 }
