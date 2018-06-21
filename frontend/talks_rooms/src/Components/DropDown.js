@@ -3,7 +3,6 @@ import React from 'react';
 const DropDownItem = ({el,...props})=>{
   return (
     <div
-      // onBlur={()=>console.log("dd")}
       className = 'dropdown-item'
       onMouseDown={props.onClick} id ={el.login}>
       <img src = {el.avatarUrl}/>

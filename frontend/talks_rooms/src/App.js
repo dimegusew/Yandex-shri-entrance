@@ -6,6 +6,7 @@ import DateTime from './Components/DateTime.js';
 import InputWithName from './Components/Input.js'
 import Mock from './MockUsers.js'
 import UserChecker from './Components/Userchecker.js';
+import {InputWithClearButton} from './Components/Input.js'
 
 const Header =()=>{
   return(
@@ -49,13 +50,12 @@ class App extends Component {
         <Hat/>
         <div className = 'form'>
         <Header/>
-        <InputWithName name="Тема"
+        <InputWithClearButton name="Тема"
           placeholder={'О чем будете говорить?'}
            className='text-input'
            onChange={(data)=>this.setState({theme:data.target.value})}
          />
         <DateTime
-           // className='date-time '
            onInput={(data)=>this.setState({dateTime:data})}
          />
        <UserChecker

@@ -1,5 +1,5 @@
 import React from 'react';
-const AddName = (Component)=>({name,...props})=>
+const WithName = (Component)=>({name,...props})=>
 {
   return(
     <div className = "input-with-name">
@@ -8,4 +8,4 @@ const AddName = (Component)=>({name,...props})=>
     </div>
   )
 }
-export default AddName;
+export default WithName;

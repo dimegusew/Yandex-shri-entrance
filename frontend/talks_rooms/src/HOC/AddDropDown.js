@@ -3,9 +3,6 @@ import DropDown from '../Components/DropDown';
 import Arrow1 from '../assets/arrow1.js'
 import Arrow2 from '../assets/arrow2.js'
 
-
-
-
 const Arrow =({...props})=>{
   return(
     <div className="arrow">
@@ -16,7 +13,7 @@ const Arrow =({...props})=>{
   )
 }
 
-const AddDropDown = (InputComponent)=>
+const WithDropDown = (InputComponent)=>
 class extends Component {
   state={input:"",isOpen:false,choosedItem:null}
   render(){
@@ -25,7 +22,6 @@ class extends Component {
     return(
       <div className='input-with-dropdown'
          onBlur={(el)=>this.setState({isOpen:false})}>
-      {/* <Arrow {...this.state}/> */}
       <InputComponent
         tabIndex="1"
          onChange = {(data)=>this.setState({input:data.target.value,isOpen:true})}
@@ -51,4 +47,4 @@ class extends Component {
   }
 }
 
-export default AddDropDown;
+export default WithDropDown;
