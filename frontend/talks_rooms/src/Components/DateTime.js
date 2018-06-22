@@ -15,7 +15,6 @@ class DateTime extends Component {
 
  render() {
    const {dateTime} = this.state;
-   //this.props.onChange(dateTime)
    return(
      <div className='date-time-input'>
 

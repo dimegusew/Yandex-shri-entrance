@@ -1,4 +1,5 @@
 import React from 'react';
+import WithLoading from '../HOC/AddLoader.js'
 
 const DropDownItem = ({el,...props})=>{
   return (
@@ -12,7 +13,8 @@ const DropDownItem = ({el,...props})=>{
   )
 }
 
-const DropDown = ({input,...props})=>{
+
+const DropDownItems = ({input,...props})=>{
   const logins= props.users.map(el=>el ? el.login : "");
   return(
     <div className='dropdown'>
@@ -20,7 +22,14 @@ const DropDown = ({input,...props})=>{
       .indexOf(input)!==-1) && logins.indexOf(el.login)===-1)
       .map(el=>
         <DropDownItem el={el} {...props}/>
-  )} </div>)
+  )} </div>
+  )
 }
 
-export default DropDown;
+const DropDown = ({input,...props})=>{
+  return(
+    <DropDownItems input={input} {...props}
+    />)
+}
+
+export default WithLoading(DropDown);
