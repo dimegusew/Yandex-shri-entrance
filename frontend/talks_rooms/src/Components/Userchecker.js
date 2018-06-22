@@ -30,6 +30,8 @@ const UserChecker=({...props})=>{
   return(
     <div>
       <InputWithDropDown
+          name={'Участники'}
+          className='text-input'
          {...props}/>
       <UserList {...props}/>
     </div>

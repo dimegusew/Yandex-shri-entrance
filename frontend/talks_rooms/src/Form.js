@@ -3,15 +3,10 @@ import './App.css';
 import 'moment/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 import DateTime from './Components/DateTime.js';
-import InputWithName from './Components/Input.js'
 import Mock from './MockUsers.js'
 import UserChecker from './Components/Userchecker.js';
-import {InputWithClearButton} from './Components/Input.js'
-import client from "./client.js";
-import { ApolloProvider } from "react-apollo";
-import { Query } from "react-apollo";
+import {InputWithClearButton} from './Components/Input.js';
 // import gql from "graphql-tag";
-import Hat from './Components/Hat.js'
 import Header from './Components/Header.js'
 
 
@@ -47,9 +42,6 @@ class Form extends Component {
          onInput={(data)=>this.setState({dateTime:data})}
        />
      <UserChecker
-       name={'Участники'}
-       className='text-input'
-       //placeholder={`Например ${Mock[0].login}`}
        onDeleteClick={(data)=>
          this.setState({users: this.deleteUser(this.state.users,data.target.id)})
        }

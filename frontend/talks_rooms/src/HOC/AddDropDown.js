@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import DropDown from '../Components/DropDown';
-import Arrow1 from '../assets/arrow1.js'
-import Arrow2 from '../assets/arrow2.js'
-
 
 const WithDropDown = (InputComponent)=>
 class extends Component {
