@@ -7,6 +7,14 @@ import { ApolloProvider } from "react-apollo";
 import Hat from './Components/Hat.js'
 import Form from './Form.js'
 
+const Footer=()=>{
+  return(
+    <div className='bottom'>
+      <div className="footer">
+      </div>
+    </div>
+  )
+}
 
 const App =()=>{
   return(
@@ -14,6 +22,7 @@ const App =()=>{
         <div className="App">
           <Hat/>
           <Form/>
+          <Footer/>
         </div>
     </ApolloProvider>
   )

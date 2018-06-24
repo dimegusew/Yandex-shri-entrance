@@ -9,7 +9,6 @@ class extends Component {
       <div className='input-with-dropdown'
          onBlur={(el)=>this.setState({isOpen:false})}>
       <InputComponent
-        tabIndex="1"
          onChange = {(data)=>this.setState({input:data.target.value,isOpen:true})}
          onFocus = {()=>this.setState({isOpen:true})}
          value ={this.state.input}

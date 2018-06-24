@@ -1,57 +1,55 @@
-import React, { Component } from 'react';
-import './App.css';
-import 'moment/locale/ru';
-import 'react-datepicker/dist/react-datepicker.css';
-import DateTime from './Components/DateTime.js';
-import Mock from './MockUsers.js'
-import UserChecker from './Components/Userchecker.js';
-import {InputWithClearButton} from './Components/Input.js';
-// import gql from "graphql-tag";
-import Header from './Components/Header.js'
-
+import React, { Component } from "react";
+import "./App.css";
+import "moment/locale/ru";
+import "react-datepicker/dist/react-datepicker.css";
+import DateTime from "./Components/DateTime.js";
+import UserChecker from "./Components/Userchecker.js";
+import { InputWithClearButton } from "./Components/Input.js";
+import Header from "./Components/Header.js";
+import moment from 'moment';
 
 class Form extends Component {
-  state ={
-    dateTime:{},
-    users:[],
-    theme:''
-  }
+  state = {
+    dateTime: {date:moment(),
+                 time: {start:moment().format('LT'),
+                         end:moment().add(30, 'minutes').format('LT') }},
+    theme: "",
+    users: [],
+    isValid:{
+      theme: false,
+      dateTime:true,
+      users:false
+    }
+  };
 
-  setUser = (data,userLogin) =>{
-    return(
-      data.find(el=>el.login===userLogin)
-    )
-  }
-
-  deleteUser = (data,userLogin) =>{
-    return(
-      data.filter(el=>el.login !== userLogin)
-    )
-  }
 
   render() {
+    let {isValid} = this.state;
+    console.log(this.state)
     return (
-      <div className = 'form'>
-      <Header/>
-      <InputWithClearButton name="Тема"
-        placeholder={'О чем будете говорить?'}
-         className='text-input'
-         onChange={(data)=>this.setState({theme:data.target.value})}
-       />
-      <DateTime
-         onInput={(data)=>this.setState({dateTime:data})}
-       />
-     <UserChecker
-       onDeleteClick={(data)=>
-         this.setState({users: this.deleteUser(this.state.users,data.target.id)})
-       }
-       onInp={(data)=>
-         this.setState({users:[...this.state.users,this.setUser(Mock,data)]})
-       }
-       {...this.state}
-     />
-    </div>
-  )
+      <div className="form">
+        <Header />
+        <InputWithClearButton
+          name="Тема"
+          placeholder={"О чем будете говорить?"}
+          className="text-input"
+          onChange={data => this.setState({theme: data.target.value,
+            isValid:{...isValid,theme : data.target.value ? true : false}})}
+          onClear={()=> this.setState({theme: ""})}
+          {...this.state}
+        />
+        <DateTime
+          changeDate={data => this.setState({dateTime: {...data},
+            isValid:{...isValid,dateTime : data.date && data.time.start && data.time.end  ? true : false} })}
+          {...this.state}
+         />
+        <UserChecker
+          userChoose={data => this.setState({users: [...data],
+            isValid:{...isValid,users : data.length!==0 ? true : false}})}
+          {...this.state}
+        />
+      </div>
+    );
   }
 }
 

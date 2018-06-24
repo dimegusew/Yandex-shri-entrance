@@ -7,14 +7,15 @@ class extends Component {
     return(
       <div className='with-name'>
         {this.state.isVisible &&
-          <div onMouseDown={()=>this.setState({isVisible:false})}
+          <div onMouseDown={()=>this.setState({isVisible:false},this.props.onClear)}
             style={{'position':'absolute','bottom':'12px',right:'12px'}}
             >
             {'x'}
           </div>}
       <InputComponent
-        value={this.state.isVisible ? this.props.value : ""}
+        value={this.state.isVisible ? this.props.theme : ""}
         onFocus={()=>this.setState({isVisible:true})}
+        // onClear={}
         {...this.props}
       />
       </div>

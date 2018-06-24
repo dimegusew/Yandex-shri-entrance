@@ -6,22 +6,22 @@ const DropDownItem = ({el,...props})=>{
     <div
       className = 'dropdown-item'
       onMouseDown={props.onClick} id ={el.login}>
-      <img src = {el.avatarUrl}/>
+      <img alt={"user-avatar"} src = {el.avatarUrl}/>
       {el.login}
       <div>{`·${el.homeFloor} этаж`} </div>
     </div>
   )
 }
 
-
 const DropDownItems = ({input,...props})=>{
+  console.log(props)
   const logins= props.users.map(el=>el ? el.login : "");
   return(
     <div className='dropdown'>
       {props.data.filter(el=>(el.login
       .indexOf(input)!==-1) && logins.indexOf(el.login)===-1)
       .map(el=>
-        <DropDownItem el={el} {...props}/>
+        <DropDownItem el={el} key={el.id} {...props}/>
   )} </div>
   )
 }

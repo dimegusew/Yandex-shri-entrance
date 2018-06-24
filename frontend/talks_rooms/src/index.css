@@ -37,7 +37,7 @@ input:focus{
   height: 71px;
   width: 100%;
   background: #FFFFFF;
-  box-shadow: 0 -1px 0 0 #E9ECEF;
+  box-shadow: 0 1px 0 0 #E9ECEF;
 }
 
 .date-time-input{
@@ -112,6 +112,7 @@ input:focus{
 }
 
 .choosed-user :last-child{
+  cursor: pointer;
   position: absolute;
   right: 10px;
 }
@@ -152,14 +153,16 @@ input:focus{
 }
 
 .form{
+  padding-top:31px;
   font-size: 15px;
   min-width: 700px;
   max-width: 1000px;
-  max-height: 200px;
+  max-height: 1000px;
   flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .form>div{
@@ -190,4 +193,23 @@ input:focus{
 }
 .with-name{
   position:relative;
+}
+
+.bottom{
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  width: 100%;
+  height: 100px;
+  /* background-color: grey; */
+}
+
+
+.footer{
+  position: absolute;
+  bottom:0;
+  height:76px;
+  width: 100%;
+  background: #FFFFFF;
+box-shadow: 0 -1px 0 0 #E9ECEF;
 }
