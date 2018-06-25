@@ -7,6 +7,7 @@ import UserChecker from "./Components/Userchecker.js";
 import { InputWithClearButton } from "./Components/Input.js";
 import Header from "./Components/Header.js";
 import moment from 'moment';
+import RoomChecker from "./Components/RoomChecker.js";
 
 class Form extends Component {
   state = {
@@ -33,14 +34,19 @@ class Form extends Component {
           name="Тема"
           placeholder={"О чем будете говорить?"}
           className="text-input"
-          onChange={data => this.setState({theme: data.target.value,
-            isValid:{...isValid,theme : data.target.value ? true : false}})}
-          onClear={()=> this.setState({theme: ""})}
+          onChange={data =>this.setState({
+            theme: data.target.value,
+            isValid:{...isValid,
+              theme : data.target.value ? true : false}})}
+          onClear={()=> this.setState({theme: "",isValid:{...isValid,theme:false}})}
           {...this.state}
         />
         <DateTime
-          changeDate={data => this.setState({dateTime: {...data},
-            isValid:{...isValid,dateTime : data.date && data.time.start && data.time.end  ? true : false} })}
+          changeDate={data => this.setState({
+            dateTime: {...data},
+            isValid:{...isValid,
+              dateTime :
+              data.date && data.time.start && data.time.end  ? true : false} })}
           {...this.state}
          />
         <UserChecker
@@ -48,6 +54,8 @@ class Form extends Component {
             isValid:{...isValid,users : data.length!==0 ? true : false}})}
           {...this.state}
         />
+
+      <RoomChecker {...this.state}/>
       </div>
     );
   }

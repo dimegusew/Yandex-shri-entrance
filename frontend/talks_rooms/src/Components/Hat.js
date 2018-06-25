@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hat = () =>{
   return(
-    <div className='Hat'>dq </div>
+    <div className='Hat'></div>
   )
 }
 export default Hat;

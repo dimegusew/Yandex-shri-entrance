@@ -14,7 +14,6 @@ const DropDownItem = ({el,...props})=>{
 }
 
 const DropDownItems = ({input,...props})=>{
-  console.log(props)
   const logins= props.users.map(el=>el ? el.login : "");
   return(
     <div className='dropdown'>

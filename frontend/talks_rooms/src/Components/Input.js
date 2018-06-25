@@ -8,6 +8,7 @@ const Input = ({...props})=>{
     <input {...props}/>
   )
 }
+
 export default WithName(Input);
 export const InputWithDropDown = WithDropDown(WithName(Input))
 export const InputWithClearButton = WithClearButton(WithName(Input))

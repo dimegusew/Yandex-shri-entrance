@@ -11,6 +11,12 @@ const Footer=()=>{
   return(
     <div className='bottom'>
       <div className="footer">
+        <button>
+          Отмена
+        </button>
+          <button>
+            Создать
+          </button>
       </div>
     </div>
   )

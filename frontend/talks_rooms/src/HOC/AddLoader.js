@@ -1,9 +1,9 @@
 import React from 'react';
 
-const WithLoading = (DropDown)=>({...props})=>{
-  if (props.loading) return <p>Loading...</p>;
+const WithLoading = (Component)=>({...props})=>{
+  if (props.loading) return <p className='loading'>Loading...</p>;
   if (props.error) return <p>Error :(</p>;
-    return (<DropDown {...props}/>)
+    return (<Component {...props}/>)
 }
 
 export default WithLoading;

@@ -18,6 +18,16 @@ class DateTime extends Component {
     }
   };
 
+  validateTime=(dat)=>{
+    return (dat.target.value.length<6)&& +dat.target.value.slice(0,1)<24 ? true : false
+  }
+
+  addColon = (dat)=>{
+    return dat.length==2 && dat.indexOf(":")==-1 ? dat+':' : dat
+  }
+
+
+
   render() {
     const { dateTime } = this.props;
     return (
@@ -37,11 +47,13 @@ class DateTime extends Component {
           name="Начало"
           value={dateTime.time.start}
           onChange={dat => {
+
+            this.validateTime(dat)&&
             this.props.changeDate({
               ...dateTime,
               time: {
                 ...dateTime.time,
-                start: dat.target.value
+                start: this.addColon(dat.target.value)
               }
             });
           }}
@@ -49,15 +61,17 @@ class DateTime extends Component {
         <InputWithName
           className="time-input"
           name="Конец"
+          pattern='[0-9]{,3}'
           value={dateTime.time.end}
           onChange={dat => {
+            (this.validateTime(dat)) && //change to validate method
             this.props.changeDate({
               ...dateTime,
               time: {
                 ...dateTime.time,
-                end: dat.target.value
+                end: this.addColon(dat.target.value)
               }
-            });
+            })
           }}
         />
       </div>

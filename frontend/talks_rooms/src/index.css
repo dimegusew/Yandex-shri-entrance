@@ -56,7 +56,7 @@ input:focus{
   background-color: white;
     border: 1px solid #cccccc;
     max-height: 102px;
-    position: fixed;
+    position: absolute;
     z-index: 99;
     background: #FFFFFF;
     box-shadow: 0 1px 10px 0 rgba(0,44,92,0.28);
@@ -132,6 +132,7 @@ input:focus{
   justify-content: row;
   width: 400px;
   flex-wrap: wrap;
+  padding-top: 12px;
 }
 /* .date-time{
   padding: 116px;
@@ -160,7 +161,7 @@ input:focus{
   max-height: 1000px;
   flex-wrap: wrap;
   display: flex;
-  align-items: center;
+  //align-items: center;
   justify-content: center;
   overflow-x: hidden;
 }
@@ -203,10 +204,36 @@ input:focus{
   height: 100px;
   /* background-color: grey; */
 }
-
+.Rooms{
+  width: 424px;
+}
+.Rooms>div{
+  background-color:  #E9ECEF;
+  width:424px;
+  height:37px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-weight: normal;
+}
+.Rooms>div>div{
+  padding:5px;
+}
+.Rooms>div:hover{
+  background-color: #007DFF ;
+}
+.loading{
+  width:424px;
+}
 
 .footer{
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   bottom:0;
   height:76px;
   width: 100%;
