@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { InputWithDropDown } from "../Components/Input.js";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import WithData from '../HOC/FetchData.js';
+import UsersQuery from '../Querys/UsersQuery.js';
 
 const User = ({ ...props }) => {
   return (
@@ -18,12 +18,13 @@ const User = ({ ...props }) => {
 const UserList = ({ ...props }) => {
   return (
     <div className="user-list">
-      {props.users.map(el => <User {...el} key={el.id} {...props} />)}
+      {props.choosedUsers.map(el => <User {...el} key={el.id} {...props} />)}
     </div>
   );
 };
 
 class UserChecker extends Component {
+
   setUser = (users, userLogin) => {
     return users.find(el => el.login === userLogin);
   };
@@ -33,25 +34,27 @@ class UserChecker extends Component {
   };
 
   render() {
-    let FirstUser = this.props.data ? this.props.data[0].login : "";
+    let {users} = this.props.data;
     return (
       <div>
         <InputWithDropDown
           name={"Участники"}
-          placeholder={`Например,${FirstUser}`}
+          users={users}
+          placeholder={`Например,${users[0].login}`}
           className="text-input"
-          onInp={data =>
+          choosedUsers={this.props.choosedUsers}
+          onInp={
+            data =>
             this.props.userChoose([
-              ...this.props.users,
-              this.setUser(this.props.data, data)
+              ...this.props.choosedUsers,
+              this.setUser(users, data)
             ])
           }
-          {...this.props}
         />
         <UserList
           onDeleteClick={data =>
             this.props.userChoose(
-              this.deleteUser(this.props.users, data.target.id)
+              this.deleteUser(this.props.choosedUsers, data.target.id)
             )
           }
           {...this.props}
@@ -61,30 +64,5 @@ class UserChecker extends Component {
   }
 }
 
-const UserCheckerWithData = ({ ...props }) => (
-  <Query
-    query={gql`
-      {
-        users {
-          id
-          login
-          homeFloor
-          avatarUrl
-        }
-      }
-    `}
-  >
-    {({ loading, error, data }) => {
-      return (
-        <UserChecker
-          data={data ? data.users : ""}
-          loading={loading}
-          error={error}
-          {...props}
-        />
-      );
-    }}
-  </Query>
-);
 
-export default UserCheckerWithData;
+export default WithData(UserChecker,UsersQuery);

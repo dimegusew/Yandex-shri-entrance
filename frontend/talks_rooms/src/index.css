@@ -20,6 +20,11 @@ input{
   height: 32px;
   padding-left: 3px;
 }
+
+input:hover{
+  border-color: #E9ECEF;
+border-color: rgba(0,16,33,0.05);
+}
 input:focus{
   border-color: #007DFF;
 }
@@ -217,12 +222,20 @@ input:focus{
   align-items: center;
   padding-left: 10px;
   font-weight: normal;
+  position:relative;
 }
+.Room>div:last-child{
+  position: absolute;
+  right: 12px;
+
+}
+
 .Rooms>div>div{
   padding:5px;
 }
 .Rooms>div:hover{
-  background-color: #007DFF ;
+  background-color: #E9ECEF;
+background: rgba(0,16,33,0.05);
 }
 .loading{
   width:424px;

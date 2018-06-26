@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import WithName from '../HOC/AddName';
-import WithLoader from '../HOC/AddLoader';
 
 const Room =({el,...props})=>{
-  console.log(props.choosedId)
   let {start,end} = props.time.time;
+  let style = (el.id===props.choosedId) ? {'backgroundColor':' #007DFF','color':'white'}:{}
   return(
-    <div className='Room' id ={el.id}  onClick={props.onClick}>
+    <div className='Room' id ={el.id} style={style}  onClick={props.onClick}>
       <div>{start}-{end+" "}</div>
       <div>{el.title}</div>
       <div>{`${el.floor} этаж`}</div>
+    <div onDeleteClick={props.onDeleteClick}>{(el.id===props.choosedId)&&'x'}</div>
      </div>
   )
 }
@@ -24,4 +24,4 @@ const Rooms =({...props}) =>{
   )
 }
 
-export default WithLoader(WithName(Rooms));
+export default WithName(Rooms);

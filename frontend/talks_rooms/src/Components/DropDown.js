@@ -14,10 +14,11 @@ const DropDownItem = ({el,...props})=>{
 }
 
 const DropDownItems = ({input,...props})=>{
-  const logins= props.users.map(el=>el ? el.login : "");
+  console.log(props)
+  const logins= props.choosedUsers.map(el=>el ? el.login : "");
   return(
     <div className='dropdown'>
-      {props.data.filter(el=>(el.login
+      {props.users.filter(el=>(el.login
       .indexOf(input)!==-1) && logins.indexOf(el.login)===-1)
       .map(el=>
         <DropDownItem el={el} key={el.id} {...props}/>

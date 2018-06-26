@@ -15,7 +15,7 @@ class Form extends Component {
                  time: {start:moment().format('LT'),
                          end:moment().add(30, 'minutes').format('LT') }},
     theme: "",
-    users: [],
+    choosedUsers: [],
     isValid:{
       theme: false,
       dateTime:true,
@@ -50,8 +50,8 @@ class Form extends Component {
           {...this.state}
          />
         <UserChecker
-          userChoose={data => this.setState({users: [...data],
-            isValid:{...isValid,users : data.length!==0 ? true : false}})}
+          userChoose={data => this.setState({choosedUsers: [...data],
+            isValid:{...isValid,choosedUsers : data.length!==0 ? true : false}})}
           {...this.state}
         />
 

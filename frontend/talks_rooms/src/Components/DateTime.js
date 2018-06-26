@@ -23,7 +23,7 @@ class DateTime extends Component {
   }
 
   addColon = (dat)=>{
-    return dat.length==2 && dat.indexOf(":")==-1 ? dat+':' : dat
+    return dat.length===2 && dat.indexOf(":")===-1 ? dat+':' : dat
   }
 
 
