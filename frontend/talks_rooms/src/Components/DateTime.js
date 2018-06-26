@@ -61,7 +61,6 @@ class DateTime extends Component {
         <InputWithName
           className="time-input"
           name="Конец"
-          pattern='[0-9]{,3}'
           value={dateTime.time.end}
           onChange={dat => {
             (this.validateTime(dat)) && //change to validate method

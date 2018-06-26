@@ -7,6 +7,18 @@ const RoomQuery= gql`
       capacity
       floor
     }
+    events {
+      id
+      title
+      dateStart
+      dateEnd
+      users {
+        id
+      }
+      room {
+        id
+      }
+    }
   }
 `
 
