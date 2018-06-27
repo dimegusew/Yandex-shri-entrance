@@ -7,7 +7,7 @@ const WithData =(WrapedComponent,query)=> ({ ...props }) => (
   >
     {({ loading, error, data }) => {
       if (loading){ return(
-        <div>Loading </div>
+        <div className="loading">Loading </div>
       )}
       if (props.error) return <p>Error :(</p>;
       return (

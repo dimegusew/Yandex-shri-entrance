@@ -1,11 +1,11 @@
 import React from 'react';
 import WithLoading from '../HOC/AddLoader.js'
 
-const DropDownItem = ({el,...props})=>{
+const DropDownItem = ({el,onClick})=>{
   return (
     <div
       className = 'dropdown-item'
-      onMouseDown={props.onClick} id ={el.login}>
+      onMouseDown={onClick} id ={el.login}>
       <img alt={"user-avatar"} src = {el.avatarUrl}/>
       {el.login}
       <div>{`·${el.homeFloor} этаж`} </div>
@@ -13,12 +13,12 @@ const DropDownItem = ({el,...props})=>{
   )
 }
 
-const DropDownItems = ({input,...props})=>{
-  console.log(props)
-  const logins= props.choosedUsers.map(el=>el ? el.login : "");
+const DropDownItems = ({input,choosedUsers,users,...props})=>{
+
+  const logins= choosedUsers.map(el=>el ? el.login : "");
   return(
     <div className='dropdown'>
-      {props.users.filter(el=>(el.login
+      {users.filter(el=>(el.login
       .indexOf(input)!==-1) && logins.indexOf(el.login)===-1)
       .map(el=>
         <DropDownItem el={el} key={el.id} {...props}/>

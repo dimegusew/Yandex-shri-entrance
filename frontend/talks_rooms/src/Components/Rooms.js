@@ -14,10 +14,10 @@ const Room =({el,...props})=>{
   )
 }
 
-const Rooms =({...props}) =>{
+const Rooms =({rooms,...props}) =>{
   return(
     <div className='Rooms'>
-      {props.rooms.map(el=>
+      {rooms.map(el=>
         <Room el={el} {...props}/>
     )}
     </div>

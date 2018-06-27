@@ -9,7 +9,7 @@ class RoomChecker extends Component{
     choosedId:null
   }
   render(){
-    console.log(getRecomendations({start:'20182211T20:18',end:'20182211T20:58'},this.props.data,[1,2,3,4]))
+    //console.log(getRecomendations({start:'20182211T20:18',end:'20182211T20:58'},this.props.data,[1,2,3,4]))
   return(
     <Rooms
       {...this.state}

@@ -6,8 +6,20 @@ import client from "./client.js";
 import { ApolloProvider } from "react-apollo";
 import Hat from './Components/Hat.js'
 import Form from './Form.js'
+import {graphql,compose} from 'react-apollo';
+// import gql from "graphql-tag";
+import LocalQuery from './Querys/LocalQuery.js'
 
-const Footer=()=>{
+// const AllQuery = gql`
+//   query : {
+//     current:@client {
+//       name
+//     }
+//   }
+//     `
+
+const Footer=({...props})=>{
+  console.log(props)
   return(
     <div className='bottom'>
       <div className="footer">
@@ -22,13 +34,22 @@ const Footer=()=>{
   )
 }
 
+const FooterWithData=compose(
+  graphql(LocalQuery,{
+    props:({data:{ CurrentGame }})=>({
+    CurrentGame
+  })
+
+})
+)(Footer)
+
 const App =()=>{
   return(
     <ApolloProvider client={client}>
         <div className="App">
           <Hat/>
           <Form/>
-          <Footer/>
+          <FooterWithData/>
         </div>
     </ApolloProvider>
   )
