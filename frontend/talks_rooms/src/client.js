@@ -7,7 +7,9 @@ import moment from 'moment';
 import gql from 'graphql-tag';
 
 const dateStart = moment().format()
-const dateEnd =moment().add(30, 'minutes').format()
+const timeStart = moment().format('LT');
+const dateEnd =moment().add(30, 'minutes').format();
+const timeEnd = moment().add(30, 'minutes').format('LT');
 console.log(dateEnd)
 
 
@@ -27,8 +29,11 @@ const client = new ApolloClient({
               __typename: "formState",
               dateTime: {
                 __typename: "dateTimeState",
+                timeStart,
+                timeEnd,
                 dateStart,
-                dateEnd
+                dateEnd,
+
               },
               theme: "",
               choosedUsers: [],
@@ -69,10 +74,7 @@ const client = new ApolloClient({
             data: {
               formState: {
                 __typename: "formState",
-                dateTime:{
-                  __typename: "dateTimeState",
-                  dateEnd:'2018-07-02T21:48:49+03:00'
-                }
+                dateTime:changedForm
               }
             }
           });

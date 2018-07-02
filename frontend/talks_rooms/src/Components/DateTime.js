@@ -7,21 +7,7 @@ import DatePickerWithName from "./MyDatePicker.js";
 import gql from 'graphql-tag';
 import "moment/locale/ru";
 import { graphql, compose, Query } from "react-apollo";
-
-
-const GET_DATE_TIME = gql`
-  query {
-    formState @client{
-      dateTime{
-        dateStart,
-        dateEnd
-      }
-    }
-    networkStatus @client {
-      isConnected
-      }
-  }
-`;
+import GET_DATE_TIME from '../Querys/LocalQuerys/getDateTime.js'
 
 
 const changeConnectionMutation = gql`
@@ -32,23 +18,20 @@ const changeConnectionMutation = gql`
 
 const DateTimeWiithData = ({...props} ) => (
   <Query query={GET_DATE_TIME}>
-    {({data:{formState, networkStatus} }) =>
+    {({data:{formState} }) =>
         <DateTime
           {...props}
           data={formState}
-          networkStatus={networkStatus}
-
         />
     }
   </Query>
 );
 
 
-
-
 class DateTime extends Component {
 
   validateTime=(dat)=>{
+    console.log(dat)
     return (dat.target.value.length<6)&& +dat.target.value.slice(0,1)<24 ? true : false
   }
 
@@ -56,14 +39,10 @@ class DateTime extends Component {
     return dat.length===2 && dat.indexOf(":")===-1 ? dat+':' : dat
   }
 
-
-
   render() {
-    // console.log(moment(data.dateTime.dateStart).format('DD MMMM YYYY'))
-    const { dateTime, data, mutate,networkStatus } = this.props;
+    const { dateTime, data, mutate } = this.props;
     let dateStart = moment(data.dateTime.dateStart);
-    let dateEnd = moment(data.dateTime.dateEnd);
-    console.log(this.props.data.dateTime)
+    console.log(this.props.data)
     return (
       <div className="date-time-input">
         <DatePickerWithName
@@ -79,44 +58,32 @@ class DateTime extends Component {
         <InputWithName
           className="time-input"
           name="Начало"
-          value={dateStart.format('LT')}
-          onChange={dat => {
-
-            this.validateTime(dat)&&
-            this.props.changeDate({
-              ...dateTime,
-              time: {
-                ...dateTime.time,
-                start: this.addColon(dat.target.value)
+          value={data.dateTime.timeStart}
+          onChange={
+            (data)=>this.validateTime(data)&& mutate({
+              variables: {
+                changedForm: {
+                  ...this.props.data.dateTime,
+                  timeStart:this.addColon(data.target.value)
+                }
               }
-            });
-          }}
+            })
+        }
         />
 
         <InputWithName
           className="time-input"
           name="Конец"
-          value={dateEnd.format('LT')}
+          value={data.dateTime.timeEnd}
           onChange={
-
-            (data)=>this.validateTime(data)&& mutate({
+            (data)=>this.validateTime(data) && mutate({
               variables: {
                 changedForm: {
                   ...this.props.data.dateTime,
-                  dateEnd:data.target.value
+                  timeEnd:this.addColon(data.target.value)
                 }
               }
-        })
-          //   dat => {
-          //   (this.validateTime(dat)) && //change to validate method
-          //   this.props.changeDate({
-          //     ...dateTime,
-          //     time: {
-          //       ...dateTime.time,
-          //       end: this.addColon(dat.target.value)
-          //     }
-          //   })
-          // }
+            })
         }
         />
       </div>
