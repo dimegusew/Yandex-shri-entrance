@@ -2,8 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 
 const WithData =(WrapedComponent,query)=> ({ ...props }) => (
-  <Query
-    query={query}
+  <Query query={query}
   >
     {({ loading, error, data }) => {
       if (loading){ return(

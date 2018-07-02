@@ -6,9 +6,13 @@ import client from "./client.js";
 import { ApolloProvider } from "react-apollo";
 import Hat from './Components/Hat.js'
 import Form from './Form.js'
-import {graphql,compose} from 'react-apollo';
+// import {graphql,compose} from 'react-apollo';
 // import gql from "graphql-tag";
-import LocalQuery from './Querys/LocalQuery.js'
+import LocalQuery from './Querys/LocalQuery.js';
+import { Query } from "react-apollo";
+import WithData from './HOC/FetchData.js'
+import gql from 'graphql-tag';
+
 
 // const AllQuery = gql`
 //   query : {
@@ -17,6 +21,45 @@ import LocalQuery from './Querys/LocalQuery.js'
 //     }
 //   }
 //     `
+
+// const FooComp = ({...props})=>{
+//   console.log(props)
+//   return(
+//     <div>
+//       "dd"
+//     </div>
+//   )
+// }
+//
+//
+// const GET_SELECTED_REPOSITORIES = gql`
+//   query {
+//     networkStatus @client {
+//       isConnected,
+//     }
+//     formState @client{
+//       theme,
+//       choosedUsers,
+//       dateTime{
+//         dateStart,
+//         dateEnd
+//       }
+//     }
+//   }
+// `;
+//
+// const Repositories = ( ) => (
+//   <Query query={GET_SELECTED_REPOSITORIES}>
+//     {({data }) =>
+//         <FooComp
+//           data={data}/>
+//     }
+//   </Query>
+// );
+//
+
+
+
 
 const Footer=({...props})=>{
   console.log(props)
@@ -34,22 +77,13 @@ const Footer=({...props})=>{
   )
 }
 
-const FooterWithData=compose(
-  graphql(LocalQuery,{
-    props:({data:{ CurrentGame }})=>({
-    CurrentGame
-  })
-
-})
-)(Footer)
-
 const App =()=>{
   return(
     <ApolloProvider client={client}>
         <div className="App">
           <Hat/>
           <Form/>
-          <FooterWithData/>
+        <Footer/>
         </div>
     </ApolloProvider>
   )

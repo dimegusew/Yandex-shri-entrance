@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const MyDatePicker = ({dateTime,...props})=>{
   return(
     <DatePicker
-       selected={dateTime.date}
+       selected={dateTime}
        {...props}
        locale="ru"
        dateFormat="DD MMMM YYYY"
