@@ -8,6 +8,9 @@ import { InputWithClearButton } from "./Components/Input.js";
 import Header from "./Components/Header.js";
 import moment from 'moment';
 import RoomChecker from "./Components/RoomChecker.js";
+import ThemeInput from "./Components/ThemeInput.js";
+
+
 
 class Form extends Component {
   state = {
@@ -30,17 +33,8 @@ class Form extends Component {
     return (
       <div className="form">
         <Header />
-        <InputWithClearButton
-          name="Тема"
-          placeholder={"О чем будете говорить?"}
-          className="text-input"
-          onChange={data =>this.setState({
-            theme: data.target.value,
-            isValid:{...isValid,
-              theme : data.target.value ? true : false}})}
-          onClear={()=> this.setState({theme: "",isValid:{...isValid,theme:false}})}
-          {...this.state}
-        />
+        <ThemeInput/>
+
         <DateTime
           changeDate={data => this.setState({
             dateTime: {...data},

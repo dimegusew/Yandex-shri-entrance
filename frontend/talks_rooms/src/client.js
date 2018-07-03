@@ -51,24 +51,22 @@ const client = new ApolloClient({
       Mutation: {
         updateFormState: (_, { changedForm }, { cache }) => {
 
-          const query = gql`
-            query {
-              formState @client{
-                dateTime{
-                  dateStart,
-                  dateEnd
-                }
-              }
-              networkStatus @client {
-                isConnected
-                }
-            }
-          `;
+          // const query = gql`
+          //   query {
+          //     formState @client{
+          //       dateTime{
+          //         dateStart,
+          //         dateEnd
+          //       }
+          //     }
+          //     networkStatus @client {
+          //       isConnected
+          //       }
+          //   }
+          // `;
 
-          const previous = cache.readQuery({ query });
-          console.log(query)
-          const newChangedForm = changedForm;
-          console.log(changedForm)
+          // const previous = cache.readQuery({ query });
+          // const newChangedForm = changedForm;
 
           cache.writeData({
             data: {
@@ -79,7 +77,25 @@ const client = new ApolloClient({
             }
           });
           return null;
+        },
+
+        updateThemeState: (_, { theme }, { cache }) => {
+          cache.writeData({
+            data: {
+              formState: {
+                __typename: "formState",
+                theme
+              }
+            }
+          });
+          return null;
         }
+
+
+
+
+
+
       }
     }
   }
