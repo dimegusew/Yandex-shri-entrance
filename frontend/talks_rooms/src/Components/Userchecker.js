@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { InputWithDropDown } from "../Components/Input.js";
 import WithData from '../HOC/FetchData.js';
 import UsersQuery from '../Querys/UsersQuery.js';
+import { graphql, compose, Query } from "react-apollo";
+import gql from 'graphql-tag';
 
 const User = ({ ...props }) => {
   return (
@@ -23,46 +25,106 @@ const UserList = ({ ...props }) => {
   );
 };
 
-class UserChecker extends Component {
 
-  setUser = (users, userLogin) => {
-    return users.find(el => el.login === userLogin);
-  };
-
-  deleteUser = (users, userLogin) => {
-    return users.filter(el => el.login !== userLogin);
-  };
-
-  render() {
-    let {users} = this.props.data;
-    return (
-      <div>
-        <InputWithDropDown
-          name={"Участники"}
-          users={users}
-          placeholder={`Например,${users[0].login}`}
-          className="text-input"
-          choosedUsers={this.props.choosedUsers}
-          onInp={
-            data =>
-            this.props.userChoose([
-              ...this.props.choosedUsers,
-              this.setUser(users, data)
-            ])
-          }
-        />
-        <UserList
-          onDeleteClick={data =>
-            this.props.userChoose(
-              this.deleteUser(this.props.choosedUsers, data.target.id)
-            )
-          }
-          {...this.props}
-        />
-      </div>
-    );
+const addUserMutation= gql`
+  mutation($user: Object) {
+    addUsersState(user: $user) @client
   }
+`;
+
+
+const UserChecker = ({...props,mutate})=>{
+  let {users} = props.data;
+  let {choosedUsers} = props.data.formState
+  return (
+    <div>
+      <InputWithDropDown
+        name={"Участники"}
+        users={users}
+        placeholder={`Например,${users[0].login}`}
+        className="text-input"
+        choosedUsers={choosedUsers}
+        onInp={(user)=>
+          mutate({
+            variables: {
+              user:user
+            }
+          })
+          // data =>
+          // this.props.userChoose([
+          //   ...this.props.choosedUsers,
+          //   this.setUser(users, data)
+          // ])
+        }
+      />
+      {/* <UserList
+        onDeleteClick={d=>console.log(d)
+          // data =>
+          // this.props.userChoose(
+          //   this.deleteUser(this.props.choosedUsers, data.target.id)
+          // )
+        }
+        choosedUsers={choosedUsers}
+        // {...this.props}
+      /> */}
+    </div>
+  );
 }
 
 
-export default WithData(UserChecker,UsersQuery);
+//
+// class UserChecker extends Component {
+//
+//   // setUser = (users, userLogin) => {
+//   //   return users.find(el => el.login === userLogin);
+//   // };
+//   //
+//   // deleteUser = (users, userLogin) => {
+//   //   return users.filter(el => el.login !== userLogin);
+//   // };
+//
+//   render() {
+//     console.log(this.props)
+//     let {users} = this.props.data;
+//     let {choosedUsers} = this.props.data.formState
+//     return (
+//       <div>
+//         <InputWithDropDown
+//           name={"Участники"}
+//           users={users}
+//           placeholder={`Например,${users[0].login}`}
+//           className="text-input"
+//           choosedUsers={choosedUsers}
+//           onInp={(user)=>
+//             this.props.mutate({
+//               variables: {
+//                 user
+//               }
+//             })
+//             // data =>
+//             // this.props.userChoose([
+//             //   ...this.props.choosedUsers,
+//             //   this.setUser(users, data)
+//             // ])
+//           }
+//         />
+//         <UserList
+//           onDeleteClick={d=>console.log(d)
+//             // data =>
+//             // this.props.userChoose(
+//             //   this.deleteUser(this.props.choosedUsers, data.target.id)
+//             // )
+//           }
+//           choosedUsers={choosedUsers}
+//           // {...this.props}
+//         />
+//       </div>
+//     );
+//   }
+// }
+
+const UserCheckerWithData = WithData(UserChecker,UsersQuery);
+
+export default compose(
+  graphql(addUserMutation)
+)(UserCheckerWithData);

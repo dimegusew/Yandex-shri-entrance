@@ -7,6 +7,9 @@ const UserQuery= gql`
           homeFloor
           avatarUrl
         }
+        formState @client{
+          choosedUsers
+        }
       }
     `
 

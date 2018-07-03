@@ -37,6 +37,7 @@ const client = new ApolloClient({
               },
               theme: "",
               choosedUsers: [],
+              us:"",
               isValid:{
                 theme: false,
                 dateTime:true,
@@ -89,13 +90,39 @@ const client = new ApolloClient({
             }
           });
           return null;
+        },
+
+        addUsersState: (_, { user }, { cache }) => {
+          const query= gql`
+                {
+                  users {
+                    id
+                    login
+                    homeFloor
+                    avatarUrl
+                  }
+                  formState @client{
+                    choosedUsers,
+                    us
+                  }
+                }
+              `
+
+          const previous = cache.readQuery({ query });
+          const currentUser = previous.users.find(el => el.login === user)
+          const data = [...previous.formState.choosedUsers,currentUser]
+          console.log(data)
+
+          // cache.writeData({
+          //   data: {
+          //     formState: {
+          //       __typename: "formState",
+          //       us:user
+          //     }
+          //   }
+          // });
+          // return null;
         }
-
-
-
-
-
-
       }
     }
   }

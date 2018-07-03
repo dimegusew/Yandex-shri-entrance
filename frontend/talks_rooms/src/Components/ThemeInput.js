@@ -33,7 +33,6 @@ const ThemeInput = ({...props,mutate})=>{
           }
         })
       }
-      // onClear={}
     />
   )
 }

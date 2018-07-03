@@ -43,10 +43,11 @@ class Form extends Component {
               data.date && data.time.start && data.time.end  ? true : false} })}
           {...this.state}
          />
+
         <UserChecker
           userChoose={data => this.setState({choosedUsers: [...data],
             isValid:{...isValid,choosedUsers : data.length!==0 ? true : false}})}
-          {...this.state}
+          // {...this.state}
         />
 
       <RoomChecker {...this.state}/>
