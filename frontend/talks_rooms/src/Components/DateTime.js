@@ -42,7 +42,7 @@ class DateTime extends Component {
   render() {
     const { dateTime, data, mutate } = this.props;
     let dateStart = moment(data.dateTime.dateStart);
-    console.log(this.props.data)
+    console.log(this.props.data.dateTime)
     return (
       <div className="date-time-input">
         <DatePickerWithName
@@ -50,9 +50,16 @@ class DateTime extends Component {
           className="date-input"
           name="Дата"
           dateTime={dateStart}
-          onChange={date => {
-            this.props.changeDate({ ...dateTime, date });
-          }}
+          onChange={(data)=>
+            mutate({
+              variables: {
+                changedForm: {
+                  ...this.props.data.dateTime,
+                  dateStart:moment(data).format()
+                }
+              }
+            })
+          }
         />
 
         <InputWithName

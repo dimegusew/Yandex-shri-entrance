@@ -33,16 +33,17 @@ const client = new ApolloClient({
                 timeEnd,
                 dateStart,
                 dateEnd,
+                date:""
 
               },
               theme: "",
               choosedUsers: [],
               us:"",
-              isValid:{
-                theme: false,
-                dateTime:true,
-                users:false
-              }
+              // isValid:{
+              //   theme: false,
+              //   dateTime:true,
+              //   users:false
+              // }
             }
 
 
@@ -51,7 +52,7 @@ const client = new ApolloClient({
       Query: {},
       Mutation: {
         updateFormState: (_, { changedForm }, { cache }) => {
-
+            console.log(changedForm)
           // const query = gql`
           //   query {
           //     formState @client{

@@ -34,15 +34,7 @@ class Form extends Component {
       <div className="form">
         <Header />
         <ThemeInput/>
-
-        <DateTime
-          changeDate={data => this.setState({
-            dateTime: {...data},
-            isValid:{...isValid,
-              dateTime :
-              data.date && data.time.start && data.time.end  ? true : false} })}
-          {...this.state}
-         />
+        <DateTime/>
 
         <UserChecker
           userChoose={data => this.setState({choosedUsers: [...data],

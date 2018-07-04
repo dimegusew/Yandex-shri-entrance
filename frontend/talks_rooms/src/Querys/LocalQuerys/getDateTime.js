@@ -7,7 +7,8 @@ const GET_DATE_TIME = gql`
         dateStart,
         dateEnd,
         timeStart,
-        timeEnd
+        timeEnd,
+        date
       }
     }
   }
