@@ -33,9 +33,10 @@ const addUserMutation= gql`
 `;
 
 
-const UserChecker = ({...props,mutate})=>{
+const UserChecker = ({...props})=>{
   let {users} = props.data;
   let {choosedUsers} = props.data.formState
+  console.log(props.data.formState)
   return (
     <div>
       <InputWithDropDown
@@ -45,9 +46,9 @@ const UserChecker = ({...props,mutate})=>{
         className="text-input"
         choosedUsers={choosedUsers}
         onInp={(user)=>
-          mutate({
+          props.mutate({
             variables: {
-              user:user
+              user
             }
           })
           // data =>

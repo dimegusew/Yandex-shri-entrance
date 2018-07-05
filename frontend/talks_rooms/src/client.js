@@ -114,15 +114,15 @@ const client = new ApolloClient({
           const data = [...previous.formState.choosedUsers,currentUser]
           console.log(data)
 
-          // cache.writeData({
-          //   data: {
-          //     formState: {
-          //       __typename: "formState",
-          //       us:user
-          //     }
-          //   }
-          // });
-          // return null;
+          cache.writeData({
+            data: {
+              formState: {
+                __typename: "formState",
+                choosedUsers:data
+              }
+            }
+          });
+          return null;
         }
       }
     }

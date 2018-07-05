@@ -27,26 +27,21 @@ const DateTimeWiithData = ({...props} ) => (
   </Query>
 );
 
-
-class DateTime extends Component {
-
-  validateTime=(dat)=>{
-    console.log(dat)
+const validateTime=(dat)=>{
     return (dat.target.value.length<6)&& +dat.target.value.slice(0,1)<24 ? true : false
   }
 
-  addColon = (dat)=>{
+const addColon = (dat)=>{
     return dat.length===2 && dat.indexOf(":")===-1 ? dat+':' : dat
   }
 
-  render() {
-    const { dateTime, data, mutate } = this.props;
+
+const DateTime =({...props})=>{
+    const { data, mutate } = props;
     let dateStart = moment(data.dateTime.dateStart);
-    console.log(this.props.data.dateTime)
     return (
       <div className="date-time-input">
         <DatePickerWithName
-          {...this.props}
           className="date-input"
           name="Дата"
           dateTime={dateStart}
@@ -54,7 +49,7 @@ class DateTime extends Component {
             mutate({
               variables: {
                 changedForm: {
-                  ...this.props.data.dateTime,
+                  ...props.data.dateTime,
                   dateStart:moment(data).format()
                 }
               }
@@ -67,11 +62,11 @@ class DateTime extends Component {
           name="Начало"
           value={data.dateTime.timeStart}
           onChange={
-            (data)=>this.validateTime(data)&& mutate({
+            (data)=>validateTime(data)&& mutate({
               variables: {
                 changedForm: {
-                  ...this.props.data.dateTime,
-                  timeStart:this.addColon(data.target.value)
+                  ...props.data.dateTime,
+                  timeStart:addColon(data.target.value)
                 }
               }
             })
@@ -83,11 +78,11 @@ class DateTime extends Component {
           name="Конец"
           value={data.dateTime.timeEnd}
           onChange={
-            (data)=>this.validateTime(data) && mutate({
+            (data)=>validateTime(data) && mutate({
               variables: {
                 changedForm: {
-                  ...this.props.data.dateTime,
-                  timeEnd:this.addColon(data.target.value)
+                  ...props.data.dateTime,
+                  timeEnd:addColon(data.target.value)
                 }
               }
             })
@@ -95,11 +90,8 @@ class DateTime extends Component {
         />
       </div>
     );
-  }
 }
 
 export default compose(
   graphql(changeConnectionMutation)
 )(DateTimeWiithData);
-
-// export default DateTimeWiithData;

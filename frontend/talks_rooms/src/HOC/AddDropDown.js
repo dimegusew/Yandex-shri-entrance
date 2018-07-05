@@ -16,13 +16,15 @@ class extends Component {
        />
      {this.state.isOpen &&
        <DropDown
-         onClick={(data)=>
-         this.setState({
-           isOpen:false,
-           choosedItem:data.target.id,
-           input:""
-         },
-        this.props.onInp(data.target.id))}
+         onClick={(data)=>{
+           this.setState({
+             isOpen:false,
+             choosedItem:data.target.id,
+             input:""
+           },
+         );
+         this.props.onInp(data.target.id)
+         }}
          {...this.props}
          {...this.state}
        />
