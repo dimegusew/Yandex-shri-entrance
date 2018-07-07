@@ -3,7 +3,7 @@ import "./App.css";
 import "moment/locale/ru";
 import "react-datepicker/dist/react-datepicker.css";
 import DateTime from "./Components/DateTime.js";
-import UserChecker from "./Components/Userchecker.js";
+import UserChoose from "./Components/Userchecker.js";
 import { InputWithClearButton } from "./Components/Input.js";
 import Header from "./Components/Header.js";
 import moment from 'moment';
@@ -35,13 +35,7 @@ class Form extends Component {
         <Header />
         <ThemeInput/>
         <DateTime/>
-
-        <UserChecker
-          userChoose={data => this.setState({choosedUsers: [...data],
-            isValid:{...isValid,choosedUsers : data.length!==0 ? true : false}})}
-          // {...this.state}
-        />
-
+      <UserChoose/>
       <RoomChecker {...this.state}/>
       </div>
     );

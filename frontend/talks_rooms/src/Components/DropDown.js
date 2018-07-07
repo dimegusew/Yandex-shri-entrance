@@ -14,8 +14,7 @@ const DropDownItem = ({el,onClick})=>{
 }
 
 const DropDownItems = ({input,choosedUsers,users,...props})=>{
-
-  const logins= choosedUsers.map(el=>el ? el.login : "");
+  const logins = choosedUsers.map(el=>el ? el : "");
   return(
     <div className='dropdown'>
       {users.filter(el=>(el.login

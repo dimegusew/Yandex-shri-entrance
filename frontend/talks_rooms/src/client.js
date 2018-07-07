@@ -103,25 +103,25 @@ const client = new ApolloClient({
                     avatarUrl
                   }
                   formState @client{
-                    choosedUsers,
-                    us
+                    choosedUsers
                   }
                 }
               `
 
           const previous = cache.readQuery({ query });
-          const currentUser = previous.users.find(el => el.login === user)
-          const data = [...previous.formState.choosedUsers,currentUser]
-          console.log(data)
+          // const currentUser = previous.users.find(el => el.login === user)
+          const newUser = {user,__typename:'User'}
+           const updatedUsers = [...previous.formState.choosedUsers,user]
+          console.log(updatedUsers)
+          //currentUser
+          const data={
+            formState:{
+              __typename: "formState",
+               choosedUsers:updatedUsers
+             }
+           }
 
-          cache.writeData({
-            data: {
-              formState: {
-                __typename: "formState",
-                choosedUsers:data
-              }
-            }
-          });
+          cache.writeData({data});
           return null;
         }
       }
