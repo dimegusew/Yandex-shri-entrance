@@ -3,7 +3,7 @@ import WithName from '../HOC/AddName.js'
 import WithDropDown from '../HOC/AddDropDown.js'
 import WithClearButton from '../HOC/AddClearButton.js'
 
-const Input = ({...props})=>{
+const Input = ({ ...props })=>{
   return(
     <input {...props}/>
   )

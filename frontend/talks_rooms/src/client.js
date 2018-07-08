@@ -1,7 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
 import "moment/locale/ru";
 import moment from 'moment';
 import gql from 'graphql-tag';
@@ -39,6 +36,7 @@ const client = new ApolloClient({
               theme: "",
               choosedUsers: [],
               us:"",
+              choosedRoom:null
               // isValid:{
               //   theme: false,
               //   dateTime:true,
@@ -52,24 +50,6 @@ const client = new ApolloClient({
       Query: {},
       Mutation: {
         updateFormState: (_, { changedForm }, { cache }) => {
-            console.log(changedForm)
-          // const query = gql`
-          //   query {
-          //     formState @client{
-          //       dateTime{
-          //         dateStart,
-          //         dateEnd
-          //       }
-          //     }
-          //     networkStatus @client {
-          //       isConnected
-          //       }
-          //   }
-          // `;
-
-          // const previous = cache.readQuery({ query });
-          // const newChangedForm = changedForm;
-
           cache.writeData({
             data: {
               formState: {
@@ -93,7 +73,7 @@ const client = new ApolloClient({
           return null;
         },
 
-        addUsersState: (_, { user }, { cache }) => {
+        addUsersState: (_, { user,type }, { cache }) => {
           const query= gql`
                 {
                   users {
@@ -109,15 +89,26 @@ const client = new ApolloClient({
               `
 
           const previous = cache.readQuery({ query });
-          // const currentUser = previous.users.find(el => el.login === user)
-          const newUser = {user,__typename:'User'}
-           const updatedUsers = [...previous.formState.choosedUsers,user]
-          console.log(updatedUsers)
-          //currentUser
+           const updatedUsers = user.type==='ADD_USER' ?
+            [...previous.formState.choosedUsers,user.user]
+            : previous.formState.choosedUsers.filter(el=>el!==user.user)
           const data={
             formState:{
               __typename: "formState",
                choosedUsers:updatedUsers
+             }
+           }
+
+          cache.writeData({data});
+          return null;
+        },
+
+        addRoomState: (_, { room }, { cache }) => {
+          console.log(room)
+          const data={
+            formState:{
+              __typename: "formState",
+               choosedRoom:room
              }
            }
 

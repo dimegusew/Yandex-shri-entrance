@@ -29,8 +29,9 @@ input:focus{
   border-color: #007DFF;
 }
 .header{
+
   width: 100%;
-  padding-left: 28px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -19,6 +19,9 @@ const RoomQuery= gql`
         id
       }
     }
+    formState @client{
+      choosedRoom
+    }
   }
 `
 

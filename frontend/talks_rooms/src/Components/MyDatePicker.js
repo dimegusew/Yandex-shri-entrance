@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const MyDatePicker = ({dateTime,...props})=>{
+const MyDatePicker = ({ dateTime,...props })=>{
   return(
     <DatePicker
        selected={dateTime}

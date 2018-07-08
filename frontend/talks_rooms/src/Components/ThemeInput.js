@@ -1,32 +1,24 @@
 import React from "react";
 import { InputWithClearButton } from "./Input.js";
 import { graphql, compose, Query } from "react-apollo";
-import GET_THEME from '../Querys/LocalQuerys/getTheme.js';
-import gql from 'graphql-tag';
+import GET_THEME from "../Querys/LocalQuerys/getTheme.js";
+import gql from "graphql-tag";
 
-
-const addThemeMutation= gql`
-  mutation($theme: String) {
-    updateThemeState(theme: $theme) @client
-  }
-`;
-
-const ThemeInput = ({...props,mutate})=>{
-  console.log(props)
-  return(
+const ThemeInput = ({ mutate, ...{data} }) => {
+  return (
     <InputWithClearButton
       name="Тема"
       placeholder={"О чем будете говорить?"}
       className="text-input"
-      value={props.data}
-      onChange={(data)=>
+      value={data}
+      onChange={({ target }) =>
         mutate({
           variables: {
-            theme: data.target.value
+            theme: target.value
           }
         })
       }
-      onClear={(data)=>
+      onClear={() =>
         mutate({
           variables: {
             theme: ""
@@ -34,21 +26,21 @@ const ThemeInput = ({...props,mutate})=>{
         })
       }
     />
-  )
-}
+  );
+};
 
-const ThemeInputWithData = ({...props} ) => (
+const addThemeMutation = gql`
+  mutation($theme: String) {
+    updateThemeState(theme: $theme) @client
+  }
+`;
+
+const ThemeInputWithData = ({ ...props }) => (
   <Query query={GET_THEME}>
-    {({data:{formState} }) =>
-        <ThemeInput
-          {...props}
-          data={formState.theme}
-        />
-    }
+    {({ data: { formState } }) => (
+      <ThemeInput {...props} data={formState.theme} />
+    )}
   </Query>
 );
 
-
-export default compose(
-  graphql(addThemeMutation)
-)(ThemeInputWithData);
+export default compose(graphql(addThemeMutation))(ThemeInputWithData);
