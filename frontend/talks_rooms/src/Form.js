@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import DateTime from "./Components/DateTime.js";
-import UserChoose from "./Components/UserChoose.js";
+import DateTime from "./Containers/DateTime.js";
+import UserChoose from "./Containers/UserChoose.js";
 import Header from "./Components/Header.js";
-import RoomChoose from "./Components/RoomChoose.js";
-import ThemeInput from "./Components/ThemeInput.js";
+import RoomChoose from "./Containers/RoomChoose.js";
+import ThemeInput from "./Containers/ThemeInput.js";
 
 const Form = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Rooms from "./Rooms.js";
+import Rooms from "../Components/Rooms.js";
 import WithData from "../HOC/FetchData.js";
 import RoomQuery from "../Querys/RoomQuery.js";
 import { graphql, compose} from "react-apollo";
@@ -22,7 +22,7 @@ const RoomChecker = ({ mutate, ...props }) => {
       onDeleteClick={({ target }) => {
         mutate({
           variables: {
-            room: { type: "DELETE_ROOM", room: target.id }
+            room: target.id
           }
         });
       }}

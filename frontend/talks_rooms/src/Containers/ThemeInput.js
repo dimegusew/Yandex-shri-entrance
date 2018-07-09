@@ -1,5 +1,5 @@
 import React from "react";
-import { InputWithClearButton } from "./Input.js";
+import { InputWithClearButton } from "../Components/Input.js";
 import { graphql, compose, Query } from "react-apollo";
 import GET_THEME from "../Querys/LocalQuerys/getTheme.js";
 import gql from "graphql-tag";

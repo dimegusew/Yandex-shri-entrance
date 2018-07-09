@@ -15,6 +15,7 @@ class extends Component {
       <InputComponent
         value={this.state.isVisible ? this.props.theme : ""}
         onFocus={()=>this.setState({isVisible:true})}
+        onBlur={()=>this.setState({isVisible:false})}
         // onClear={}
         {...this.props}
       />

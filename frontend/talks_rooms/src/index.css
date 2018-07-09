@@ -31,7 +31,8 @@ input:focus{
 .header{
 
   width: 100%;
-
+  /* padding-left: 40px;
+  padding-right: 40px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -161,9 +162,11 @@ input:focus{
 
 .form{
   padding-top:31px;
+  padding-left: 40px;
+  padding-right: 40px;
   font-size: 15px;
-  min-width: 700px;
-  max-width: 1000px;
+  min-width: 400px;
+  max-width: 925px;
   max-height: 1000px;
   flex-wrap: wrap;
   display: flex;

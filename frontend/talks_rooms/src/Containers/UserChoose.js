@@ -4,7 +4,7 @@ import WithData from '../HOC/FetchData.js';
 import UsersQuery from '../Querys/UsersQuery.js';
 import { graphql, compose} from "react-apollo";
 import gql from 'graphql-tag';
-import UserList from './UserList.js'
+import UserList from '../Components/UserList.js'
 
 const UserChoose = ({...props})=>{
   let {users} = props.data;
